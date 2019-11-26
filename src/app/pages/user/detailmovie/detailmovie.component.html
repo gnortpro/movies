@@ -1,45 +1,46 @@
 <div class="container">
+  <mat-spinner *ngIf="detail === 0"></mat-spinner>
   <div class="row movie-detail">
     <div class="col-12 page-title">
       <h1>Nội dung phim</h1>
     </div>
     <div class="col-3">
-      <img class="img-fluid" [src]="detail.data.thumb" alt="" />
+      <img class="img-fluid" [src]="detail.thumb" alt="" />
     </div>
     <div class="col-9">
       <div class="product-shop">
         <div class="product-name">
-          <span class="h1">{{ detail.data.name }}</span>
+          <span class="h1">{{ detail.name }}</span>
           <hr />
         </div>
 
         <!-- Build test -->
         <div class="movie-director movie-info">
           <label>Đạo diễn: </label>
-          <div class="std">{{ detail.data.directors }}</div>
+          <div class="std">{{ detail.directors }}</div>
         </div>
         <div class="movie-actress movie-info">
           <label>Diễn viên:</label>
           <div class="std">
-            {{ detail.data.actors }}
+            {{ detail.actors }}
           </div>
         </div>
         <div class="movie-genre movie-info">
           <label>Thể loại: </label>
-          <div class="std">{{ detail.data.type }}</div>
+          <div class="std">{{ detail.type }}</div>
         </div>
         <div class="movie-release movie-info">
           <label>Khởi chiếu: </label>
-          <div class="std">{{ detail.data.time }}</div>
+          <div class="std">{{ detail.time }}</div>
         </div>
         <div class="movie-actress movie-info">
           <label>Thời lượng: </label>
-          <div class="std">{{ detail.data.duration }}</div>
+          <div class="std">{{ detail.duration }}</div>
         </div>
         <div class="movie-language movie-info">
           <label>Ngôn ngữ: </label>
           <div class="std">
-            {{ detail.data.subscription }}
+            {{ detail.subscription }}
           </div>
         </div>
         <div class="">
@@ -51,7 +52,7 @@
       </div>
     </div>
     <div class="col-12 movie-des">
-      {{ detail.data.description }}
+      {{ detail.description }}
     </div>
   </div>
 </div>

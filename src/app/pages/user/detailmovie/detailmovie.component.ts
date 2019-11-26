@@ -1,8 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { DataService } from "../data.service";
+import { DataService } from "../../../data.service";
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
-import { TrailerDialogComponent } from "../shared/layouts/trailer-dialog/trailer-dialog.component";
+import { TrailerDialogComponent } from "../../../shared/layouts/trailer-dialog/trailer-dialog.component";
+
 @Component({
   selector: "app-detailmovie",
   templateUrl: "./detailmovie.component.html",
@@ -17,8 +18,8 @@ export class DetailmovieComponent implements OnInit {
   ) {}
   getMovieDetails() {
     const id = +this.route.snapshot.paramMap.get("id");
-    this.dataService.getMovieDetail(id).subscribe(data => {
-      this.detail = data;
+    this.dataService.getMovieDetail(id).subscribe((data: { data: {} }) => {
+      this.detail = data.data;
       console.log(this.detail);
     });
   }

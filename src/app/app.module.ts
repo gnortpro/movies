@@ -40,11 +40,16 @@ import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FooterComponent } from "./shared/layouts/footer/footer.component";
 import { HeaderComponent } from "./shared/layouts/header/header.component";
-import { HomeComponent } from "./home/home.component";
-import { UserComponent } from "./user/user.component";
+import { HomeComponent } from "./pages/user/home/home.component";
 import { TodolistComponent } from "./todolist/todolist.component";
-import { DetailmovieComponent } from './detailmovie/detailmovie.component';
-import { TrailerDialogComponent } from './shared/layouts/trailer-dialog/trailer-dialog.component';
+import { DetailmovieComponent } from "./pages/user/detailmovie/detailmovie.component";
+import { TrailerDialogComponent } from "./shared/layouts/trailer-dialog/trailer-dialog.component";
+import { AdminComponent } from "./pages/admin/admin.component";
+import { LoginComponent } from "./pages/admin/login/login.component";
+import { NotfoundpageComponent } from "./pages/error/notfoundpage/notfoundpage.component";
+import { ListuserComponent } from "./pages/admin/listuser/listuser.component";
+import { DashboardComponent } from "./pages/admin/dashboard/dashboard.component";
+import { UserComponent } from "./pages/user/user.component";
 
 @NgModule({
   declarations: [
@@ -52,10 +57,15 @@ import { TrailerDialogComponent } from './shared/layouts/trailer-dialog/trailer-
     FooterComponent,
     HeaderComponent,
     HomeComponent,
-    UserComponent,
     TodolistComponent,
     DetailmovieComponent,
-    TrailerDialogComponent
+    TrailerDialogComponent,
+    AdminComponent,
+    LoginComponent,
+    NotfoundpageComponent,
+    ListuserComponent,
+    DashboardComponent,
+    UserComponent
   ],
   imports: [
     HttpClientModule,

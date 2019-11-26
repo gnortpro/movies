@@ -1,15 +1,35 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { HomeComponent } from "./home/home.component";
-import { UserComponent } from "./user/user.component";
+import { HomeComponent } from "./pages/user/home/home.component";
 import { TodolistComponent } from "./todolist/todolist.component";
-import { DetailmovieComponent } from "./detailmovie/detailmovie.component";
+import { DetailmovieComponent } from "./pages/user/detailmovie/detailmovie.component";
+import { AdminComponent } from "./pages/admin/admin.component";
+import { LoginComponent } from "./pages/admin/login/login.component";
+import { ListuserComponent } from "./pages/admin/listuser/listuser.component";
+import { NotfoundpageComponent } from "./pages/error/notfoundpage/notfoundpage.component";
+import { DashboardComponent } from "./pages/admin/dashboard/dashboard.component";
+import { UserComponent } from "./pages/user/user.component";
 const routes: Routes = [
-  { path: "user", component: UserComponent },
+  {
+    path: "admin",
+    component: AdminComponent,
+    children: [
+      { path: "users", component: ListuserComponent },
+      { path: "", component: DashboardComponent }
+    ]
+  },
+  {
+    path: "user",
+    component: UserComponent,
+    children: [
+      { path: "details/:id", component: DetailmovieComponent },
+      { path: "", component: HomeComponent }
+    ]
+  },
+  { path: "login", component: LoginComponent },
   { path: "todolist", component: TodolistComponent },
-  { path: "detail/:id", component: DetailmovieComponent },
-  { path: "home", component: HomeComponent },
-  { path: "", redirectTo: "/home", pathMatch: "full" }
+  { path: "", redirectTo: "/user", pathMatch: "full" },
+  { path: "**", component: NotfoundpageComponent }
 ];
 
 @NgModule({

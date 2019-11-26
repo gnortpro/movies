@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 xs-1-12">
+      <div class="home-title text-center">
+        <h2>movie selection</h2>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3" *ngFor="let movie of movies.data">
+      <div class="card movie-card" style="margin-bottom: 10px;">
+        <img
+          class="card-img-top movie-thumb"
+          src="assets/poster/m1.jpg"
+          alt=""
+        />
+        <div class="card-body movie-owner">
+          <h4 class="card-title">{{ movie.name }}</h4>
+          <div class="text-center">
+            <a
+              class="col-1-4"
+              class="btn btn-info"
+              routerLink="/detail/{{ movie.id }}"
+              style="margin-right: 10px;"
+              >Detail</a
+            >
+            <button class="btn btn-primary">Mua vé</button>
+          </div>
+        </div>
+        <!-- <div class="card-body text-center">
+
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+<mat-spinner *ngIf="movies.length === 0"></mat-spinner>

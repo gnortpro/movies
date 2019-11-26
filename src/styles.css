@@ -42,8 +42,26 @@ body {
 .movie-card .card-title {
   font-size: 17px;
   font-weight: 600;
+  color: white;
+}
+.movie-card {
+  position: relative;
+  cursor: pointer;
 }
 
+.movie-owner {
+  background: url(assets/bg-black-transparent.png) repeat scroll 0 0 transparent;
+  display: none;
+  padding-bottom: 10px;
+  position: absolute;
+  top: 275px;
+  width: 100%;
+  z-index: 999;
+}
+
+.movie-card:hover .movie-owner {
+  display: block;
+}
 /**** Movie Detail *******/
 .product-shop > div {
   float: left;
