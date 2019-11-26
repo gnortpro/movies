@@ -39,17 +39,10 @@
         <img style="height:100%; width: 100%;" src="{{ product.thumb }}" />
       </mat-card-content>
       <mat-card-actions>
-<<<<<<< HEAD
-        <button mat-button>Buy product</button>
-      </mat-card-actions>
-    </mat-card>
-  </mat-grid-list>
-=======
         <a class="col-1-4" routerLink="/detail/{{ product.id }}">Detail</a>
         <button mat-button>Mua vé</button>
       </mat-card-actions>
     </mat-card>
   </div>
->>>>>>> 6ee01fe22d3736c729272a67cd031c8ea73d8345
 </div>
 <mat-spinner *ngIf="products.length === 0"></mat-spinner>
