@@ -7,30 +7,42 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-3" *ngFor="let movie of movies.data">
-      <div class="card movie-card" style="margin-bottom: 10px;">
-        <img
-          class="card-img-top movie-thumb"
-          src="assets/poster/m1.jpg"
-          alt=""
-        />
-        <div class="card-body movie-owner">
-          <h4 class="card-title">{{ movie.name }}</h4>
-          <div class="text-center">
-            <a
-              class="col-1-4"
-              class="btn btn-info"
-              routerLink="/user/detail/{{ movie.id }}"
-              style="margin-right: 10px;"
-              >Detail</a
-            >
-            <button class="btn btn-primary">Mua vé</button>
-          </div>
+    <div class="container showing-movie">
+      <owl-carousel
+        [options]="carouselOptions"
+        [items]="movies.data"
+        [carouselClasses]="['owl-theme', 'row', 'sliding']"
+      >
+        <div class="item" *ngFor="let movie of movies.data">
+          <a
+            routerLink="/user/movie/{{ movie.id }}"
+            class="card movie-card"
+            style="margin-bottom: 10px;"
+          >
+            <img
+              class="card-img-top movie-thumb"
+              src="assets/poster/m1.jpg"
+              alt=""
+            />
+            <div class="card-body movie-owner">
+              <h4 class="card-title">{{ movie.name }}</h4>
+              <div class="text-center">
+                <a
+                  class="col-1-4"
+                  class="btn btn-info"
+                  routerLink="/user/movie/{{ movie.id }}"
+                  style="margin-right: 10px;"
+                  >Chi tiết</a
+                >
+                <button class="btn btn-primary">Mua vé</button>
+              </div>
+            </div>
+            <!-- <div class="card-body text-center">
+    
+            </div> -->
+          </a>
         </div>
-        <!-- <div class="card-body text-center">
-
-        </div> -->
-      </div>
+      </owl-carousel>
     </div>
   </div>
 </div>

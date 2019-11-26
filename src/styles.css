@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+/* @import "~@angular/material/prebuilt-themes/deeppurple-amber.css"; */
 html,
 body {
   height: 100%;
@@ -22,7 +22,16 @@ body {
   color: white;
   text-decoration: none;
 }
-
+.mat-drawer:not(.mat-drawer-side) {
+  width: 230px;
+}
+.flex-spacer {
+  flex-grow: 1;
+}
+img.user {
+  height: 26px;
+  margin: 0 4px 3px 0;
+}
 /********** HOME ****************/
 .home-title {
   margin-bottom: 20px;

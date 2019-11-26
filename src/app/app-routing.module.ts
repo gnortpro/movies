@@ -6,9 +6,11 @@ import { DetailmovieComponent } from "./pages/user/detailmovie/detailmovie.compo
 import { AdminComponent } from "./pages/admin/admin.component";
 import { LoginComponent } from "./pages/admin/login/login.component";
 import { ListuserComponent } from "./pages/admin/listuser/listuser.component";
-import { NotfoundpageComponent } from "./pages/error/notfoundpage/notfoundpage.component";
+import { PageNotFoundComponent } from "./pages/error/page-not-found/page-not-found.component";
 import { DashboardComponent } from "./pages/admin/dashboard/dashboard.component";
 import { UserComponent } from "./pages/user/user.component";
+import { ProfileComponent } from "./pages/user/profile/profile.component";
+import { UpcomingMovieComponent } from "./pages/user/upcoming-movie/upcoming-movie.component";
 const routes: Routes = [
   {
     path: "admin",
@@ -22,14 +24,18 @@ const routes: Routes = [
     path: "user",
     component: UserComponent,
     children: [
-      { path: "details/:id", component: DetailmovieComponent },
+      { path: "movie", redirectTo: "/user", pathMatch: "full" },
+      { path: "profile", redirectTo: "/user", pathMatch: "full" },
+      { path: "movie/:id", component: DetailmovieComponent },
+      { path: "profile/:id", component: ProfileComponent },
+      { path: "upcoming", component: UpcomingMovieComponent },
       { path: "", component: HomeComponent }
     ]
   },
   { path: "login", component: LoginComponent },
   { path: "todolist", component: TodolistComponent },
   { path: "", redirectTo: "/user", pathMatch: "full" },
-  { path: "**", component: NotfoundpageComponent }
+  { path: "**", component: PageNotFoundComponent }
 ];
 
 @NgModule({

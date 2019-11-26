@@ -2,6 +2,8 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+// Owl Carousel
+import { OwlModule } from "ngx-owl-carousel";
 //Angular Material Components
 import { MatCheckboxModule } from "@angular/material";
 import { MatButtonModule } from "@angular/material";
@@ -11,8 +13,8 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatRadioModule } from "@angular/material/radio";
 import { MatSelectModule } from "@angular/material/select";
-import { MatSliderModule } from "@angular/material/slider";
-import { MatSlideToggleModule } from "@angular/material/slide-toggle";
+// import { MatSliderModule } from "@angular/material/slider";
+// import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { MatMenuModule } from "@angular/material/menu";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatToolbarModule } from "@angular/material/toolbar";
@@ -46,10 +48,12 @@ import { DetailmovieComponent } from "./pages/user/detailmovie/detailmovie.compo
 import { TrailerDialogComponent } from "./shared/layouts/trailer-dialog/trailer-dialog.component";
 import { AdminComponent } from "./pages/admin/admin.component";
 import { LoginComponent } from "./pages/admin/login/login.component";
-import { NotfoundpageComponent } from "./pages/error/notfoundpage/notfoundpage.component";
 import { ListuserComponent } from "./pages/admin/listuser/listuser.component";
 import { DashboardComponent } from "./pages/admin/dashboard/dashboard.component";
 import { UserComponent } from "./pages/user/user.component";
+import { PageNotFoundComponent } from "./pages/error/page-not-found/page-not-found.component";
+import { ProfileComponent } from "./pages/user/profile/profile.component";
+import { UpcomingMovieComponent } from "./pages/user/upcoming-movie/upcoming-movie.component";
 
 @NgModule({
   declarations: [
@@ -62,16 +66,20 @@ import { UserComponent } from "./pages/user/user.component";
     TrailerDialogComponent,
     AdminComponent,
     LoginComponent,
-    NotfoundpageComponent,
     ListuserComponent,
     DashboardComponent,
-    UserComponent
+    UserComponent,
+    PageNotFoundComponent,
+    ProfileComponent,
+    UpcomingMovieComponent
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
+    OwlModule,
     MatCheckboxModule,
     MatCheckboxModule,
     MatButtonModule,
@@ -81,8 +89,8 @@ import { UserComponent } from "./pages/user/user.component";
     MatFormFieldModule,
     MatRadioModule,
     MatSelectModule,
-    MatSliderModule,
-    MatSlideToggleModule,
+    // MatSliderModule,
+    // MatSlideToggleModule,
     MatMenuModule,
     MatSidenavModule,
     MatToolbarModule,
@@ -103,8 +111,7 @@ import { UserComponent } from "./pages/user/user.component";
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    FormsModule,
-    ReactiveFormsModule
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

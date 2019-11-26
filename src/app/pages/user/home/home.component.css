@@ -1,0 +1,29 @@
+.showing-movie {
+  position: relative;
+}
+.showing-movie .owl-theme .custom-nav {
+  position: absolute;
+  top: 20%;
+  left: 0;
+  right: 0;
+}
+.showing-movie .owl-theme .custom-nav .owl-prev,
+.showing-movie .owl-theme .custom-nav .owl-next {
+  position: absolute;
+  height: 100px;
+  color: inherit;
+  background: none;
+  border: none;
+  z-index: 100;
+}
+.showing-movie .owl-theme .custom-nav .owl-prev i,
+.showing-movie .owl-theme .custom-nav .owl-next i {
+  font-size: 2.5rem;
+  color: #cecece;
+}
+.showing-movie .owl-theme .custom-nav .owl-prev {
+  left: 0;
+}
+.showing-movie .owl-theme .custom-nav .owl-next {
+  right: 0;
+}
