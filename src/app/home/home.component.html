@@ -1,48 +1,31 @@
-<!-- <div class="lists-movie">
-  <mat-card>
-    <mat-card-content>
-      <h2 class="example-h2">Material Button</h2>
-      <button class="app-button" mat-button>FLAT</button>
-      <button
-        class="app-button"
-        mat-raised-button
-        mat-tooltip="This is a tooltip!"
-      >
-        RAISED
-      </button>
-      <button class="app-button" mat-raised-button color="primary">
-        PRIMARY RAISED
-      </button>
-      <button class="app-button" mat-raised-button color="accent">
-        ACCENT RAISED
-      </button>
-    </mat-card-content>
-  </mat-card>
-</div> -->
 <div class="container">
   <div class="row">
-    <mat-card
-      class="col-3"
-      *ngFor="let product of products.data"
-      style="margin-top:10px;"
-    >
-      <mat-card-header>
-        <mat-card-title>{{ product.name }}</mat-card-title>
-        <mat-card-subtitle
-          >{{ product.price }} $/ {{ product.quantity }}
-        </mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <p>
-          {{ product.description }}
-        </p>
-        <img style="height:100%; width: 100%;" src="{{ product.thumb }}" />
-      </mat-card-content>
-      <mat-card-actions>
-        <a class="col-1-4" routerLink="/detail/{{ product.id }}">Detail</a>
-        <button mat-button>Mua vé</button>
-      </mat-card-actions>
-    </mat-card>
+    <div class="col-12 xs-1-12">
+      <div class="home-title text-center">
+        <h2>movie selection</h2>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3" *ngFor="let movie of movies.data">
+      <div class="card movie-card" style="margin-bottom: 10px;">
+        <img class="card-img-top" src="{{ movie.thumb }}" alt="" />
+        <div class="card-body">
+          <h4 class="card-title">{{ movie.name }}</h4>
+          <p class="card-text">{{ movie.description }}</p>
+        </div>
+        <div class="card-body text-center">
+          <a
+            class="col-1-4"
+            class="btn btn-info"
+            routerLink="/detail/{{ movie.id }}"
+            style="margin-right: 10px;"
+            >Detail</a
+          >
+          <button class="btn btn-primary">Mua vé</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-<mat-spinner *ngIf="products.length === 0"></mat-spinner>
+<mat-spinner *ngIf="movies.length === 0"></mat-spinner>

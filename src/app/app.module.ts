@@ -44,6 +44,7 @@ import { HomeComponent } from "./home/home.component";
 import { UserComponent } from "./user/user.component";
 import { TodolistComponent } from "./todolist/todolist.component";
 import { DetailmovieComponent } from './detailmovie/detailmovie.component';
+import { TrailerDialogComponent } from './shared/layouts/trailer-dialog/trailer-dialog.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { DetailmovieComponent } from './detailmovie/detailmovie.component';
     HomeComponent,
     UserComponent,
     TodolistComponent,
-    DetailmovieComponent
+    DetailmovieComponent,
+    TrailerDialogComponent
   ],
   imports: [
     HttpClientModule,

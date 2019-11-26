@@ -6,13 +6,13 @@ import { DataService } from "../data.service";
   styleUrls: ["./home.component.css"]
 })
 export class HomeComponent implements OnInit {
-  products = [];
+  movies = [];
   constructor(private dataService: DataService) {}
 
   ngOnInit() {
     this.dataService.getListMovies().subscribe((data: any[]) => {
-      this.products = data;
-      console.log(this.products);
+      this.movies = data;
+      // console.log(this.movies);
     });
   }
 }
