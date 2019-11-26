@@ -1,6 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 //Angular Material Components
 import { MatCheckboxModule } from "@angular/material";
 import { MatButtonModule } from "@angular/material";
@@ -41,6 +42,8 @@ import { FooterComponent } from "./shared/layouts/footer/footer.component";
 import { HeaderComponent } from "./shared/layouts/header/header.component";
 import { HomeComponent } from "./home/home.component";
 import { UserComponent } from "./user/user.component";
+import { TodolistComponent } from "./todolist/todolist.component";
+import { DetailmovieComponent } from './detailmovie/detailmovie.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,9 @@ import { UserComponent } from "./user/user.component";
     FooterComponent,
     HeaderComponent,
     HomeComponent,
-    UserComponent
+    UserComponent,
+    TodolistComponent,
+    DetailmovieComponent
   ],
   imports: [
     HttpClientModule,
@@ -85,7 +90,9 @@ import { UserComponent } from "./user/user.component";
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
