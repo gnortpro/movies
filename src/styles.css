@@ -16,7 +16,7 @@ body {
 
 .app-content {
   background: beige;
-  height: 1000px;
+  /* height: 1000px; */
 }
 .main-header a {
   color: white;

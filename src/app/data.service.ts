@@ -5,7 +5,7 @@ import { HttpClient } from "@angular/common/http";
   providedIn: "root"
 })
 export class DataService {
-  private REST_API_SERVER = "http://www.mocky.io/v2/5dd7b73d3100006200055a79";
+  private REST_API_SERVER = "http://www.mocky.io/v2/5dd89f56310000d2a9055ebc";
 
   constructor(private httpClient: HttpClient) {}
 
