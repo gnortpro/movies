@@ -5,11 +5,15 @@ import { HttpClient } from "@angular/common/http";
   providedIn: "root"
 })
 export class DataService {
-  private REST_API_SERVER = "http://www.mocky.io/v2/5dd7b73d3100006200055a79";
+  private listMovieApi = "http://www.mocky.io/v2/5ddba5c83400005300eadcf7";
+  private movieDetails = "http://www.mocky.io/v2/5ddbb5483400005200eadd84";
 
   constructor(private httpClient: HttpClient) {}
 
-  public sendGetRequest() {
-    return this.httpClient.get(this.REST_API_SERVER);
+  public getListMovies() {
+    return this.httpClient.get(this.listMovieApi);
+  }
+  public getMovieDetail(id) {
+    return this.httpClient.get(this.movieDetails);
   }
 }
