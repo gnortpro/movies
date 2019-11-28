@@ -18,9 +18,11 @@ export class BuyTicketComponent implements OnInit {
     private dataService: DataService,
     private activatedRoute: ActivatedRoute
   ) {
-    this.defaultMovieID = this.activatedRoute.snapshot.paramMap.get("id");
+    this.defaultMovieID = +this.activatedRoute.snapshot.paramMap.get("id");
   }
   getSelectDay(day: number) {
+    // this.heroService.getHero(id)
+    // .subscribe(hero => this.hero = hero);
     this.dataService
       .getMovieShedule(this.defaultMovieID, day)
       .subscribe((data: { data: {} }) => {
@@ -33,6 +35,9 @@ export class BuyTicketComponent implements OnInit {
         console.log(this.ticketCities);
       });
   }
+  // goBack(): void {
+  //   this.location.back();
+  // }
   ngOnInit() {
     this.getSelectDay(this.today);
   }

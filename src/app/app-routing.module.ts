@@ -13,6 +13,7 @@ import { ProfileComponent } from "./pages/user/profile/profile.component";
 import { UpcomingMovieComponent } from "./pages/user/upcoming-movie/upcoming-movie.component";
 import { DetaileventComponent } from "./pages/user/detailevent/detailevent.component";
 import { BuyTicketComponent } from "./pages/user/buy-ticket/buy-ticket.component";
+import { UserLoginComponent } from "./pages/user/user-login/user-login.component";
 
 const routes: Routes = [
   {
@@ -20,7 +21,8 @@ const routes: Routes = [
     component: AdminComponent,
     children: [
       { path: "users", component: ListuserComponent },
-      { path: "", component: DashboardComponent }
+      { path: "", component: DashboardComponent },
+      { path: "login", component: LoginComponent }
     ]
   },
   {
@@ -36,10 +38,11 @@ const routes: Routes = [
       { path: "profile/:id", component: ProfileComponent },
       { path: "upcoming", component: UpcomingMovieComponent },
       { path: "ticket/:id", component: BuyTicketComponent },
+      { path: "login", component: UserLoginComponent },
       { path: "", component: HomeComponent }
     ]
   },
-  { path: "login", component: LoginComponent },
+
   { path: "todolist", component: TodolistComponent },
   { path: "", redirectTo: "/user", pathMatch: "full" },
   { path: "**", component: PageNotFoundComponent }

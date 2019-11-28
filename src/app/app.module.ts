@@ -59,6 +59,7 @@ import { BuyTicketComponent } from "./pages/user/buy-ticket/buy-ticket.component
 import { EditComponent } from './pages/user/profile/edit/edit.component';
 import { VoucherComponent } from './pages/user/profile/voucher/voucher.component';
 import { TicketBoughtComponent } from './pages/user/profile/ticket-bought/ticket-bought.component';
+import { UserLoginComponent } from './pages/user/user-login/user-login.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,8 @@ import { TicketBoughtComponent } from './pages/user/profile/ticket-bought/ticket
     BuyTicketComponent,
     EditComponent,
     VoucherComponent,
-    TicketBoughtComponent
+    TicketBoughtComponent,
+    UserLoginComponent
   ],
   imports: [
     HttpClientModule,
