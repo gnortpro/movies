@@ -11,6 +11,9 @@ import { DashboardComponent } from "./pages/admin/dashboard/dashboard.component"
 import { UserComponent } from "./pages/user/user.component";
 import { ProfileComponent } from "./pages/user/profile/profile.component";
 import { UpcomingMovieComponent } from "./pages/user/upcoming-movie/upcoming-movie.component";
+import { DetaileventComponent } from "./pages/user/detailevent/detailevent.component";
+import { BuyTicketComponent } from "./pages/user/buy-ticket/buy-ticket.component";
+
 const routes: Routes = [
   {
     path: "admin",
@@ -24,11 +27,15 @@ const routes: Routes = [
     path: "user",
     component: UserComponent,
     children: [
+      { path: "ticket", redirectTo: "/user", pathMatch: "full" },
+      { path: "event", redirectTo: "/user", pathMatch: "full" },
       { path: "movie", redirectTo: "/user", pathMatch: "full" },
       { path: "profile", redirectTo: "/user", pathMatch: "full" },
+      { path: "event/:id", component: DetaileventComponent },
       { path: "movie/:id", component: DetailmovieComponent },
       { path: "profile/:id", component: ProfileComponent },
       { path: "upcoming", component: UpcomingMovieComponent },
+      { path: "ticket/:id", component: BuyTicketComponent },
       { path: "", component: HomeComponent }
     ]
   },

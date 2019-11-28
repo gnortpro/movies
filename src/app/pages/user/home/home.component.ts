@@ -6,7 +6,8 @@ import { DataService } from "../../../data.service";
   styleUrls: ["./home.component.css"]
 })
 export class HomeComponent implements OnInit {
-  movies = [];
+  movies;
+  events;
   posters = [
     "assets/poster/m1.jpg",
     "assets/poster/m2.jpg",
@@ -17,12 +18,15 @@ export class HomeComponent implements OnInit {
     margin: 25,
     nav: true,
     navText: [
-      '<i class="fa fa-angle-left" aria-hidden="true"></i>',
-      '<i class="fa fa-angle-right" aria-hidden="true"></i>'
+      '<i class="fa fa-angle-left"></i>',
+      '<i class="fa fa-angle-right"></i>'
     ],
-    stagePadding: 50,
-    loop: true,
+    // stagePadding: 50,
+    loop: false,
     responsiveClass: true,
+    autoplay: true,
+    autoplayTimeout: 1000,
+    autoplayHoverPause: true,
     navContainer: ".showing-movie .custom-nav",
     responsive: {
       0: {
@@ -34,62 +38,28 @@ export class HomeComponent implements OnInit {
         nav: true
       },
       1000: {
-        items: 2,
+        items: 5,
         nav: true,
         loop: false
       },
       1500: {
-        items: 3,
+        items: 5,
         nav: true,
         loop: false
       }
     }
   };
 
-  images = [
-    {
-      text: "Everfresh Flowers",
-      image: "https://freakyjolly.com/demo/jquery/PreloadJS/images/1.jpg"
-    },
-    {
-      text: "Festive Deer",
-      image: "https://freakyjolly.com/demo/jquery/PreloadJS/images/2.jpg"
-    },
-    {
-      text: "Morning Greens",
-      image: "https://freakyjolly.com/demo/jquery/PreloadJS/images/3.jpg"
-    },
-    {
-      text: "Bunch of Love",
-      image: "https://freakyjolly.com/demo/jquery/PreloadJS/images/4.jpg"
-    },
-    {
-      text: "Blue Clear",
-      image: "https://freakyjolly.com/demo/jquery/PreloadJS/images/5.jpg"
-    },
-    {
-      text: "Evening Clouds",
-      image: "https://freakyjolly.com/demo/jquery/PreloadJS/images/7.jpg"
-    },
-    {
-      text: "Fontains in Shadows",
-      image: "https://freakyjolly.com/demo/jquery/PreloadJS/images/8.jpg"
-    },
-    {
-      text: "Kites in the Sky",
-      image: "https://freakyjolly.com/demo/jquery/PreloadJS/images/9.jpg"
-    },
-    {
-      text: "Sun Streak",
-      image: "https://freakyjolly.com/demo/jquery/PreloadJS/images/10.jpg"
-    }
-  ];
   constructor(private dataService: DataService) {}
 
   ngOnInit() {
-    this.dataService.getListMovies().subscribe((data: any[]) => {
-      this.movies = data;
-      // console.log(this.movies);
+    this.dataService.getListMovies().subscribe((data: { data: {} }) => {
+      this.movies = data.data;
+    });
+
+    this.dataService.getEvents().subscribe((data: { data: {} }) => {
+      this.events = data.data;
+      console.log(data.data);
     });
   }
 }

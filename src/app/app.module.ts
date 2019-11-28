@@ -54,6 +54,11 @@ import { UserComponent } from "./pages/user/user.component";
 import { PageNotFoundComponent } from "./pages/error/page-not-found/page-not-found.component";
 import { ProfileComponent } from "./pages/user/profile/profile.component";
 import { UpcomingMovieComponent } from "./pages/user/upcoming-movie/upcoming-movie.component";
+import { DetaileventComponent } from "./pages/user/detailevent/detailevent.component";
+import { BuyTicketComponent } from "./pages/user/buy-ticket/buy-ticket.component";
+import { EditComponent } from './pages/user/profile/edit/edit.component';
+import { VoucherComponent } from './pages/user/profile/voucher/voucher.component';
+import { TicketBoughtComponent } from './pages/user/profile/ticket-bought/ticket-bought.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +76,12 @@ import { UpcomingMovieComponent } from "./pages/user/upcoming-movie/upcoming-mov
     UserComponent,
     PageNotFoundComponent,
     ProfileComponent,
-    UpcomingMovieComponent
+    UpcomingMovieComponent,
+    DetaileventComponent,
+    BuyTicketComponent,
+    EditComponent,
+    VoucherComponent,
+    TicketBoughtComponent
   ],
   imports: [
     HttpClientModule,

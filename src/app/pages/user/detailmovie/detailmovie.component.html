@@ -1,5 +1,5 @@
 <div class="container">
-  <mat-spinner *ngIf="detail === 0"></mat-spinner>
+  <!-- <mat-spinner *ngIf="detail === 0"></mat-spinner> -->
   <div class="row movie-detail">
     <div class="col-12 page-title">
       <h1>Nội dung phim</h1>
@@ -44,10 +44,17 @@
           </div>
         </div>
         <div class="">
-          <button class="btn btn-primary" type="button" (click)="openDialog()">
+          <button
+            class="btn btn-primary"
+            type="button"
+            (click)="openDialog()"
+            style="margin-right: 10px;"
+          >
             Trailer
           </button>
-          <button class="btn btn-primary">Mua vé</button>
+          <a routerLink="/user/ticket/{{ detail.id }}" class="btn btn-primary"
+            >Mua vé</a
+          >
         </div>
       </div>
     </div>
