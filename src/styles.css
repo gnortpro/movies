@@ -14,7 +14,7 @@ body {
 .main {
   /* max-width: 800px; */
   margin: auto;
-  padding-top: 20px;
+  /* padding-top: 20px; */
   padding-bottom: 20px;
 }
 .bg-color {
@@ -30,19 +30,33 @@ body {
   text-align: center;
   text-transform: uppercase;
 }
-.app-content {
-  /* background: #fdfcf0;
-  background: url(assets/bg2.jpg);
-  background-position: top;
-  background-size: cover;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  color: white; */
-  /* height: 1000px; */
+.mat-button-header {
+  padding: 0 16px;
 }
 .main-header a {
   color: white;
   text-decoration: none;
+}
+.page-title {
+  color: #fff;
+  font-weight: 600;
+  margin: 0;
+  padding: 80px 0;
+  display: inline-block;
+}
+.amy-inner {
+  position: relative;
+  min-height: 210px;
+}
+.amy-breadcrumb {
+  color: #ffffff;
+  display: inline-block;
+  float: right;
+  margin-top: 105px;
+}
+#amy-page-header {
+  overflow: hidden;
+  background-color: #202020;
 }
 .mat-drawer:not(.mat-drawer-side) {
   width: 230px;
@@ -53,6 +67,14 @@ body {
 img.user {
   height: 26px;
   margin: 0 4px 3px 0;
+}
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 100%;
 }
 /********** HOME ****************/
 .home-title {
@@ -257,4 +279,7 @@ ul.profile-nav {
 .profile-right h3 {
   text-align: center;
   text-transform: uppercase;
+}
+.emailInput {
+  margin-bottom: 15px;
 }

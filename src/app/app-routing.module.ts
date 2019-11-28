@@ -14,7 +14,9 @@ import { UpcomingMovieComponent } from "./pages/user/upcoming-movie/upcoming-mov
 import { DetaileventComponent } from "./pages/user/detailevent/detailevent.component";
 import { BuyTicketComponent } from "./pages/user/buy-ticket/buy-ticket.component";
 import { UserLoginComponent } from "./pages/user/user-login/user-login.component";
-
+import { EditComponent } from "./pages/user/profile/edit/edit.component";
+import { VoucherComponent } from "./pages/user/profile/voucher/voucher.component";
+import { TicketBoughtComponent } from "./pages/user/profile/ticket-bought/ticket-bought.component";
 const routes: Routes = [
   {
     path: "admin",
@@ -32,10 +34,18 @@ const routes: Routes = [
       { path: "ticket", redirectTo: "/user", pathMatch: "full" },
       { path: "event", redirectTo: "/user", pathMatch: "full" },
       { path: "movie", redirectTo: "/user", pathMatch: "full" },
-      { path: "profile", redirectTo: "/user", pathMatch: "full" },
+      // { path: "profile", redirectTo: "/user", pathMatch: "full" },
       { path: "event/:id", component: DetaileventComponent },
       { path: "movie/:id", component: DetailmovieComponent },
-      { path: "profile/:id", component: ProfileComponent },
+      {
+        path: "profile",
+        component: ProfileComponent,
+        children: [
+          { path: "", component: EditComponent },
+          { path: "voucher", component: VoucherComponent },
+          { path: "bought", component: TicketBoughtComponent }
+        ]
+      },
       { path: "upcoming", component: UpcomingMovieComponent },
       { path: "ticket/:id", component: BuyTicketComponent },
       { path: "login", component: UserLoginComponent },

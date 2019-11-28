@@ -1,69 +1,39 @@
-<div class="container">
+<div class="container-fluid " id="amy-page-header">
   <div class="row">
-    <div class="col-12 xs-1-12">
-      <div class="home-title text-center">
-        <h2>Phim Đang Chiếu</h2>
+    <div class="col-12">
+      <div class="amy-inner container">
+        <h1 class="page-title">Now Playing</h1>
+        <div class="amy-breadcrumb">
+          <span property="itemListElement" typeof="ListItem"
+            ><a
+              property="item"
+              typeof="WebPage"
+              title="Go to Demo."
+              href="http://demo.amytheme.com/movie/demo/multi-cinema"
+              class="home"
+              ><span property="name">Demo</span></a
+            ><meta property="position" content="1"
+          /></span>
+          &gt; <span class="post post-page current-item">Now Playing</span>
+        </div>
       </div>
     </div>
   </div>
-  <div class="row nomargin">
-    <div class="container showing-movie">
-      <owl-carousel
-        [options]="carouselOptions"
-        [items]="movies"
-        [carouselClasses]="['owl-theme', 'sliding']"
-      >
-        <div class="item" *ngFor="let movie of movies">
-          <div class="card movie-card" style="margin-bottom: 10px;">
-            <img
-              class="card-img-top movie-thumb"
-              src="assets/poster/m1.jpg"
-              alt=""
-            />
-            <div class="card-body movie-owner">
-              <h4 class="card-title">{{ movie.name }}</h4>
-              <div class="text-center">
-                <a
-                  class="col-1-4"
-                  class="btn btn-info"
-                  routerLink="/user/movie/{{ movie.id }}"
-                  style="margin-right: 10px;"
-                  >Chi tiết</a
-                >
-                <a
-                  routerLink="/user/ticket/{{ movie.id }}"
-                  class="btn btn-primary"
-                  >Mua vé</a
-                >
-              </div>
+</div>
+<div class="container-fluid bg-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-8 main-content">
+        <div class="movie-items">
+          <div class="row">
+            <div class="col-4 movie-thumb">
+              <img src="assets/poster/m1.jpg" alt="" />
             </div>
-            <!-- <div class="card-body text-center">
-
-            </div> -->
+            <div class="col-8 movie-detail">a</div>
           </div>
         </div>
-      </owl-carousel>
-    </div>
-  </div>
-  <div class="row ">
-    <div class="col-12 text-center"><h2>Tin Tức và Ưu Đãi</h2></div>
-    <div class="col-3 " *ngFor="let event of events">
-      <a
-        routerLink="/user/event/{{ event.id }}"
-        class="card voucher-wrapper"
-        style="width: 18rem;"
-      >
-        <img
-          src="assets/poster/voucher1.jpg"
-          class="card-img-top voucher-thumb"
-          alt="..."
-        />
-        <div class="card-body voucher-description">
-          <a routerLink="/user/event/{{ event.id }}"
-            ><h4 class="card-title">{{ event.name }}</h4></a
-          >
-        </div>
-      </a>
+      </div>
+      <div class="col-4 sidebar"></div>
     </div>
   </div>
 </div>

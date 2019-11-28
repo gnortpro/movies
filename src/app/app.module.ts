@@ -4,7 +4,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 // Owl Carousel
 import { OwlModule } from "ngx-owl-carousel";
-//Angular Material Components
+// Angular Material Components
 import { MatCheckboxModule } from "@angular/material";
 import { MatButtonModule } from "@angular/material";
 import { MatInputModule } from "@angular/material/input";
@@ -35,7 +35,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatTableModule } from "@angular/material/table";
 import { MatSortModule } from "@angular/material/sort";
 import { MatPaginatorModule } from "@angular/material/paginator";
-//Angular Material Components
+// Angular Material Components
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -56,10 +56,10 @@ import { ProfileComponent } from "./pages/user/profile/profile.component";
 import { UpcomingMovieComponent } from "./pages/user/upcoming-movie/upcoming-movie.component";
 import { DetaileventComponent } from "./pages/user/detailevent/detailevent.component";
 import { BuyTicketComponent } from "./pages/user/buy-ticket/buy-ticket.component";
-import { EditComponent } from './pages/user/profile/edit/edit.component';
-import { VoucherComponent } from './pages/user/profile/voucher/voucher.component';
-import { TicketBoughtComponent } from './pages/user/profile/ticket-bought/ticket-bought.component';
-import { UserLoginComponent } from './pages/user/user-login/user-login.component';
+import { EditComponent } from "./pages/user/profile/edit/edit.component";
+import { VoucherComponent } from "./pages/user/profile/voucher/voucher.component";
+import { TicketBoughtComponent } from "./pages/user/profile/ticket-bought/ticket-bought.component";
+import { UserLoginComponent } from "./pages/user/user-login/user-login.component";
 
 @NgModule({
   declarations: [

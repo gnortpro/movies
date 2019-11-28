@@ -1,1 +1,33 @@
-<p>user-login works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="example-container user-login-form width-50">
+        <mat-form-field class="emailInput">
+          <input
+            matInput
+            placeholder="Nhập email của bạn"
+            [formControl]="email"
+            required
+          />
+          <mat-error *ngIf="email.invalid" class="passwordInput">{{
+            getEmailErrorMessage()
+          }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Nhập password của bạn"
+            [formControl]="password"
+            type="password"
+            required
+          />
+          <mat-error *ngIf="email.invalid">{{
+            getPasswordErrorMessage()
+          }}</mat-error>
+        </mat-form-field>
+        <button mat-button color="primary" (click)="submitForm()">Login</button>
+      </div>
+    </div>
+  </div>
+</div>

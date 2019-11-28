@@ -13,49 +13,36 @@
     <div class="col-3 profile-left">
       <ul class="profile-nav">
         <li class="current">
-          <a href="https://www.cgv.vn/default/customer/account/"
+          <a
+            routerLink="/user/profile"
+            routerLinkActive="active"
+            style="color: white;"
             >Thông tin chung</a
           >
         </li>
         <li>
-          <a href="https://www.cgv.vn/default/customer/account/edit/"
-            >Chi tiết tài khoản</a
-          >
-        </li>
-        <li>
-          <a href="https://www.cgv.vn/default/loyalty/account/card/"
-            >Thẻ thành viên</a
-          >
-        </li>
-        <li>
-          <a href="https://www.cgv.vn/default/loyalty/account/point/"
-            >Điểm thưởng</a
-          >
-        </li>
-        <li>
-          <a href="https://www.cgv.vn/default/loyalty/account/gift/"
-            >Thẻ quà tặng</a
-          >
-        </li>
-        <li>
-          <a href="https://www.cgv.vn/default/loyalty/account/voucher/"
+          <a
+            routerLink="/user/profile/voucher"
+            routerLinkActive="active"
+            style="color: white;"
             >Voucher</a
           >
         </li>
-        <li>
-          <a href="https://www.cgv.vn/default/loyalty/account/coupon/"
-            >Coupon</a
-          >
-        </li>
         <li class="last">
-          <a href="https://www.cgv.vn/default/sales/order/history/"
+          <a
+            routerLink="/user/profile/bought"
+            routerLinkActive="active"
+            style="color: white;"
             >Lịch sử giao dịch</a
           >
         </li>
       </ul>
     </div>
+
     <div class="col-9 profile-right">
-      <h3>Thông tin chung</h3>
+      <mat-card>
+        <router-outlet></router-outlet>
+      </mat-card>
     </div>
   </div>
 </div>
