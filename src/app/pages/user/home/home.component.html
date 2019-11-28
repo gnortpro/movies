@@ -2,38 +2,623 @@
   <div class="row">
     <div class="col-12">
       <div class="amy-inner container">
-        <h1 class="page-title">Now Playing</h1>
+        <h1 class="page-title">Phim đang chiếu</h1>
         <div class="amy-breadcrumb">
-          <span property="itemListElement" typeof="ListItem"
-            ><a
-              property="item"
-              typeof="WebPage"
-              title="Go to Demo."
-              href="http://demo.amytheme.com/movie/demo/multi-cinema"
-              class="home"
-              ><span property="name">Demo</span></a
-            ><meta property="position" content="1"
-          /></span>
-          &gt; <span class="post post-page current-item">Now Playing</span>
+          <a
+            class="mat-button mat-button-header"
+            routerLink="/user"
+            routerLinkActive="active"
+            >Trang chủ</a
+          >
+          &gt; <span class="post post-page current-item">Phim đang chiếu</span>
         </div>
       </div>
     </div>
   </div>
 </div>
-<div class="container-fluid bg-white">
-  <div class="container">
-    <div class="row">
-      <div class="col-8 main-content">
-        <div class="movie-items">
-          <div class="row">
-            <div class="col-4 movie-thumb">
-              <img src="assets/poster/m1.jpg" alt="" />
+<div class="container-fluid bg-white nopadding home">
+  <div class="main-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-8 ">
+          <div class="movie-items">
+            <div class="row">
+              <div class="col-4 movie-thumb">
+                <a>
+                  <img
+                    src="assets/poster/m1.jpg"
+                    alt=""
+                    class="img-responsive"
+                  />
+                </a>
+                <span class="imdb-point">7.9</span>
+              </div>
+              <div class="col-8 movie-detail">
+                <div class="movie-meta">
+                  <h3 class="movie-title">
+                    <a href="" class="">Death Wish</a>
+                  </h3>
+                  <div class="movie-rating">
+                    <span class="rating-star">
+                      <span class="current-rating" style="width: 71%;"></span>
+                    </span>
+                    <span class="user-rating">(124 Votes)</span>
+                  </div>
+                  <div class="movie-meta-duration">
+                    <span class="movie-duration"
+                      ><i class="fa fa-clock-o"></i> 02 hours 50 minutes</span
+                    >
+                  </div>
+                  <div class="movie-description">
+                    <p>
+                      Sed ut perspiciatis unde omnis iste natus error sit
+                      voluptatem accusantium doloremque laudantium, totam rem
+                      aperiam, ...
+                    </p>
+                  </div>
+                  <div class="movie-field">
+                    <label class="movie-field-label">Ngày chiếu:</label>
+                    <div class="movie-field-content">
+                      22/08/2019
+                    </div>
+                  </div>
+                  <div class="movie-field">
+                    <label class="movie-field-label">Đạo diễn:</label>
+                    <div class="movie-field-content">
+                      Grace Belly
+                    </div>
+                  </div>
+                  <div class="movie-field">
+                    <label class="movie-field-label">Diễn viên:</label>
+                    <div class="movie-field-content">
+                      Alexander Cattly, Greta Garbo
+                    </div>
+                  </div>
+
+                  <div class="movie-field">
+                    <label class="movie-field-label">Thể loại:</label>
+                    <div class="movie-field-content">
+                      Comedy, Comedy, Comedy, Comedy
+                    </div>
+                  </div>
+                </div>
+                <div class="movie-item-button">
+                  <a href="" class="btn trailer-btn"
+                    ><i class="fa fa-play"></i>Trailer</a
+                  >
+                  <a href="" class="btn detail-btn"
+                    ><i class="fa fa-info"></i>Detail</a
+                  >
+                  <span class="showtime-btn" (click)="showtime()"
+                    >Xuất chiếu</span
+                  >
+                </div>
+              </div>
             </div>
-            <div class="col-8 movie-detail">a</div>
+            <div *ngIf="showTimeBtn" class="showtime-wrapper">
+              <div class="showtime-item">
+                <h3>CGV ABC</h3>
+                <div class="st-time">
+                  <div class="st-title">
+                    <label>December 7, 2018</label>
+                    <a href="" class="buy-ticket">Buy Ticket</a>
+                  </div>
+                  <ul class="list-unstyled">
+                    <li>12h</li>
+                    <li>15h</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="showtime-item">
+                <h3>CGV ABC</h3>
+                <div class="st-time">
+                  <div class="st-title">
+                    <label>December 7, 2018</label>
+                    <a href="" class="buy-ticket">Buy Ticket</a>
+                  </div>
+                  <ul class="list-unstyled">
+                    <li>12h</li>
+                    <li>15h</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="movie-items">
+            <div class="row">
+              <div class="col-4 movie-thumb">
+                <a>
+                  <img
+                    src="assets/poster/m1.jpg"
+                    alt=""
+                    class="img-responsive"
+                  />
+                </a>
+                <span class="imdb-point">7.9</span>
+              </div>
+              <div class="col-8 movie-detail">
+                <div class="movie-meta">
+                  <h3 class="movie-title">
+                    <a href="" class="">Death Wish</a>
+                  </h3>
+                  <div class="movie-rating">
+                    <span class="rating-star">
+                      <span class="current-rating" style="width: 71%;"></span>
+                    </span>
+                    <span class="user-rating">(124 Votes)</span>
+                  </div>
+                  <div class="movie-meta-duration">
+                    <span class="movie-duration"
+                      ><i class="fa fa-clock-o"></i> 02 hours 50 minutes</span
+                    >
+                  </div>
+                  <div class="movie-description">
+                    <p>
+                      Sed ut perspiciatis unde omnis iste natus error sit
+                      voluptatem accusantium doloremque laudantium, totam rem
+                      aperiam, ...
+                    </p>
+                  </div>
+                  <div class="movie-field">
+                    <label class="movie-field-label">Language:</label>
+                    <div class="movie-field-content">
+                      English
+                    </div>
+                  </div>
+
+                  <div class="movie-field">
+                    <label class="movie-field-label">Language:</label>
+                    <div class="movie-field-content">
+                      English
+                    </div>
+                  </div>
+                  <div class="movie-field">
+                    <label class="movie-field-label">Language:</label>
+                    <div class="movie-field-content">
+                      English
+                    </div>
+                  </div>
+                  <div class="movie-field">
+                    <label class="movie-field-label">Language:</label>
+                    <div class="movie-field-content">
+                      English
+                    </div>
+                  </div>
+                </div>
+                <div class="movie-item-button">
+                  <a href="" class="btn trailer-btn"
+                    ><i class="fa fa-play"></i>Trailer</a
+                  >
+                  <a href="" class="btn detail-btn"
+                    ><i class="fa fa-info"></i>Detail</a
+                  >
+                  <span class="showtime-btn" (click)="showtime()"
+                    >Xuất chiếu</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div *ngIf="showTimeBtn" class="showtime-wrapper">
+              <div class="showtime-item">
+                <h3>CGV ABC</h3>
+                <div class="st-time">
+                  <div class="st-title">
+                    <label>December 7, 2018</label>
+                    <a href="" class="buy-ticket">Buy Ticket</a>
+                  </div>
+                  <ul class="list-unstyled">
+                    <li>12h</li>
+                    <li>15h</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="showtime-item">
+                <h3>CGV ABC</h3>
+                <div class="st-time">
+                  <div class="st-title">
+                    <label>December 7, 2018</label>
+                    <a href="" class="buy-ticket">Buy Ticket</a>
+                  </div>
+                  <ul class="list-unstyled">
+                    <li>12h</li>
+                    <li>15h</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="movie-items">
+            <div class="row">
+              <div class="col-4 movie-thumb">
+                <a>
+                  <img
+                    src="assets/poster/m1.jpg"
+                    alt=""
+                    class="img-responsive"
+                  />
+                </a>
+                <span class="imdb-point">7.9</span>
+              </div>
+              <div class="col-8 movie-detail">
+                <div class="movie-meta">
+                  <h3 class="movie-title">
+                    <a href="" class="">Death Wish</a>
+                  </h3>
+                  <div class="movie-rating">
+                    <span class="rating-star">
+                      <span class="current-rating" style="width: 71%;"></span>
+                    </span>
+                    <span class="user-rating">(124 Votes)</span>
+                  </div>
+                  <div class="movie-meta-duration">
+                    <span class="movie-duration"
+                      ><i class="fa fa-clock-o"></i> 02 hours 50 minutes</span
+                    >
+                  </div>
+                  <div class="movie-description">
+                    <p>
+                      Sed ut perspiciatis unde omnis iste natus error sit
+                      voluptatem accusantium doloremque laudantium, totam rem
+                      aperiam, ...
+                    </p>
+                  </div>
+                  <div class="movie-field">
+                    <label class="movie-field-label">Language:</label>
+                    <div class="movie-field-content">
+                      English
+                    </div>
+                  </div>
+
+                  <div class="movie-field">
+                    <label class="movie-field-label">Language:</label>
+                    <div class="movie-field-content">
+                      English
+                    </div>
+                  </div>
+                  <div class="movie-field">
+                    <label class="movie-field-label">Language:</label>
+                    <div class="movie-field-content">
+                      English
+                    </div>
+                  </div>
+                  <div class="movie-field">
+                    <label class="movie-field-label">Language:</label>
+                    <div class="movie-field-content">
+                      English
+                    </div>
+                  </div>
+                </div>
+                <div class="movie-item-button">
+                  <a href="" class="btn trailer-btn"
+                    ><i class="fa fa-play"></i>Trailer</a
+                  >
+                  <a href="" class="btn detail-btn"
+                    ><i class="fa fa-info"></i>Detail</a
+                  >
+                  <span class="showtime-btn" (click)="showtime()"
+                    >Xuất chiếu</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div *ngIf="showTimeBtn" class="showtime-wrapper">
+              <div class="showtime-item">
+                <h3>CGV ABC</h3>
+                <div class="st-time">
+                  <div class="st-title">
+                    <label>December 7, 2018</label>
+                    <a href="" class="buy-ticket">Buy Ticket</a>
+                  </div>
+                  <ul class="list-unstyled">
+                    <li>12h</li>
+                    <li>15h</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="showtime-item">
+                <h3>CGV ABC</h3>
+                <div class="st-time">
+                  <div class="st-title">
+                    <label>December 7, 2018</label>
+                    <a href="" class="buy-ticket">Buy Ticket</a>
+                  </div>
+                  <ul class="list-unstyled">
+                    <li>12h</li>
+                    <li>15h</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="movie-items">
+            <div class="row">
+              <div class="col-4 movie-thumb">
+                <a>
+                  <img
+                    src="assets/poster/m1.jpg"
+                    alt=""
+                    class="img-responsive"
+                  />
+                </a>
+                <span class="imdb-point">7.9</span>
+              </div>
+              <div class="col-8 movie-detail">
+                <div class="movie-meta">
+                  <h3 class="movie-title">
+                    <a href="" class="">Death Wish</a>
+                  </h3>
+                  <div class="movie-rating">
+                    <span class="rating-star">
+                      <span class="current-rating" style="width: 71%;"></span>
+                    </span>
+                    <span class="user-rating">(124 Votes)</span>
+                  </div>
+                  <div class="movie-meta-duration">
+                    <span class="movie-duration"
+                      ><i class="fa fa-clock-o"></i> 02 hours 50 minutes</span
+                    >
+                  </div>
+                  <div class="movie-description">
+                    <p>
+                      Sed ut perspiciatis unde omnis iste natus error sit
+                      voluptatem accusantium doloremque laudantium, totam rem
+                      aperiam, ...
+                    </p>
+                  </div>
+                  <div class="movie-field">
+                    <label class="movie-field-label">Language:</label>
+                    <div class="movie-field-content">
+                      English
+                    </div>
+                  </div>
+
+                  <div class="movie-field">
+                    <label class="movie-field-label">Language:</label>
+                    <div class="movie-field-content">
+                      English
+                    </div>
+                  </div>
+                  <div class="movie-field">
+                    <label class="movie-field-label">Language:</label>
+                    <div class="movie-field-content">
+                      English
+                    </div>
+                  </div>
+                  <div class="movie-field">
+                    <label class="movie-field-label">Language:</label>
+                    <div class="movie-field-content">
+                      English
+                    </div>
+                  </div>
+                </div>
+                <div class="movie-item-button">
+                  <a href="" class="btn trailer-btn"
+                    ><i class="fa fa-play"></i>Trailer</a
+                  >
+                  <a href="" class="btn detail-btn"
+                    ><i class="fa fa-info"></i>Detail</a
+                  >
+                  <span class="showtime-btn" (click)="showtime()"
+                    >Xuất chiếu</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div *ngIf="showTimeBtn" class="showtime-wrapper">
+              <div class="showtime-item">
+                <h3>CGV ABC</h3>
+                <div class="st-time">
+                  <div class="st-title">
+                    <label>December 7, 2018</label>
+                    <a href="" class="buy-ticket">Buy Ticket</a>
+                  </div>
+                  <ul class="list-unstyled">
+                    <li>12h</li>
+                    <li>15h</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="showtime-item">
+                <h3>CGV ABC</h3>
+                <div class="st-time">
+                  <div class="st-title">
+                    <label>December 7, 2018</label>
+                    <a href="" class="buy-ticket">Buy Ticket</a>
+                  </div>
+                  <ul class="list-unstyled">
+                    <li>12h</li>
+                    <li>15h</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="home-pagination">
+            <div class="clear"></div>
+            <span class="page-numbers current">1</span>
+            <a href="" class="page-number current">2</a>
+            <a href="" class="next page-number">Next</a>
+          </div>
+        </div>
+        <!-- end col 8 -->
+        <div class="col-4 sidebar">
+          <div class="list-movie">
+            <h4 class="widget-title">Top Movies</h4>
+            <div class="entry-item">
+              <div class="entry-thumb">
+                <img src="assets/poster/m5.jpg" alt="" class="img-responsive" />
+              </div>
+              <div class="entry-content">
+                <h2 class="entry-title">
+                  <a href="" class="">The Hurricane Heist</a>
+                </h2>
+                <div>
+                  <span class="duration"
+                    ><i class="fa fa-clock-o"></i>02 hours 50 minutes</span
+                  >
+                </div>
+                <div class="movie-type">
+                  <span
+                    ><a href="" class="">Comedy</a>,
+                    <a href="" class="">Comedy</a>,
+                    <a href="" class="">Comedy</a>,
+                    <a href="" class="">Comedy</a>
+                  </span>
+                </div>
+                <div class="mrate">
+                  <ul class="mv-rating-stars">
+                    <li
+                      class="mv-current-rating list-unstyled"
+                      style="width: 80%;"
+                    ></li>
+                  </ul>
+                  <span class="rate">4.4</span>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+
+            <div class="entry-item">
+              <div class="entry-thumb">
+                <img src="assets/poster/m5.jpg" alt="" class="img-responsive" />
+              </div>
+              <div class="entry-content">
+                <h2 class="entry-title">
+                  <a href="" class="">The Hurricane Heist</a>
+                </h2>
+                <div>
+                  <span class="duration"
+                    ><i class="fa fa-clock-o"></i>02 hours 50 minutes</span
+                  >
+                </div>
+                <div class="movie-type">
+                  <span
+                    ><a href="" class="">Comedy</a>,
+                    <a href="" class="">Comedy</a>,
+                    <a href="" class="">Comedy</a>,
+                    <a href="" class="">Comedy</a>
+                  </span>
+                </div>
+                <div class="mrate">
+                  <ul class="mv-rating-stars">
+                    <li
+                      class="mv-current-rating list-unstyled"
+                      style="width: 80%;"
+                    ></li>
+                  </ul>
+                  <span class="rate">4.4</span>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <div class="entry-item">
+              <div class="entry-thumb">
+                <img src="assets/poster/m5.jpg" alt="" class="img-responsive" />
+              </div>
+              <div class="entry-content">
+                <h2 class="entry-title">
+                  <a href="" class="">The Hurricane Heist</a>
+                </h2>
+                <div>
+                  <span class="duration"
+                    ><i class="fa fa-clock-o"></i>02 hours 50 minutes</span
+                  >
+                </div>
+                <div class="movie-type">
+                  <span
+                    ><a href="" class="">Comedy</a>,
+                    <a href="" class="">Comedy</a>,
+                    <a href="" class="">Comedy</a>,
+                    <a href="" class="">Comedy</a>
+                  </span>
+                </div>
+                <div class="mrate">
+                  <ul class="mv-rating-stars">
+                    <li
+                      class="mv-current-rating list-unstyled"
+                      style="width: 80%;"
+                    ></li>
+                  </ul>
+                  <span class="rate">4.4</span>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <div class="entry-item">
+              <div class="entry-thumb">
+                <img src="assets/poster/m5.jpg" alt="" class="img-responsive" />
+              </div>
+              <div class="entry-content">
+                <h2 class="entry-title">
+                  <a href="" class="">The Hurricane Heist</a>
+                </h2>
+                <div>
+                  <span class="duration"
+                    ><i class="fa fa-clock-o"></i>02 hours 50 minutes</span
+                  >
+                </div>
+                <div class="movie-type">
+                  <span
+                    ><a href="" class="">Comedy</a>,
+                    <a href="" class="">Comedy</a>,
+                    <a href="" class="">Comedy</a>,
+                    <a href="" class="">Comedy</a>
+                  </span>
+                </div>
+                <div class="mrate">
+                  <ul class="mv-rating-stars">
+                    <li
+                      class="mv-current-rating list-unstyled"
+                      style="width: 80%;"
+                    ></li>
+                  </ul>
+                  <span class="rate">4.4</span>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <div class="entry-item">
+              <div class="entry-thumb">
+                <img src="assets/poster/m5.jpg" alt="" class="img-responsive" />
+              </div>
+              <div class="entry-content">
+                <h2 class="entry-title">
+                  <a href="" class="">The Hurricane Heist</a>
+                </h2>
+                <div>
+                  <span class="duration"
+                    ><i class="fa fa-clock-o"></i>02 hours 50 minutes</span
+                  >
+                </div>
+                <div class="movie-type">
+                  <span
+                    ><a href="" class="">Comedy</a>,
+                    <a href="" class="">Comedy</a>,
+                    <a href="" class="">Comedy</a>,
+                    <a href="" class="">Comedy</a>
+                  </span>
+                </div>
+                <div class="mrate">
+                  <ul class="mv-rating-stars">
+                    <li
+                      class="mv-current-rating list-unstyled"
+                      style="width: 80%;"
+                    ></li>
+                  </ul>
+                  <span class="rate">4.4</span>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-4 sidebar"></div>
     </div>
   </div>
 </div>

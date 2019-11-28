@@ -8,6 +8,7 @@ import { DataService } from "../../../data.service";
 export class HomeComponent implements OnInit {
   movies;
   events;
+  showTimeBtn = false;
   posters = [
     "assets/poster/m1.jpg",
     "assets/poster/m2.jpg",
@@ -49,7 +50,9 @@ export class HomeComponent implements OnInit {
       }
     }
   };
-
+  showtime(): void {
+    this.showTimeBtn = !this.showTimeBtn;
+  }
   constructor(private dataService: DataService) {}
 
   ngOnInit() {

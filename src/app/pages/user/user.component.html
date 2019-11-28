@@ -1,49 +1,55 @@
-<mat-toolbar color="primary">
-  <a routerLink="/user" routerLinkActive="active" style="color: white;"
-    >MovieTheater</a
-  >
-  <div class="flex-spacer"></div>
-  <a
-    class="mat-button mat-button-header"
-    routerLink="/user"
-    routerLinkActive="active"
-    style="color: white;"
-    >Phim đang chiếu</a
-  >
-  <a
-    class="mat-button mat-button-header"
-    routerLink="/user/upcoming"
-    routerLinkActive="active"
-    style="color: white;"
-    >Phim sắp chiếu</a
-  >
+<header id="masthead">
+  <div class="container">
+    <div class="row">
+      <div class="row-left">
+        <div class="site-logo">
+          <a href="" class="">
+            <img src="assets/img_66.png" alt="" class="img-responsive" />
+          </a>
+        </div>
+      </div>
+      <div class="row-right">
+        <nav id="site-nav" class="site-navigation">
+          <div class="menu-navi-container">
+            <ul id="menu-site-main" class="nav-menu">
+              <ul class="list-unstyled">
+                <li class="menu-item">
+                  <a
+                    class="mat-button mat-button-header"
+                    routerLink="/user"
+                    routerLinkActive="active"
+                    >Phim đang chiếu</a
+                  >
+                </li>
+                <li class="menu-item">
+                  <a
+                    class="mat-button mat-button-header"
+                    routerLink="/user/upcoming"
+                    routerLinkActive="active"
+                    >Phim sắp chiếu</a
+                  >
+                </li>
+                <li class="menu-item">
+                  <a href="" class="">Hot nhất tuần</a>
+                </li>
 
-  <a
-    class="mat-button mat-button-header"
-    routerLink="/user/upcoming"
-    routerLinkActive="active"
-    style="color: white;"
-    >Hot nhất tuần</a
-  >
-
-  <a
-    *ngIf="!loggedUser"
-    class="mat-button mat-button-header"
-    routerLink="/user/upcoming"
-    routerLinkActive="active"
-    style="color: white;"
-    >Đăng nhập</a
-  >
-
-  <div *ngIf="loggedUser" class="right-navbar mat-button-header">
-    <a routerLink="/user/profile" class="mat-button">
-      <span class="mat-button-wrapper">
-        <img class="img-fluid user" src="assets/user.jpg" alt="" />
-        nv trong
-      </span>
-    </a>
+                <li class="menu-item">
+                  <a
+                    *ngIf="!loggedUser"
+                    class="mat-button mat-button-header"
+                    routerLink="/user/upcoming"
+                    routerLinkActive="active"
+                    >Đăng nhập</a
+                  >
+                </li>
+              </ul>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
   </div>
-</mat-toolbar>
+</header>
 <div class="app-content">
   <div class="main">
     <router-outlet></router-outlet>

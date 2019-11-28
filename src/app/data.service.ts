@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { tap, catchError } from "rxjs/operators";
 export class Hero {
   id: number;
   name: string;
@@ -16,7 +15,7 @@ export class DataService {
   private listMovieApi = "http://www.mocky.io/v2/5ddba5c83400005300eadcf7";
   private movieDetails = "http://www.mocky.io/v2/5ddbb5483400005200eadd84";
   private events = "http://www.mocky.io/v2/5ddde6382f000039617eaba5";
-  private tickets = "http://www.mocky.io/v2/5dddee8e2f000039617eabcb";
+  private tickets = " http://www.mocky.io/v2/5dddee8e2f000039617eabcb";
   constructor(private httpClient: HttpClient) {}
 
   public getListMovies() {
@@ -38,4 +37,5 @@ export class DataService {
   //     catchError(this.handleError<Hero[]>("getHeroes", []))
   //   );
   // }
+  // https://angular.io/tutorial/toh-pt6
 }
