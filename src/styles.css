@@ -95,7 +95,7 @@ a {
   color: #ffffff;
   display: inline-block;
   float: right;
-  margin-top: 105px;
+  margin-top: 90px;
 }
 #amy-page-header {
   overflow: hidden;
@@ -576,7 +576,7 @@ label.movie-field-label {
   float: left;
 }
 
-.st-time {
+.showtime-item .st-time {
   border-left: 1px solid #ececec;
   margin-left: 200px;
   padding: 20px 0;
@@ -820,7 +820,7 @@ ul.nav-menu li a {
   font-weight: bold;
   position: relative;
   white-space: nowrap;
-  font-size: 16px;
+  font-size: 14px;
   -webkit-transition: all 0.2s ease 0s;
   -o-transition: all 0.2s ease 0s;
   transition: all 0.2s ease 0s;
@@ -842,4 +842,169 @@ ul.nav-menu li a:after {
 }
 .movie-meta-duration {
   margin: 5px 0px;
+}
+.entry-share {
+  float: right;
+  margin-top: 0px;
+}
+
+.movie-rating {
+  display: inline-block;
+  position: relative;
+}
+.entry-share label {
+  font-size: 15px;
+  font-weight: bold;
+  color: #000;
+  float: left;
+}
+.entry-share ul {
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+.entry-share ul li {
+  list-style: none;
+  display: inline-block;
+  padding-left: 10px;
+}
+.entry-share ul li a {
+  color: #999;
+}
+.single-movie .entry-info h1 {
+  color: #000;
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 0;
+}
+.single-movie .entry-info .movie-field-wrapper {
+  margin-top: 30px;
+  padding: 0;
+  margin-bottom: 30px;
+}
+.single-movie .entry-info .movie-field-wrapper label {
+  color: #000;
+  font-weight: bold;
+  font-size: 15px;
+  width: 90px;
+}
+.single-movie .entry-info .movie-field-wrapper span {
+  color: #666;
+  font-size: 15px;
+  float: right;
+  width: calc(100% - 80px);
+}
+ul.nav-menu li:hover {
+  background: #f0a800;
+  transition: all 0.3s;
+}
+ul.nav-menu li:hover a {
+  color: white;
+}
+.single-movie .entry-content {
+  margin-left: 0px;
+}
+.info-name h3 {
+  color: #fe7900;
+  display: inline-block;
+  font-size: 35px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  margin-top: 0;
+  position: relative;
+  padding-bottom: 5px;
+}
+button.slick-next,
+button.slick-next:hover {
+  position: absolute;
+  top: 55%;
+  right: 10px;
+  width: 47px;
+  height: 75px;
+  background-size: 95px;
+}
+button.slick-prev,
+button.slick-prev:hover {
+  position: absolute;
+  top: 55%;
+  left: 10px;
+  z-index: 1;
+  width: 47px;
+  height: 75px;
+  background-size: 95px;
+  background-position-x: right;
+}
+.slick-prev:before,
+.slick-next:before {
+  font-size: 40px;
+  color: #ea8496;
+  line-height: inherit;
+  font-weight: bold;
+}
+
+.slick-slide img {
+  min-height: 122px;
+  width: 100%;
+}
+.media-item {
+  padding: 0 10px;
+  position: relative;
+}
+.single-movie .entry-showtime {
+  margin-top: 30px;
+}
+.single-movie .entry-showtime .select-cinema {
+  background: #f8f8f8;
+  float: left;
+}
+.single-movie .entry-showtime .select-cinema h4 {
+  background: transparent url(assets/icon-cinema.png) no-repeat scroll 0 0;
+  color: #000;
+  font-size: 14px;
+  font-weight: bold;
+  height: 23px;
+  line-height: 24px;
+  margin: 15px 25px;
+  padding-left: 35px;
+  text-transform: uppercase;
+}
+.single-movie .entry-showtime .select-cinema ul {
+  margin: 0;
+  padding: 20px 0;
+  border-top: 2px solid #fff;
+  list-style: none;
+}
+.single-movie .entry-showtime .select-cinema ul li {
+  list-style: none;
+  padding: 0 25px;
+  color: #666;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: bold;
+  line-height: 40px;
+  position: relative;
+  cursor: pointer;
+}
+.single-movie .entry-showtime .select-cinema ul li:hover:before,
+.single-movie .entry-showtime .select-cinema ul li.active:before {
+  border-color: rgba(248, 248, 248, 0);
+  border-left-color: #dbdbdb;
+  border-width: 9px;
+  margin-top: -9px;
+}
+.single-movie .entry-showtime .select-cinema ul li:hover:after,
+.single-movie .entry-showtime .select-cinema ul li.active:after {
+  border-color: rgba(248, 248, 248, 0);
+  border-left-color: #dbdbdb;
+  border-width: 9px;
+  margin-top: -9px;
+}
+.single-movie .entry-showtime .showtime {
+  background: #f8f8f8;
+}
+.entry-showtime .showtime .st-time {
+  border-left: 1px solid #ececec;
+  margin-left: 200px;
+  padding: 20px 0;
+  padding-left: 20px;
 }

@@ -2,8 +2,6 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-// Owl Carousel
-import { OwlModule } from "ngx-owl-carousel";
 // Angular Material Components
 import { MatCheckboxModule } from "@angular/material";
 import { MatButtonModule } from "@angular/material";
@@ -61,6 +59,10 @@ import { VoucherComponent } from "./pages/user/profile/voucher/voucher.component
 import { TicketBoughtComponent } from "./pages/user/profile/ticket-bought/ticket-bought.component";
 import { UserLoginComponent } from "./pages/user/user-login/user-login.component";
 
+// Import your library
+import { SlickCarouselModule } from "ngx-slick-carousel";
+import { LightboxModule } from "ngx-lightbox";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -91,7 +93,6 @@ import { UserLoginComponent } from "./pages/user/user-login/user-login.component
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    OwlModule,
     MatCheckboxModule,
     MatCheckboxModule,
     MatButtonModule,
@@ -123,7 +124,8 @@ import { UserLoginComponent } from "./pages/user/user-login/user-login.component
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    FormsModule
+    FormsModule,
+    SlickCarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,65 +1,224 @@
-<div class="container">
-  <!-- <mat-spinner *ngIf="detail === 0"></mat-spinner> -->
-  <div class="row movie-detail">
-    <div class="col-12 page-title">
-      <h1>Nội dung phim</h1>
-    </div>
-    <div class="col-3">
-      <img class="img-fluid" [src]="detail.thumb" alt="" />
-    </div>
-    <div class="col-9">
-      <div class="product-shop">
-        <div class="product-name">
-          <span class="h1">{{ detail.name }}</span>
-          <hr />
-        </div>
-
-        <!-- Build test -->
-        <div class="movie-director movie-info">
-          <label>Đạo diễn: </label>
-          <div class="std">{{ detail.directors }}</div>
-        </div>
-        <div class="movie-actress movie-info">
-          <label>Diễn viên:</label>
-          <div class="std">
-            {{ detail.actors }}
-          </div>
-        </div>
-        <div class="movie-genre movie-info">
-          <label>Thể loại: </label>
-          <div class="std">{{ detail.type }}</div>
-        </div>
-        <div class="movie-release movie-info">
-          <label>Khởi chiếu: </label>
-          <div class="std">{{ detail.time }}</div>
-        </div>
-        <div class="movie-actress movie-info">
-          <label>Thời lượng: </label>
-          <div class="std">{{ detail.duration }}</div>
-        </div>
-        <div class="movie-language movie-info">
-          <label>Ngôn ngữ: </label>
-          <div class="std">
-            {{ detail.subscription }}
-          </div>
-        </div>
-        <div class="">
-          <button
-            class="btn btn-primary"
-            type="button"
-            (click)="openDialog()"
-            style="margin-right: 10px;"
+<div class="container-fluid " id="amy-page-header">
+  <div class="row">
+    <div class="col-12">
+      <div class="amy-inner container">
+        <h1 class="page-title">Phim xxx</h1>
+        <div class="amy-breadcrumb">
+          <a
+            class="mat-button mat-button-header"
+            routerLink="/user"
+            routerLinkActive="active"
+            >Trang chủ</a
           >
-            Trailer
-          </button>
-          <a routerLink="/user/ticket/{{ detail.id }}" class="btn btn-primary"
-            >Mua vé</a
-          >
+          &gt; <span class="post post-page current-item">Phim xxx</span>
         </div>
       </div>
     </div>
-    <div class="col-12 movie-des">
-      {{ detail.description }}
+  </div>
+</div>
+<div class="container-fluid bg-white nopadding single-movie">
+  <div class="main-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-8">
+          <article class="post-id status-publish">
+            <div class="entry-top">
+              <div class="row">
+                <div class="col-4">
+                  <div class="entry-poster">
+                    <img
+                      src="assets/poster/m6.jpg"
+                      alt=""
+                      class="img-responsive"
+                    />
+                  </div>
+                </div>
+                <div class="col-8">
+                  <div class="entry-info">
+                    <h1 class="entry-title">
+                      <a href="" class="">Kubo and the Two Strings</a>
+                    </h1>
+                    <div class="entry-pg">
+                      <span class="movie-duration"
+                        ><i class="fa fa-clock-o"></i> 01 hours 20 minutes
+                      </span>
+                    </div>
+                    <div class="movie-field-wrapper">
+                      <div class="movie-field">
+                        <label class="movie-field-label">Ngày chiếu:</label>
+                        <div class="movie-field-content">
+                          22/08/2019
+                        </div>
+                      </div>
+                      <div class="movie-field">
+                        <label class="movie-field-label">Đạo diễn:</label>
+                        <div class="movie-field-content">
+                          Grace Belly
+                        </div>
+                      </div>
+                      <div class="movie-field">
+                        <label class="movie-field-label">Diễn viên:</label>
+                        <div class="movie-field-content">
+                          Alexander Cattly, Greta Garbo
+                        </div>
+                      </div>
+
+                      <div class="movie-field">
+                        <label class="movie-field-label">Thể loại:</label>
+                        <div class="movie-field-content">
+                          Comedy, Comedy, Comedy, Comedy
+                        </div>
+                      </div>
+
+                      <div class="movie-description">
+                        <p>
+                          Sed ut perspiciatis unde omnis iste natus error sit
+                          voluptatem accusantium doloremque laudantium, totam
+                          rem aperiam, ...
+                        </p>
+                      </div>
+                    </div>
+                    <div class="movie-item-button">
+                      <div class="movie-rating">
+                        <span class="rating-star">
+                          <span
+                            class="current-rating"
+                            style="width: 71%;"
+                          ></span>
+                        </span>
+                        <span class="user-rating">(124 Votes)</span>
+                      </div>
+                      <div class="entry-share">
+                        <label for="">Share:</label>
+                        <ul class="social-link" clearfix>
+                          <li>
+                            <a
+                              href="https://www.facebook.com/sharer.php?u="
+                              class="fa fa-facebook"
+                              target="_blank"
+                            ></a>
+                          </li>
+                          <li>
+                            <a
+                              href="http://www.twitter.com/share?url=http://demo.amytheme.com/movie/demo/multi-cinema/amy_movie/kubo-and-the-two-strings/"
+                              class="fa fa-twitter"
+                              target="_blank"
+                            ></a>
+                          </li>
+                          <li>
+                            <a
+                              href="http://pinterest.com/pin/create/link/?url=http://demo.amytheme.com/movie/demo/multi-cinema/amy_movie/kubo-and-the-two-strings/"
+                              class="fa fa-pinterest"
+                              target="_blank"
+                            ></a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="entry-content">
+              <div class="info-name"><h3>Mô tả phim</h3></div>
+              <p>
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+                quae ab illo inventore veritatis et quasi architecto beatae
+                vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
+                voluptas sit aspernatur aut odit aut fugit, sed quia
+                consequuntur magni dolores eos qui ratione voluptatem sequi
+                nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor
+                sit amet, consectetur, adipisci velit, sed quia non numquam eius
+                modi tempora incidunt ut labore et dolore magnam aliquam quaerat
+                voluptatem. Ut enim ad minima veniam, quis nostrum
+                exercitationem ullam corporis suscipit laboriosam, nisi ut
+                aliquid ex ea commodi consequatur? Quis autem vel eum iure
+                reprehenderit qui in ea voluptate velit esse quam nihil
+                molestiae consequatur, vel illum qui dolorem eum fugiat quo
+                voluptas nulla pariatur Lorem ipsum dolor sit amet, consectetur
+                adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate
+                velit esse cillum dolore eu fugiat nulla pariatur.
+              </p>
+            </div>
+            <div class="entry-media">
+              <div class="info-name"><h3>Video & Photo</h3></div>
+              <!-- You can now use your library component in app.component.html -->
+              <ngx-slick-carousel
+                class="carousel"
+                #slickModal="slick-carousel"
+                [config]="slideConfig"
+              >
+                <div
+                  ngxSlickItem
+                  *ngFor="let slide of slides"
+                  class="slide media-item"
+                >
+                  <a href="">
+                    <img src="{{ slide.img }}" alt="" width="100%" />
+                  </a>
+                </div>
+              </ngx-slick-carousel>
+            </div>
+            <div class="entry-showtime">
+              <div class="info-name">
+                <h3>Lịch chiếu</h3>
+              </div>
+              <div class="row">
+                <div class="col-4">
+                  <div class="select-cinema">
+                    <h4>Chọn lịch chiếu</h4>
+                    <ul>
+                      <li>CGV Timescity</li>
+                      <li>CGV Timescity</li>
+                      <li>CGV Timescity</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-8">
+                  <div class="showtime">
+                    <div class="st-time">
+                      <div class="st-title">
+                        <label>December 7, 2018</label>
+                        <a href="" class="buy-ticket">Buy Ticket</a>
+                      </div>
+                      <ul class="list-unstyled">
+                        <li>12h</li>
+                        <li>15h</li>
+                      </ul>
+                    </div>
+
+                    <div class="st-time">
+                      <div class="st-title">
+                        <label>December 7, 2018</label>
+                        <a href="" class="buy-ticket">Buy Ticket</a>
+                      </div>
+                      <ul class="list-unstyled">
+                        <li>12h</li>
+                        <li>15h</li>
+                      </ul>
+                    </div>
+                    <div class="st-time">
+                      <div class="st-title">
+                        <label>December 7, 2018</label>
+                        <a href="" class="buy-ticket">Buy Ticket</a>
+                      </div>
+                      <ul class="list-unstyled">
+                        <li>12h</li>
+                        <li>15h</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="col-4"></div>
+      </div>
     </div>
   </div>
 </div>
