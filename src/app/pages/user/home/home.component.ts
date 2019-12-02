@@ -1,5 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { DataService } from "../../../data.service";
+import { DataService } from "../../../services/data.service";
+import { MatDialog } from "@angular/material";
+import { DialogComponent } from "src/app/shared/layouts/dialog/dialog.component";
+import { PageEvent } from "@angular/material/paginator";
 @Component({
   selector: "app-home",
   templateUrl: "./home.component.html",
@@ -50,19 +53,43 @@ export class HomeComponent implements OnInit {
       }
     }
   };
+  // MatPaginator Inputs
+  length = 100;
+  pageSize = 10;
+  pageSizeOptions: number[] = [5, 10, 25, 100];
+
+  // MatPaginator Output
+  pageEvent: PageEvent;
+
+  setPageSizeOptions(setPageSizeOptionsInput: string) {
+    this.pageSizeOptions = setPageSizeOptionsInput.split(",").map(str => +str);
+  }
   showtime(): void {
     this.showTimeBtn = !this.showTimeBtn;
   }
-  constructor(private dataService: DataService) {}
+  openDialog(): void {
+    const diaglogRef = this.diaglog.open(DialogComponent, {
+      width: "500px",
+      data: {
+        trailerCode: "KKi-dYsWTrQ"
+      }
+    });
+    diaglogRef.afterClosed().subscribe(result => {
+      console.log("abc");
+    });
+  }
+
+  constructor(private dataService: DataService, private diaglog: MatDialog) {}
 
   ngOnInit() {
     this.dataService.getListMovies().subscribe((data: { data: {} }) => {
       this.movies = data.data;
+      console.log("new data", data);
     });
 
     this.dataService.getEvents().subscribe((data: { data: {} }) => {
       this.events = data.data;
-      console.log(data.data);
+      console.log("events", data.data);
     });
   }
 }

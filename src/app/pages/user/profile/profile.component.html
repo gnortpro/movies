@@ -1,26 +1,48 @@
-<div class="container">
+<div class="container-fluid " id="amy-page-header">
   <div class="row">
-    <div class="breadcrumbs">
-      <a href="https://bongda.trongggg.com/" rel="v:url" property="v:title"
-        ><i class="fa fa-home"></i> Trang chủ</a
-      >
-      / <strong class="breadcrumb_last">Profile</strong>
+    <div class="col-md-12">
+      <div class="container d-none d-md-none d-lg-block">
+        <h1 class="page-title">Thông tin chung</h1>
+        <div class="breadcrumbs">
+          <a
+            class="mat-button mat-button-header"
+            routerLink="/user"
+            routerLinkActive="active"
+            >Trang chủ</a
+          >
+          &gt; <span class="post post-page current-item">Thông tin chung</span>
+        </div>
+      </div>
+      <div class="mobile-breadcrumb d-lg-none d-xl-none">
+        <div class="breadcrumb">
+          <a
+            class="mat-button mat-button-header"
+            routerLink="/user"
+            routerLinkActive="active"
+            >Trang chủ</a
+          >
+          &gt; <span class="post post-page current-item">Thông tin chung</span>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-3 profile-left">
+    <div class="col-md-4 profile-left">
       <ul class="profile-nav">
-        <li class="current">
-          <a
-            routerLink="/user/profile"
-            routerLinkActive="active"
-            style="color: white;"
+        <li
+          routerLinkActive="current"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <a routerLink="/user/profile" style="color: white;"
             >Thông tin chung</a
           >
         </li>
-        <li>
+        <li
+          routerLinkActive="current"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
           <a
             routerLink="/user/profile/voucher"
             routerLinkActive="active"
@@ -28,7 +50,10 @@
             >Voucher</a
           >
         </li>
-        <li class="last">
+        <li
+          routerLinkActive="current"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
           <a
             routerLink="/user/profile/bought"
             routerLinkActive="active"
@@ -39,7 +64,7 @@
       </ul>
     </div>
 
-    <div class="col-9 profile-right">
+    <div class="col-md-8 profile-right">
       <mat-card>
         <router-outlet></router-outlet>
       </mat-card>

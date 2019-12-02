@@ -1,6 +1,37 @@
+<div class="container-fluid " id="amy-page-header">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="container d-none d-md-none d-lg-block">
+        <h1 class="page-title">Thành viên đăng nhập</h1>
+        <div class="breadcrumbs">
+          <a
+            class="mat-button mat-button-header"
+            routerLink="/user"
+            routerLinkActive="active"
+            >Trang chủ</a
+          >
+          &gt;
+          <span class="post post-page current-item">Thành viên đăng nhập</span>
+        </div>
+      </div>
+      <div class="mobile-breadcrumb d-lg-none d-xl-none">
+        <div class="breadcrumb">
+          <a
+            class="mat-button mat-button-header"
+            routerLink="/user"
+            routerLinkActive="active"
+            >Trang chủ</a
+          >
+          &gt;
+          <span class="post post-page current-item">Thành viên đăng nhập</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="container">
   <div class="row">
-    <div class="col-12">
+    <div class="col-md-12">
       <div class="example-container user-login-form width-50">
         <mat-form-field class="emailInput">
           <input
@@ -26,7 +57,7 @@
             getPasswordErrorMessage()
           }}</mat-error>
         </mat-form-field>
-        <button mat-button color="primary" (click)="submitForm(1)">
+        <button class="btn btn-info loginbtn" (click)="submitForm()">
           Login
         </button>
       </div>

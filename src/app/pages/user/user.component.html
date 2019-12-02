@@ -3,21 +3,22 @@
     <div class="row">
       <div class="row-left">
         <div class="site-logo">
-          <a href="" class="">
+          <a routerLink="/user" class="">
             <img src="assets/img_66.png" alt="" class="img-responsive" />
           </a>
         </div>
       </div>
       <div class="row-right">
-        <nav id="site-nav" class="site-navigation">
+        <nav id="site-nav" class="site-navigation d-none d-md-none d-lg-block">
           <div class="menu-navi-container">
             <ul id="menu-site-main" class="nav-menu">
-              <ul class="list-unstyled">
+              <ul class="list-unstyled ">
                 <li class="menu-item">
                   <a
                     class="mat-button mat-button-header"
                     routerLink="/user"
                     routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }"
                     >Phim đang chiếu</a
                   >
                 </li>
@@ -37,8 +38,9 @@
                   <a
                     *ngIf="!loggedUser"
                     class="mat-button mat-button-header"
-                    routerLink="/user/upcoming"
+                    routerLink="/user/login"
                     routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }"
                     >Đăng nhập</a
                   >
                 </li>
@@ -46,10 +48,29 @@
             </ul>
           </div>
         </nav>
+        <div id="menu-toggle-mobile" class="d-lg-none d-xl-none">
+          <a href="javascript:void(0)" class="" (click)="toggleMobileClass()"
+            ><span class="times" [class.d-none]="!menuClick"></span
+            ><span class="bar" [class.d-none]="menuClick"></span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
 </header>
+<div
+  [class]="
+    menuClick
+      ? 'd-lg-none d-xl-none open-nav  navigation-mobile'
+      : 'd-lg-none d-xl-none   navigation-mobile'
+  "
+>
+  <div class="mobile-menu-container">
+    <ul class="menu-mainnav-container">
+      <li class="menu-item"><a href="">Home</a></li>
+    </ul>
+  </div>
+</div>
 <div class="app-content">
   <div class="main">
     <router-outlet></router-outlet>

@@ -2,6 +2,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+
 // Angular Material Components
 import { MatCheckboxModule } from "@angular/material";
 import { MatButtonModule } from "@angular/material";
@@ -43,7 +44,6 @@ import { HeaderComponent } from "./shared/layouts/header/header.component";
 import { HomeComponent } from "./pages/user/home/home.component";
 import { TodolistComponent } from "./todolist/todolist.component";
 import { DetailmovieComponent } from "./pages/user/detailmovie/detailmovie.component";
-import { TrailerDialogComponent } from "./shared/layouts/trailer-dialog/trailer-dialog.component";
 import { AdminComponent } from "./pages/admin/admin.component";
 import { LoginComponent } from "./pages/admin/login/login.component";
 import { ListuserComponent } from "./pages/admin/listuser/listuser.component";
@@ -61,7 +61,7 @@ import { UserLoginComponent } from "./pages/user/user-login/user-login.component
 
 // Import your library
 import { SlickCarouselModule } from "ngx-slick-carousel";
-import { LightboxModule } from "ngx-lightbox";
+import { DialogComponent } from "./shared/layouts/dialog/dialog.component";
 
 @NgModule({
   declarations: [
@@ -71,7 +71,6 @@ import { LightboxModule } from "ngx-lightbox";
     HomeComponent,
     TodolistComponent,
     DetailmovieComponent,
-    TrailerDialogComponent,
     AdminComponent,
     LoginComponent,
     ListuserComponent,
@@ -85,7 +84,8 @@ import { LightboxModule } from "ngx-lightbox";
     EditComponent,
     VoucherComponent,
     TicketBoughtComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    DialogComponent
   ],
   imports: [
     HttpClientModule,
@@ -128,6 +128,7 @@ import { LightboxModule } from "ngx-lightbox";
     SlickCarouselModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogComponent]
 })
 export class AppModule {}
