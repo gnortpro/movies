@@ -1,7 +1,12 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import {
+  JwtInterceptor,
+  ErrorInterceptor
+  // fakeBackendProvider
+} from "./helpers";
 
 // Angular Material Components
 import { MatCheckboxModule } from "@angular/material";
@@ -42,7 +47,6 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FooterComponent } from "./shared/layouts/footer/footer.component";
 import { HeaderComponent } from "./shared/layouts/header/header.component";
 import { HomeComponent } from "./pages/user/home/home.component";
-import { TodolistComponent } from "./todolist/todolist.component";
 import { DetailmovieComponent } from "./pages/user/detailmovie/detailmovie.component";
 import { AdminComponent } from "./pages/admin/admin.component";
 import { LoginComponent } from "./pages/admin/login/login.component";
@@ -62,6 +66,7 @@ import { UserLoginComponent } from "./pages/user/user-login/user-login.component
 // Import your library
 import { SlickCarouselModule } from "ngx-slick-carousel";
 import { DialogComponent } from "./shared/layouts/dialog/dialog.component";
+import { MoviesComponent } from './pages/admin/movies/movies.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +74,6 @@ import { DialogComponent } from "./shared/layouts/dialog/dialog.component";
     FooterComponent,
     HeaderComponent,
     HomeComponent,
-    TodolistComponent,
     DetailmovieComponent,
     AdminComponent,
     LoginComponent,
@@ -85,7 +89,8 @@ import { DialogComponent } from "./shared/layouts/dialog/dialog.component";
     VoucherComponent,
     TicketBoughtComponent,
     UserLoginComponent,
-    DialogComponent
+    DialogComponent,
+    MoviesComponent
   ],
   imports: [
     HttpClientModule,
@@ -127,7 +132,13 @@ import { DialogComponent } from "./shared/layouts/dialog/dialog.component";
     FormsModule,
     SlickCarouselModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+
+    // provider used to create fake backend
+    // fakeBackendProvider
+  ],
   bootstrap: [AppComponent],
   entryComponents: [DialogComponent]
 })
