@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { User } from "../user.model";
-// import { HttpErrorHandler, HandleError } from "./http-error-handler.service";
 import { Observable } from "rxjs";
+import { Movie } from "../models";
+import { environment } from "../../environments/environment";
 export class Hero {
   id: number;
   name: string;
@@ -11,19 +11,19 @@ export class Hero {
   providedIn: "root"
 })
 export class DataService {
-  // private handleError: HandleError;
   httpOptions = {
     headers: new HttpHeaders({ "Content-Type": "application/json" })
   };
   baseURL = "https://movie-tickets-vinid.herokuapp.com/api";
-  // private listMovieApi = "http://www.mocky.io/v2/5ddba5c83400005300eadcf7";
+  // private getListMovieApi = "http://www.mocky.io/v2/5ddba5c83400005300eadcf7";
   // private movieDetails = "http://www.mocky.io/v2/5ddbb5483400005200eadd84";
   // private events = "http://www.mocky.io/v2/5ddde6382f000039617eaba5";
   // private tickets = " http://www.mocky.io/v2/5dddee8e2f000039617eabcb";
   // POST
   private adminLogin = "/auth";
   // GET
-  private listMovieApi = "/movies";
+  private getListMovieApi = "/movies";
+  private creatMovie = "/movies";
   private movieDetails = "http://www.mocky.io/v2/5ddbb5483400005200eadd84";
   private events = "http://www.mocky.io/v2/5ddde6382f000039617eaba5";
   private tickets = " http://www.mocky.io/v2/5dddee8e2f000039617eabcb";
@@ -35,7 +35,7 @@ export class DataService {
   }
 
   public getListMovies() {
-    return this.httpClient.get(this.baseURL + this.listMovieApi);
+    return this.httpClient.get(this.baseURL + this.getListMovieApi);
   }
   public getMovieDetail(id) {
     return this.httpClient.get(this.movieDetails);
@@ -44,23 +44,30 @@ export class DataService {
     return this.httpClient.get(this.events);
   }
   public getMovieShedule(movieID, day) {
-    console.log("movie ID: " + movieID + " day: " + day);
     return this.httpClient.get(this.tickets);
   }
-
-  public postAdminLogin(user: User): Observable<User> {
-    return this.httpClient.post<User>(
-      this.baseURL + this.adminLogin,
-      user,
+  public postCreateMovie(movie: Movie) {
+    return this.httpClient.post<Movie>(
+      `${environment.apiUrl}/movies`,
+      {
+        ...movie
+      },
       this.httpOptions
     );
   }
-
-  // getHeroes(): Observable<Hero[]> {
-  //   return this.httpClient.get<Hero[]>(this.listMovieApi).pipe(
-  //     tap(_ => this.log("fetched heroes")),
-  //     catchError(this.handleError<Hero[]>("getHeroes", []))
-  //   );
+  // login(email: string, password: string) {
+  //   return this.httpClient
+  //     .post<any>(`${environment.apiUrl}/auth`, {
+  //       email,
+  //       password
+  //     })
+  //     .pipe(
+  //       map(user => {
+  //         // store user details and jwt token in local storage to keep user logged in between page refreshes
+  //         localStorage.setItem("currentUser", JSON.stringify(user));
+  //         this.currentUserSubject.next(user);
+  //         return user;
+  //       })
+  //     );
   // }
-  // https://angular.io/tutorial/toh-pt6
 }

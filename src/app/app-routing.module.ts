@@ -1,7 +1,6 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { HomeComponent } from "./pages/user/home/home.component";
-import { TodolistComponent } from "./todolist/todolist.component";
 import { DetailmovieComponent } from "./pages/user/detailmovie/detailmovie.component";
 import { AdminComponent } from "./pages/admin/admin.component";
 import { LoginComponent } from "./pages/admin/login/login.component";
@@ -17,13 +16,17 @@ import { UserLoginComponent } from "./pages/user/user-login/user-login.component
 import { EditComponent } from "./pages/user/profile/edit/edit.component";
 import { VoucherComponent } from "./pages/user/profile/voucher/voucher.component";
 import { TicketBoughtComponent } from "./pages/user/profile/ticket-bought/ticket-bought.component";
+import { MoviesComponent } from "./pages/admin/movies/movies.component";
+
+import { AuthGuard } from "./helpers";
 const routes: Routes = [
   {
     path: "admin",
     component: AdminComponent,
     children: [
-      { path: "users", component: ListuserComponent },
-      { path: "", component: DashboardComponent },
+      { path: "users", component: ListuserComponent, canActivate: [AuthGuard] },
+      { path: "movie", component: MoviesComponent, canActivate: [AuthGuard] },
+      { path: "", component: DashboardComponent, canActivate: [AuthGuard] },
       { path: "login", component: LoginComponent }
     ]
   },
@@ -53,7 +56,6 @@ const routes: Routes = [
     ]
   },
 
-  { path: "todolist", component: TodolistComponent },
   { path: "", redirectTo: "/user", pathMatch: "full" },
   { path: "**", component: PageNotFoundComponent }
 ];
