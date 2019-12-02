@@ -43,7 +43,6 @@ import { HeaderComponent } from "./shared/layouts/header/header.component";
 import { HomeComponent } from "./pages/user/home/home.component";
 import { TodolistComponent } from "./todolist/todolist.component";
 import { DetailmovieComponent } from "./pages/user/detailmovie/detailmovie.component";
-import { TrailerDialogComponent } from "./shared/layouts/trailer-dialog/trailer-dialog.component";
 import { AdminComponent } from "./pages/admin/admin.component";
 import { LoginComponent } from "./pages/admin/login/login.component";
 import { ListuserComponent } from "./pages/admin/listuser/listuser.component";
@@ -61,6 +60,7 @@ import { UserLoginComponent } from "./pages/user/user-login/user-login.component
 
 // Import your library
 import { SlickCarouselModule } from "ngx-slick-carousel";
+import { DialogComponent } from "./shared/layouts/dialog/dialog.component";
 
 @NgModule({
   declarations: [
@@ -70,7 +70,6 @@ import { SlickCarouselModule } from "ngx-slick-carousel";
     HomeComponent,
     TodolistComponent,
     DetailmovieComponent,
-    TrailerDialogComponent,
     AdminComponent,
     LoginComponent,
     ListuserComponent,
@@ -84,7 +83,8 @@ import { SlickCarouselModule } from "ngx-slick-carousel";
     EditComponent,
     VoucherComponent,
     TicketBoughtComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    DialogComponent
   ],
   imports: [
     HttpClientModule,

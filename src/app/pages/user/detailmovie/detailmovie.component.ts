@@ -1,8 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { DataService } from "../../../data.service";
-import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
-import { TrailerDialogComponent } from "../../../shared/layouts/trailer-dialog/trailer-dialog.component";
 
 @Component({
   selector: "app-detailmovie",
@@ -34,8 +32,7 @@ export class DetailmovieComponent implements OnInit {
   };
   constructor(
     private route: ActivatedRoute,
-    private dataService: DataService,
-    private dialog: MatDialog
+    private dataService: DataService
   ) {}
   getMovieDetails() {
     const id = +this.route.snapshot.paramMap.get("id");
@@ -43,15 +40,6 @@ export class DetailmovieComponent implements OnInit {
       this.detail = data.data;
       console.log(this.detail);
     });
-  }
-  openDialog() {
-    const dialogConfig = new MatDialogConfig();
-    // dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    const dialogRef = this.dialog.open(TrailerDialogComponent, dialogConfig);
-    dialogRef
-      .afterClosed()
-      .subscribe(val => console.log("Dialog output:", val));
   }
   ngOnInit() {
     this.getMovieDetails();

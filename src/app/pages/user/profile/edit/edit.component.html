@@ -1,40 +1,52 @@
-<div class="container">
-  <div class="example-container">
-    <h3>Thông tin chung</h3>
-    <table>
-      <tr>
-        <th>
-          Họ và Tên
-        </th>
-        <th>
-          a
-        </th>
-      </tr>
+<div class="container edit-profile">
+  <div class="row profile-title text-center">
+    <h3>Thông tin của bạn</h3>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <ul class="form-list edit-info">
+        <li class="fields">
+          <div class="customer-name">
+            <label for="firstname">Tên</label>
+            <div class="input-box">
+              Nguyen Trong
+            </div>
+          </div>
+        </li>
+        <li>
+          <label for="month">Ngày sinh</label>
+          <div class="input-box customer-dob">
+            26/08/1996
+          </div>
+        </li>
+        <li>
+          <label for="email">Địa chỉ email</label>
+          <div class="input-box">
+            gnortpro4@gmail.com
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <ul class="form-list edit-info-cgv-right">
+        <li>
+          <label for="gender">Giới tính</label>
+          <div class="input-box">
+            Nam
+          </div>
+        </li>
+        <li class="fields">
+          <label for="telephone">Điện thoại</label>
+          <div class="input-box">0983014454</div>
+        </li>
 
-      <tr>
-        2
-      </tr>
-    </table>
-
-    <ul class="user-detail">
-      <li><strong>Họ và Tên: </strong> {{ users.name }}</li>
-      <li><strong>Email: </strong>{{ users.email }}</li>
-      <li><strong>Phone: </strong>{{ users.phone }}</li>
-      <li><strong>Sinh nhật:</strong>{{ users.bod }}</li>
-      <li><strong>Ngày đăng ký:</strong>{{ users.registerAt }}</li>
-    </ul>
-    <!-- <mat-form-field>
-      <input matInput placeholder="Input" />
-    </mat-form-field>
-
-    <mat-form-field>
-      <textarea matInput placeholder="Textarea"></textarea>
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-select placeholder="Select">
-        <mat-option value="option">Option</mat-option>
-      </mat-select>
-    </mat-form-field> -->
+        <li>
+          <label for="onlineID">Tên đăng nhập</label>
+          <div class="input-box">
+            gnortpro123
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>

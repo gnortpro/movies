@@ -119,14 +119,20 @@ img.user {
 .example-container {
   display: flex;
   flex-direction: column;
+  padding: 20px;
 }
 
 .example-container > * {
-  width: 100%;
+  width: 50%;
+  margin: auto;
 }
 /******menu mobile*******/
-#masthead .container .row {
+/* #masthead .container .row {
   margin: 10px 0;
+} */
+.menu-item .active {
+  background: #fe7900;
+  color: white;
 }
 #menu-toggle-mobile {
   /* margin-top: 30px; */
@@ -421,7 +427,60 @@ ul.profile-nav {
 .emailInput {
   margin-bottom: 15px;
 }
+.profile-right ul {
+  list-style: none;
+}
 
+label {
+  display: inline-block;
+  font-size: 13px;
+  font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
+  font-weight: 600;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+.profile-right {
+  margin-top: 30px;
+}
+ul.form-list.edit-info li {
+  margin-bottom: 10px;
+}
+.form-gourp {
+  width: 100%;
+  text-align: center;
+}
+
+.container.voucher .form-group {
+  width: 100%;
+}
+
+.container.voucher button {
+  margin-top: 10px;
+  width: 50%;
+}
+.container.voucher .list-voucher {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.list-voucher h3 {
+  font-size: 20px;
+  text-transform: inherit;
+  margin-bottom: 13px;
+}
+.profile-title {
+  background: black;
+  margin-bottom: 10px;
+}
+
+.profile-title h3 {
+  color: white;
+  padding: 10px 0px 0px 10px;
+  font-size: 20px;
+}
 /************** Clone **************/
 .main-content {
   padding: 50px 0;
