@@ -671,7 +671,7 @@ label.movie-field-label {
   line-height: 1;
 }
 
-.movie-item-button a i {
+.movie-item-button .btn i {
   background-color: #999999;
   color: #fff;
   width: 20px;
