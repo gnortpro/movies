@@ -61,7 +61,6 @@ import { UserLoginComponent } from "./pages/user/user-login/user-login.component
 
 // Import your library
 import { SlickCarouselModule } from "ngx-slick-carousel";
-import { LightboxModule } from "ngx-lightbox";
 
 @NgModule({
   declarations: [

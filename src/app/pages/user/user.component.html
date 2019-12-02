@@ -9,7 +9,7 @@
         </div>
       </div>
       <div class="row-right">
-        <nav id="site-nav" class="site-navigation">
+        <nav id="site-nav" class="site-navigation d-none d-md-none d-lg-block">
           <div class="menu-navi-container">
             <ul id="menu-site-main" class="nav-menu">
               <ul class="list-unstyled">
@@ -42,14 +42,88 @@
                     >Đăng nhập</a
                   >
                 </li>
+                <li class="menu-item">
+                  <button (click)="openDialogLogin()"></button>
+                </li>
+                <!-- Button trigger modal -->
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-toggle="modal"
+                  data-target="#exampleModal"
+                >
+                  Launch demo modal
+                </button>
+
+                <!-- Modal -->
+                <div
+                  class="modal fade"
+                  id="exampleModal"
+                  tabindex="-1"
+                  role="dialog"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                          Modal title
+                        </h5>
+                        <button
+                          type="button"
+                          class="close"
+                          data-dismiss="modal"
+                          aria-label="Close"
+                        >
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        ...
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-dismiss="modal"
+                        >
+                          Close
+                        </button>
+                        <button type="button" class="btn btn-primary">
+                          Save changes
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </ul>
             </ul>
           </div>
         </nav>
+        <div id="menu-toggle-mobile" class="d-lg-none d-xl-none">
+          <a href="javascript:void(0)" class="" (click)="toggleMobileClass()"
+            ><span class="times" [class.d-none]="!menuClick"></span
+            ><span class="bar" [class.d-none]="menuClick"></span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
 </header>
+<div
+  [class]="
+    menuClick
+      ? 'd-lg-none d-xl-none open-nav  navigation-mobile'
+      : 'd-lg-none d-xl-none   navigation-mobile'
+  "
+>
+  <div class="mobile-menu-container">
+    <ul class="menu-mainnav-container">
+      <li class="menu-item"><a href="">Home</a></li>
+    </ul>
+  </div>
+</div>
 <div class="app-content">
   <div class="main">
     <router-outlet></router-outlet>

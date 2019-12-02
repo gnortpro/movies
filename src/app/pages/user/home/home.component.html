@@ -1,9 +1,20 @@
 <div class="container-fluid " id="amy-page-header">
   <div class="row">
-    <div class="col-12">
-      <div class="amy-inner container">
+    <div class="col-md-12">
+      <div class="container d-none d-md-none d-lg-block">
         <h1 class="page-title">Phim đang chiếu</h1>
-        <div class="amy-breadcrumb">
+        <div class="breadcrumbs">
+          <a
+            class="mat-button mat-button-header"
+            routerLink="/user"
+            routerLinkActive="active"
+            >Trang chủ</a
+          >
+          &gt; <span class="post post-page current-item">Phim đang chiếu</span>
+        </div>
+      </div>
+      <div class="mobile-breadcrumb d-lg-none d-xl-none">
+        <div class="breadcrumb">
           <a
             class="mat-button mat-button-header"
             routerLink="/user"
@@ -20,7 +31,7 @@
   <div class="main-content">
     <div class="container">
       <div class="row">
-        <div class="col-8 ">
+        <div class="col-md-7 col-lg-8">
           <div class="movie-items">
             <div class="row">
               <div class="col-4 movie-thumb">
@@ -655,7 +666,7 @@
           </div>
         </div>
         <!-- end col 8 -->
-        <div class="col-4 sidebar">
+        <div class="col-md-5 col-lg-4 sidebar">
           <div class="list-movie">
             <h4 class="widget-title">Top Movies</h4>
             <div class="entry-item">
