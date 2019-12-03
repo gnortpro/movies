@@ -22,8 +22,8 @@ export class UserLoginComponent implements OnInit {
     return this.password.hasError("required") ? "Trường này bắt buộc" : "";
   }
 
-  submitForm(form): void {
-    console.log(form);
+  submitForm(): void {
+    // console.log();
   }
   ngOnInit() {}
 }
