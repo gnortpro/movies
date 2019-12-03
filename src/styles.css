@@ -1106,6 +1106,7 @@ button.slick-prev:hover {
 .single-movie .entry-showtime .select-cinema {
   background: #f8f8f8;
   float: left;
+  width: 100%;
 }
 .single-movie .entry-showtime .select-cinema h4 {
   background: transparent url(assets/icon-cinema.png) no-repeat scroll 0 0;
@@ -1157,4 +1158,7 @@ button.slick-prev:hover {
   margin-left: 200px;
   padding: 20px 0;
   padding-left: 20px;
+}
+.single-movie .entry-showtime .showtime .st-time {
+  margin-left: unset;
 }

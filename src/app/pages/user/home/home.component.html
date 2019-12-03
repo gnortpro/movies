@@ -34,13 +34,13 @@
         <div class="col-md-7 col-lg-8">
           <div class="movie-items" *ngFor="let movie of movies">
             <div class="row">
-              <div class="col-4 movie-thumb">
+              <div class="col-md-4 movie-thumb">
                 <a (click)="openDialog(movie.trailer)">
                   <img [src]="movie.image" alt="" class="img-responsive" />
                 </a>
                 <span class="imdb-point">7.9</span>
               </div>
-              <div class="col-8 movie-detail">
+              <div class="col-md-8 movie-detail">
                 <div class="movie-meta">
                   <h3 class="movie-title">
                     <a routerLink="/user/movie/{{ movie.id }}" class="">{{
