@@ -1,12 +1,10 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
+
+// User
 import { HomeComponent } from "./pages/user/home/home.component";
 import { DetailmovieComponent } from "./pages/user/detailmovie/detailmovie.component";
-import { AdminComponent } from "./pages/admin/admin.component";
-import { LoginComponent } from "./pages/admin/login/login.component";
-import { ListuserComponent } from "./pages/admin/listuser/listuser.component";
 import { PageNotFoundComponent } from "./pages/error/page-not-found/page-not-found.component";
-import { DashboardComponent } from "./pages/admin/dashboard/dashboard.component";
 import { UserComponent } from "./pages/user/user.component";
 import { ProfileComponent } from "./pages/user/profile/profile.component";
 import { UpcomingMovieComponent } from "./pages/user/upcoming-movie/upcoming-movie.component";
@@ -16,18 +14,29 @@ import { UserLoginComponent } from "./pages/user/user-login/user-login.component
 import { EditComponent } from "./pages/user/profile/edit/edit.component";
 import { VoucherComponent } from "./pages/user/profile/voucher/voucher.component";
 import { TicketBoughtComponent } from "./pages/user/profile/ticket-bought/ticket-bought.component";
+
+// Admin
+import { AdminComponent } from "./pages/admin/admin.component";
+import { LoginComponent } from "./pages/admin/login/login.component";
+import { ListuserComponent } from "./pages/admin/user/listuser.component";
+import { DashboardComponent } from "./pages/admin/dashboard/dashboard.component";
 import { MoviesComponent } from "./pages/admin/movies/movies.component";
 
+// helper
 import { AuthGuard } from "./helpers";
+
 const routes: Routes = [
   {
     path: "admin",
     component: AdminComponent,
     children: [
-      { path: "users", component: ListuserComponent, canActivate: [AuthGuard] },
+      {
+        path: "user",
+        component: ListuserComponent,
+        canActivate: [AuthGuard]
+      },
       { path: "movie", component: MoviesComponent, canActivate: [AuthGuard] },
-      { path: "", component: DashboardComponent, canActivate: [AuthGuard] },
-      { path: "login", component: LoginComponent }
+      { path: "", component: DashboardComponent, canActivate: [AuthGuard] }
     ]
   },
   {
@@ -55,7 +64,7 @@ const routes: Routes = [
       { path: "", component: HomeComponent }
     ]
   },
-
+  { path: "login", component: LoginComponent },
   { path: "", redirectTo: "/user", pathMatch: "full" },
   { path: "**", component: PageNotFoundComponent }
 ];

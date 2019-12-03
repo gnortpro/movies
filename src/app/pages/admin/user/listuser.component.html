@@ -1,0 +1,114 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <button
+        mat-button
+        mat-flat-button
+        color="accent"
+        (click)="displayFormAddUser()"
+      >
+        <i class="material-icons"> add </i>New User
+      </button>
+      <div class="create-user" [hidden]="!showForm">
+        <form [formGroup]="addUserForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="text"
+              class="form-control"
+              id="email"
+              formControlName="email"
+              placeholder="Inpuit email ..."
+            />
+          </div>
+          <div class="form-group">
+            <label for="firstName">firstName</label>
+            <input
+              type="text"
+              class="form-control"
+              id="firstName"
+              formControlName="firstName"
+              placeholder="Input firstName ..."
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="lastName">lastName</label>
+            <input
+              type="text"
+              class="form-control"
+              id="lastName"
+              formControlName="lastName"
+              placeholder="Input lastName ..."
+            />
+          </div>
+          <div class="form-group">
+            <label for="avatar">avatar</label>
+            <input
+              type="text"
+              class="form-control"
+              id="avatar"
+              formControlName="avata"
+              placeholder="Input avatar ..."
+            />
+          </div>
+          <div class="form-group">
+            <label for="password">password</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="password"
+              id="password"
+              placeholder="Input password ..."
+            />
+          </div>
+          <button mat-button mat-flat-button color="primary" type="submit">
+            <i class="material-icons"> save </i> Save
+          </button>
+
+          <button
+            mat-button
+            mat-flat-button
+            color="warn"
+            (click)="cancelFormAddUser()"
+          >
+            <i class="material-icons"> save </i> Cancel
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>ID</th>
+          <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="firstName">
+          <th mat-header-cell *matHeaderCellDef>firstName</th>
+          <td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="lastName">
+          <th mat-header-cell *matHeaderCellDef>lastName</th>
+          <td mat-cell *matCellDef="let element">{{ element.lastName }}</td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef>Email</th>
+          <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+  </div>
+</div>

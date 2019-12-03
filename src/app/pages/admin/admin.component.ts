@@ -12,7 +12,7 @@ export class AdminComponent implements OnInit {
   checkUser = false;
   logout() {
     this.authenticationService.logout();
-    this.router.navigate(["/admin/login"]);
+    this.router.navigate(["/login"]);
   }
   constructor(
     private router: Router,

@@ -1,8 +1,10 @@
 <mat-toolbar color="primary">
   <button mat-button routerLink="/admin">Admin Dashboard</button>
   <div class="flex-spacer"></div>
+  <button mat-button routerLink="/admin/user">User</button>
   <button mat-button routerLink="/admin/movie">Movie</button>
   <button *ngIf="checkUser" mat-button (click)="logout()">Logout</button>
-  <button *ngIf="!checkUser" mat-button routerLink="/admin/login">Login</button>
 </mat-toolbar>
-<router-outlet></router-outlet>
+<div class="mt-5">
+  <router-outlet></router-outlet>
+</div>
