@@ -31,7 +31,13 @@ const user: User[] = [
   styleUrls: ["./listuser.component.css"]
 })
 export class ListuserComponent implements OnInit {
-  displayedColumns: string[] = ["id", "firstName", "lastName", "email"];
+  displayedColumns: string[] = [
+    "id",
+    "firstName",
+    "lastName",
+    "email",
+    "action"
+  ];
   dataSource = user;
   showForm = false;
   addUserForm: FormGroup;
@@ -46,6 +52,9 @@ export class ListuserComponent implements OnInit {
   get f() {
     return this.addUserForm.controls;
   }
+  editUser(id: number) {}
+
+  deleteUser(id: number) {}
 
   cancelFormAddUser(): void {
     this.showForm = false;

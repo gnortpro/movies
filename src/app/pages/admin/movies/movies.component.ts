@@ -33,7 +33,8 @@ export class MoviesComponent implements OnInit {
         director: this.f.director.value,
         image: this.f.image.value,
         premiereAt: this.f.premiereAt.value,
-        trailer: this.f.trailer.value
+        trailer: this.f.trailer.value,
+        imdbScore: this.f.imdbScore.value
       })
       .subscribe(
         data => {
@@ -51,7 +52,8 @@ export class MoviesComponent implements OnInit {
       image: ["", Validators.required],
       director: ["", Validators.required],
       premiereAt: ["", Validators.required],
-      trailer: ["", Validators.required]
+      trailer: ["", Validators.required],
+      imdbScore: ["", Validators.required]
     });
   }
 }

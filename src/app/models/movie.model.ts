@@ -7,4 +7,5 @@ export class Movie {
   premiereAt: string;
   title: string;
   trailer: string;
+  imdbScore: string;
 }

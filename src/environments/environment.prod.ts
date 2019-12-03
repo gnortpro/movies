@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: "http://localhost:5001"
+  apiUrl: "https://movie-tickets-vinid.herokuapp.com/api"
 };
