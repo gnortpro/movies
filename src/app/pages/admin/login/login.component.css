@@ -1,0 +1,9 @@
+.container.loginform-wrapper {
+  max-width: 800px;
+}
+
+.container.loginform-wrapper form {
+  margin: auto;
+  padding-top: 50px;
+  text-align: center;
+}

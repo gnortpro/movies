@@ -7,17 +7,15 @@ import { DomSanitizer } from "@angular/platform-browser";
   styleUrls: ["./dialog.component.css"]
 })
 export class DialogComponent implements OnInit {
-  trailerCode: string;
+  url: string;
   videoUrl;
   constructor(
     private dialogRef: MatDialogRef<DialogComponent>,
     private sanitizer: DomSanitizer,
     @Inject(MAT_DIALOG_DATA) data
   ) {
-    this.trailerCode = "https://www.youtube.com/embed/" + data.trailerCode;
-    this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-      this.trailerCode
-    );
+    this.url = data.url;
+    this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
   }
 
   close() {

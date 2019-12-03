@@ -67,11 +67,11 @@ export class HomeComponent implements OnInit {
   showtime(): void {
     this.showTimeBtn = !this.showTimeBtn;
   }
-  openDialog(): void {
+  openDialog(url: string): void {
     const diaglogRef = this.diaglog.open(DialogComponent, {
       width: "500px",
       data: {
-        trailerCode: "KKi-dYsWTrQ"
+        url: url
       }
     });
     diaglogRef.afterClosed().subscribe(result => {
@@ -82,14 +82,18 @@ export class HomeComponent implements OnInit {
   constructor(private dataService: DataService, private diaglog: MatDialog) {}
 
   ngOnInit() {
-    this.dataService.getListMovies().subscribe((data: { data: {} }) => {
-      this.movies = data.data;
-      console.log("new data", data);
-    });
+    this.dataService.getListMovies().subscribe(
+      (data: { movies: {} }) => {
+        console.log("data", data);
+
+        this.movies = data.movies;
+      },
+      error => {}
+    );
 
     this.dataService.getEvents().subscribe((data: { data: {} }) => {
       this.events = data.data;
-      console.log("events", data.data);
+      // console.log("events", data.data);
     });
   }
 }
