@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { DataService } from "../../../_services";
+import { MatSnackBar } from "@angular/material";
+import { SnackBarComponent } from "../../../_layouts/snack-bar/snack-bar.component";
 @Component({
   selector: "app-movies",
   templateUrl: "./movies.component.html",
@@ -8,9 +10,24 @@ import { DataService } from "../../../_services";
 })
 export class MoviesComponent implements OnInit {
   createMovieForm: FormGroup;
+  displayedColumns: string[] = [
+    "ID",
+    "Name",
+    "Image",
+    "Duration",
+    "Director",
+    "Cast",
+    "Description",
+    "IMDB",
+    "Trailer",
+    "PremierAt",
+    "action"
+  ];
+  listMovies;
   constructor(
     private formBuilder: FormBuilder,
-    private dataService: DataService
+    private dataService: DataService,
+    public snackBar: MatSnackBar
   ) {}
   ngOnInit() {
     this.createMovieForm = this.formBuilder.group({
@@ -24,6 +41,24 @@ export class MoviesComponent implements OnInit {
       trailer: ["", Validators.required],
       imdbScore: ["", Validators.required]
     });
+    this.getListMovies();
+  }
+  getListMovies() {
+    this.dataService.getListMovies().subscribe(
+      (data: { movies: {} }) => {
+        this.listMovies = data.movies;
+      },
+      error => {}
+    );
+  }
+  deleteMovie(id) {
+    this.dataService.deleteMovie(id).subscribe(
+      data => {
+        this.openSnackBar("Delete Movie Successfully", "createMovie");
+        this.getListMovies();
+      },
+      error => {}
+    );
   }
   get f() {
     return this.createMovieForm.controls;
@@ -51,9 +86,19 @@ export class MoviesComponent implements OnInit {
       })
       .subscribe(
         data => {
-          console.log(data);
+          this.getListMovies();
+          this.openSnackBar("Success", "createMovie");
+          this.createMovieForm.reset();
+          // console.log(data);
         },
         error => {}
       );
+  }
+  openSnackBar(message: string, panelClass: string) {
+    this.snackBar.openFromComponent(SnackBarComponent, {
+      data: message,
+      panelClass: panelClass,
+      duration: 1500
+    });
   }
 }

@@ -38,8 +38,20 @@ export class DataService {
   public getListMovies() {
     return this.httpClient.get(`${environment.apiUrl}/movies`);
   }
+  public postCreateMovie(movie: Movie) {
+    return this.httpClient.post<Movie>(
+      `${environment.apiUrl}/movies`,
+      {
+        ...movie
+      },
+      this.httpOptions
+    );
+  }
   public getMovieDetail(id) {
     return this.httpClient.get(`${environment.apiUrl}/movies/` + id);
+  }
+  public deleteMovie(id) {
+    return this.httpClient.delete(`${environment.apiUrl}/movies/` + id);
   }
   public getTheaterList() {
     return this.httpClient.get(`${environment.apiUrl}/theaters`); // lấy danh sách các rạp chiếu phim
@@ -73,14 +85,5 @@ export class DataService {
   }
   public getMovieShedule(movieID, day) {
     return this.httpClient.get(this.tickets);
-  }
-  public postCreateMovie(movie: Movie) {
-    return this.httpClient.post<Movie>(
-      `${environment.apiUrl}/movies`,
-      {
-        ...movie
-      },
-      this.httpOptions
-    );
   }
 }
