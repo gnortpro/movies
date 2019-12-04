@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { User } from "../../../models";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { UserService } from "../../../services";
+import { UserService } from "../../../_services";
 import { MatSnackBar } from "@angular/material";
 import { SnackBarComponent } from "../../../shared/layouts/snack-bar/snack-bar.component";
 const user: User[] = [

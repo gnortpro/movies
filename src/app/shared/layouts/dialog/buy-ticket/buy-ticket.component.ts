@@ -2,22 +2,19 @@ import { Component, OnInit, Inject } from "@angular/core";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
 import { DomSanitizer } from "@angular/platform-browser";
 @Component({
-  selector: "app-dialog",
-  templateUrl: "./dialog.component.html",
-  styleUrls: ["./dialog.component.css"]
+  selector: "app-buy-ticket",
+  templateUrl: "./buy-ticket.component.html",
+  styleUrls: ["./buy-ticket.component.css"]
 })
-export class DialogComponent implements OnInit {
-  url: string;
-  videoUrl;
+export class BuyTicketDialogComponent implements OnInit {
+  id: number;
   constructor(
-    private dialogRef: MatDialogRef<DialogComponent>,
+    private dialogRef: MatDialogRef<BuyTicketDialogComponent>,
     private sanitizer: DomSanitizer,
     @Inject(MAT_DIALOG_DATA) data
   ) {
-    this.url = data.url;
-    this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
+    this.id = data.id;
   }
-
   close() {
     this.dialogRef.close();
   }

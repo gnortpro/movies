@@ -1,16 +1,27 @@
 <div class="container-fluid " id="amy-page-header">
   <div class="row">
-    <div class="col-12">
-      <div class="amy-inner container">
-        <h1 class="page-title">Phim xxx</h1>
-        <div class="amy-breadcrumb">
+    <div class="col-md-12">
+      <div class="container d-none d-md-none d-lg-block">
+        <h1 class="page-title">Chi tiết phim</h1>
+        <div class="breadcrumbs">
           <a
             class="mat-button mat-button-header"
             routerLink="/user"
             routerLinkActive="active"
             >Trang chủ</a
           >
-          &gt; <span class="post post-page current-item">Phim xxx</span>
+          &gt; <span class="post post-page current-item">Chi tiết phim</span>
+        </div>
+      </div>
+      <div class="mobile-breadcrumb d-lg-none d-xl-none">
+        <div class="breadcrumb">
+          <a
+            class="mat-button mat-button-header"
+            routerLink="/user"
+            routerLinkActive="active"
+            >Trang chủ</a
+          >
+          &gt; <span class="post post-page current-item">Chi tiết phim</span>
         </div>
       </div>
     </div>
@@ -172,46 +183,119 @@
                   <div class="select-cinema">
                     <h4>Chọn lịch chiếu</h4>
                     <ul>
-                      <li>CGV Timescity</li>
-                      <li>CGV Timescity</li>
-                      <li>CGV Timescity</li>
+                      <li>
+                        <button
+                          class="btn select-theater"
+                          (click)="handleBookTheater(1, 2347)"
+                        >
+                          CGV Timescity
+                        </button>
+                      </li>
+                      <li>
+                        <button
+                          class="btn select-theater"
+                          (click)="handleBookTheater(2, 2347)"
+                        >
+                          CGV Timescity
+                        </button>
+                      </li>
                     </ul>
                   </div>
                 </div>
                 <div class="col-md-8">
                   <div class="showtime">
-                    <div class="st-time">
+                    <div class="st-time" [hidden]="movieID !== 1">
                       <div class="st-title">
                         <label>December 7, 2018</label>
-                        <a href="" class="buy-ticket">Buy Ticket</a>
+                        <button (click)="selectSeatStep()" class="buy-ticket">
+                          Seat Picker
+                        </button>
                       </div>
                       <ul class="list-unstyled">
-                        <li>12h</li>
-                        <li>15h</li>
+                        <li>
+                          <button
+                            (click)="handleBookTime(12)"
+                            class="btn buy-ticket text-white"
+                          >
+                            12h
+                          </button>
+                        </li>
+                        <li>
+                          <button
+                            (click)="handleBookTime(15)"
+                            class="btn buy-ticket text-white"
+                          >
+                            15h
+                          </button>
+                        </li>
                       </ul>
                     </div>
-
-                    <div class="st-time">
+                    <div class="st-time" [hidden]="movieID !== 2">
                       <div class="st-title">
-                        <label>December 7, 2018</label>
-                        <a href="" class="buy-ticket">Buy Ticket</a>
+                        <label>December 12, 2019</label>
+                        <button (click)="selectSeatStep()" class="buy-ticket">
+                          Seat Picker
+                        </button>
                       </div>
                       <ul class="list-unstyled">
-                        <li>12h</li>
-                        <li>15h</li>
-                      </ul>
-                    </div>
-                    <div class="st-time">
-                      <div class="st-title">
-                        <label>December 7, 2018</label>
-                        <a href="" class="buy-ticket">Buy Ticket</a>
-                      </div>
-                      <ul class="list-unstyled">
-                        <li>12h</li>
-                        <li>15h</li>
+                        <li>
+                          <button
+                            (click)="
+                              handleBookTime(1, 2, 'December 12, 2019', '12h')
+                            "
+                            class="btn buy-ticket text-white"
+                          >
+                            12h
+                          </button>
+                        </li>
                       </ul>
                     </div>
                   </div>
+                </div>
+              </div>
+              <div
+                class="row"
+                [style.opacity]="selectSeat ? '1' : '0'"
+                [style.visibility]="selectSeat ? 'visible' : 'hidden'"
+              >
+                <div class="col-md-12">
+                  <div class="screen"></div>
+                  <div class="seat-picker text-center">
+                    <div class="line">
+                      <div class="seat active">A1</div>
+                      <div class="seat active">A1</div>
+                      <div class="seat active">A1</div>
+                      <div class="seat active">A1</div>
+                      <div class="seat active">A1</div>
+                    </div>
+                    <div class="line">
+                      <div class="seat active">A1</div>
+                      <div class="seat active">A1</div>
+                      <div class="seat active">A1</div>
+                      <div class="seat active">A1</div>
+                      <div class="seat active">A1</div>
+                    </div>
+
+                    <div class="line">
+                      <div class="seat active">A1</div>
+                      <div class="seat active">A1</div>
+                      <div class="seat active">A1</div>
+                      <div class="seat active">A1</div>
+                      <div class="seat active">A1</div>
+                    </div>
+                    <div class="line">
+                      <div class="seat active">A1</div>
+                      <div class="seat active">A1</div>
+                      <div class="seat active">A1</div>
+                      <div class="seat active">A1</div>
+                      <div class="seat inactive">A1</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 mt-5 text-center">
+                  <button routerLink="/user/checkout" class="btn btn-info">
+                    Continue Checkout
+                  </button>
                 </div>
               </div>
             </div>

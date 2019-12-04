@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { DataService } from "../../../services/data.service";
+import { DataService } from "../../../_services/data.service";
 import { MatDialog } from "@angular/material";
-import { DialogComponent } from "src/app/shared/layouts/dialog/dialog.component";
+import { TrailerDialogComponent } from "src/app/shared/layouts/dialog/trailer/dialog.component";
 import { PageEvent } from "@angular/material/paginator";
 @Component({
   selector: "app-home",
@@ -68,7 +68,7 @@ export class HomeComponent implements OnInit {
     this.showTimeBtn = !this.showTimeBtn;
   }
   openDialog(url: string): void {
-    const diaglogRef = this.diaglog.open(DialogComponent, {
+    const diaglogRef = this.diaglog.open(TrailerDialogComponent, {
       width: "500px",
       data: {
         url: url

@@ -6,7 +6,7 @@ import {
   JwtInterceptor,
   ErrorInterceptor
   // fakeBackendProvider
-} from "./helpers";
+} from "./_helpers";
 
 // Angular Material Components
 import {
@@ -48,7 +48,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FooterComponent } from "./shared/layouts/footer/footer.component";
 import { HeaderComponent } from "./shared/layouts/header/header.component";
 import { PageNotFoundComponent } from "./pages/error/page-not-found/page-not-found.component";
-import { DialogComponent } from "./shared/layouts/dialog/dialog.component";
+import { TrailerDialogComponent } from "./shared/layouts/dialog/trailer/dialog.component";
+import { BuyTicketDialogComponent } from "./shared/layouts/dialog/buy-ticket/buy-ticket.component";
 // User
 import { HomeComponent } from "./pages/user/home/home.component";
 import { DetailmovieComponent } from "./pages/user/detailmovie/detailmovie.component";
@@ -56,7 +57,6 @@ import { UserComponent } from "./pages/user/user.component";
 import { ProfileComponent } from "./pages/user/profile/profile.component";
 import { UpcomingMovieComponent } from "./pages/user/upcoming-movie/upcoming-movie.component";
 import { DetaileventComponent } from "./pages/user/detailevent/detailevent.component";
-import { BuyTicketComponent } from "./pages/user/buy-ticket/buy-ticket.component";
 import { EditComponent } from "./pages/user/profile/edit/edit.component";
 import { VoucherComponent } from "./pages/user/profile/voucher/voucher.component";
 import { TicketBoughtComponent } from "./pages/user/profile/ticket-bought/ticket-bought.component";
@@ -71,6 +71,9 @@ import { MoviesComponent } from "./pages/admin/movies/movies.component";
 // Import your library
 import { SlickCarouselModule } from "ngx-slick-carousel";
 import { SnackBarComponent } from "./shared/layouts/snack-bar/snack-bar.component";
+import { CheckoutComponent } from "./pages/user/checkout/checkout.component";
+import { CountdownModule } from "ngx-countdown";
+import { ExpiredBookTicketComponent } from "./shared/layouts/dialog/expired-book-ticket/expired-book-ticket.component";
 
 @NgModule({
   declarations: [
@@ -88,14 +91,16 @@ import { SnackBarComponent } from "./shared/layouts/snack-bar/snack-bar.componen
     ProfileComponent,
     UpcomingMovieComponent,
     DetaileventComponent,
-    BuyTicketComponent,
     EditComponent,
     VoucherComponent,
     TicketBoughtComponent,
     UserLoginComponent,
-    DialogComponent,
+    TrailerDialogComponent,
     MoviesComponent,
-    SnackBarComponent
+    SnackBarComponent,
+    BuyTicketDialogComponent,
+    CheckoutComponent,
+    ExpiredBookTicketComponent
   ],
   imports: [
     HttpClientModule,
@@ -133,7 +138,8 @@ import { SnackBarComponent } from "./shared/layouts/snack-bar/snack-bar.componen
     MatSortModule,
     MatPaginatorModule,
     FormsModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    CountdownModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
@@ -144,6 +150,11 @@ import { SnackBarComponent } from "./shared/layouts/snack-bar/snack-bar.componen
     // fakeBackendProvider
   ],
   bootstrap: [AppComponent],
-  entryComponents: [DialogComponent, SnackBarComponent]
+  entryComponents: [
+    TrailerDialogComponent,
+    SnackBarComponent,
+    BuyTicketDialogComponent,
+    ExpiredBookTicketComponent
+  ]
 })
 export class AppModule {}

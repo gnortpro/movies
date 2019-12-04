@@ -9,12 +9,11 @@ import { UserComponent } from "./pages/user/user.component";
 import { ProfileComponent } from "./pages/user/profile/profile.component";
 import { UpcomingMovieComponent } from "./pages/user/upcoming-movie/upcoming-movie.component";
 import { DetaileventComponent } from "./pages/user/detailevent/detailevent.component";
-import { BuyTicketComponent } from "./pages/user/buy-ticket/buy-ticket.component";
 import { UserLoginComponent } from "./pages/user/user-login/user-login.component";
 import { EditComponent } from "./pages/user/profile/edit/edit.component";
 import { VoucherComponent } from "./pages/user/profile/voucher/voucher.component";
 import { TicketBoughtComponent } from "./pages/user/profile/ticket-bought/ticket-bought.component";
-
+import { CheckoutComponent } from "./pages/user/checkout/checkout.component";
 // Admin
 import { AdminComponent } from "./pages/admin/admin.component";
 import { LoginComponent } from "./pages/admin/login/login.component";
@@ -23,7 +22,7 @@ import { DashboardComponent } from "./pages/admin/dashboard/dashboard.component"
 import { MoviesComponent } from "./pages/admin/movies/movies.component";
 
 // helper
-import { AuthGuard } from "./helpers";
+import { AuthGuard } from "./_helpers";
 
 const routes: Routes = [
   {
@@ -43,12 +42,12 @@ const routes: Routes = [
     path: "user",
     component: UserComponent,
     children: [
-      { path: "ticket", redirectTo: "/user", pathMatch: "full" },
       { path: "event", redirectTo: "/user", pathMatch: "full" },
       { path: "movie", redirectTo: "/user", pathMatch: "full" },
       // { path: "profile", redirectTo: "/user", pathMatch: "full" },
       { path: "event/:id", component: DetaileventComponent },
       { path: "movie/:id", component: DetailmovieComponent },
+      { path: "checkout", component: CheckoutComponent },
       {
         path: "profile",
         component: ProfileComponent,
@@ -59,7 +58,6 @@ const routes: Routes = [
         ]
       },
       { path: "upcoming", component: UpcomingMovieComponent },
-      { path: "ticket/:id", component: BuyTicketComponent },
       { path: "login", component: UserLoginComponent },
       { path: "", component: HomeComponent }
     ]

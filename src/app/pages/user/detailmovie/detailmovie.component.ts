@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { DataService } from "../../../services/data.service";
-
+import { DataService } from "../../../_services/data.service";
+import { BuyTicketDialogComponent } from "src/app/shared/layouts/dialog/buy-ticket/buy-ticket.component";
+import { MatDialog } from "@angular/material";
 @Component({
   selector: "app-detailmovie",
   templateUrl: "./detailmovie.component.html",
@@ -9,7 +10,9 @@ import { DataService } from "../../../services/data.service";
 })
 export class DetailmovieComponent implements OnInit {
   detail;
-
+  movieID: number;
+  movieInfo;
+  selectSeat = false;
   slides = [
     { img: "assets/slider/s1.jpg" },
     { img: "assets/slider/s2.jpg" },
@@ -32,13 +35,36 @@ export class DetailmovieComponent implements OnInit {
   };
   constructor(
     private route: ActivatedRoute,
-    private dataService: DataService
+    private dataService: DataService,
+    private buyTicketDialog: MatDialog
+  ) {}
+  handleBookTheater(movieID: number, theaterID: number) {
+    this.movieID = movieID; // xử lý ẩn hiện bảng chọn time
+  }
+  handleBookTime(
+    movieID: number,
+    theaterID: number,
+    time: string,
+    date: string
   ) {}
   getMovieDetails() {
     const id = +this.route.snapshot.paramMap.get("id");
     this.dataService.getMovieDetail(id).subscribe((data: { data: {} }) => {
       this.detail = data.data;
-      console.log(this.detail);
+    });
+  }
+  selectSeatStep() {
+    this.selectSeat = !this.selectSeat;
+  }
+  openBuyTicketDialog(id: number): void {
+    const diaglogRef = this.buyTicketDialog.open(BuyTicketDialogComponent, {
+      width: "500px",
+      data: {
+        id: id
+      }
+    });
+    diaglogRef.afterClosed().subscribe(result => {
+      console.log(result);
     });
   }
   ngOnInit() {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { DataService } from "../../../services";
+import { DataService } from "../../../_services";
 @Component({
   selector: "app-movies",
   templateUrl: "./movies.component.html",

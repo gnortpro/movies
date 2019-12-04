@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { UserAuth } from "../../models";
-import { AuthenticationService } from "../../services";
+import { AuthenticationService } from "../../_services";
 @Component({
   selector: "app-admin",
   templateUrl: "./admin.component.html",

@@ -1,0 +1,191 @@
+<div class="container-fluid " id="amy-page-header">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="container d-none d-md-none d-lg-block">
+        <h1 class="page-title">Thanh toán</h1>
+        <div class="breadcrumbs">
+          <a
+            class="mat-button mat-button-header"
+            routerLink="/user"
+            routerLinkActive="active"
+            >Trang chủ</a
+          >
+          &gt; <span class="post post-page current-item">Thanh toán</span>
+        </div>
+      </div>
+      <div class="mobile-breadcrumb d-lg-none d-xl-none">
+        <div class="breadcrumb">
+          <a
+            class="mat-button mat-button-header"
+            routerLink="/user"
+            routerLinkActive="active"
+            >Trang chủ</a
+          >
+          &gt; <span class="post post-page current-item">Thanh toán</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container checkout">
+  <div class="row">
+    <div class="col-md-8">
+      <div id="checkoutSteps">
+        <h3 class="step">Bước 1: Mã giảm giá</h3>
+        <div class="alert alert-primary" role="alert">
+          Nếu có mã giảm giá, hãy nhập vào ô dưới đây và nhấn áp dụng
+        </div>
+        <form [formGroup]="maGiamGiaForm" (ngSubmit)="onSubmitMaGiamGia()">
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              id="magiamgia"
+              placeholder="Mã giảm giá"
+              formControlName="magiamgia"
+            />
+            <div class="alert alert-danger mt-2" *ngIf="checkCodeError">
+              {{ checkCodeError }}
+            </div>
+            <button
+              type="submit"
+              class="btn btn-success mt-2"
+              [disabled]="!maGiamGiaForm.valid"
+            >
+              Áp dụng
+            </button>
+          </div>
+        </form>
+
+        <h3 class="step">Bước 2: Chọn hình thức thanh toán</h3>
+        <div class="payment-method">
+          <ul>
+            <li>
+              <input type="radio" id="atm" />
+              <label for="atm">
+                <span class="atm-icon"></span>
+                <span>Thẻ ATM nội địa</span>
+              </label>
+            </li>
+
+            <li>
+              <input type="radio" id="vi" />
+              <label for="vi">
+                <span class="vinid-icon"></span>
+                <span>Ví điện tử VinID</span>
+              </label>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 cart-sidebar">
+      <div class="cart-item">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <td colspan="2">Tổng cộng</td>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>
+                STD
+              </td>
+              <td>
+                <span class="price">{{ gia }}</span>
+              </td>
+            </tr>
+          </tbody>
+
+          <tfoot>
+            <tr>
+              <td colspan="2">
+                <span class="price">{{ gia }}</span>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <div class="cart-item">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <td colspan="2">Giảm giá</td>
+            </tr>
+          </thead>
+
+          <tfoot>
+            <tr>
+              <td colspan="2">
+                <span class="price">{{ codeGiamGia }}</span>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <div class="cart-item">
+        <table class="data-table">
+          <thead>
+            <tr style="background: red; color: white;">
+              <td colspan="2">Tổng số tiền thanh toán</td>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <td colspan="2">
+                <span class="price">{{ giaSale }}</span>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <div class="cart-item countdown-lock">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <td colspan="2">Giữ vé trong:</td>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <td colspan="2" class="countdownwrapper">
+                <span class="countdownwrapper-text">
+                  <countdown
+                    #cd
+                    [config]="{ leftTime: 300, format: 'mm:ss' }"
+                    (event)="handleEvent($event, 1)"
+                  ></countdown
+                ></span>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-12 text-center">
+      <button class="btn btn-success paid-complete" (click)="purchased()">
+        Hoàn tất thanh toán
+      </button>
+    </div>
+  </div>
+</div>
+<div class="container checkout-succcess">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="wrap">
+        <div class="logo">
+          <h1>Thành công!</h1>
+          <p>Chúc mừng, bạn đã thanh toán thành công!</p>
+          <div class="sub">
+            <p>
+              <a [routerLink]="['/']"> Lịch sử giao dịch</a>
+              <a [routerLink]="['/']"> Quay trở lại</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
