@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { DataService } from "../../../_services/data.service";
 import { MatDialog } from "@angular/material";
-import { TrailerDialogComponent } from "src/app/shared/layouts/dialog/trailer/dialog.component";
+import { TrailerDialogComponent } from "src/app/_layouts/dialog/trailer/dialog.component";
 import { PageEvent } from "@angular/material/paginator";
 @Component({
   selector: "app-home",

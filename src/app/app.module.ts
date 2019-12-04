@@ -45,11 +45,11 @@ import { MatPaginatorModule } from "@angular/material/paginator";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { FooterComponent } from "./shared/layouts/footer/footer.component";
-import { HeaderComponent } from "./shared/layouts/header/header.component";
+import { FooterComponent } from "./_layouts/footer/footer.component";
+import { HeaderComponent } from "./_layouts/header/header.component";
 import { PageNotFoundComponent } from "./pages/error/page-not-found/page-not-found.component";
-import { TrailerDialogComponent } from "./shared/layouts/dialog/trailer/dialog.component";
-import { BuyTicketDialogComponent } from "./shared/layouts/dialog/buy-ticket/buy-ticket.component";
+import { TrailerDialogComponent } from "./_layouts/dialog/trailer/dialog.component";
+import { BuyTicketDialogComponent } from "./_layouts/dialog/buy-ticket/buy-ticket.component";
 // User
 import { HomeComponent } from "./pages/user/home/home.component";
 import { DetailmovieComponent } from "./pages/user/detailmovie/detailmovie.component";
@@ -70,10 +70,10 @@ import { DashboardComponent } from "./pages/admin/dashboard/dashboard.component"
 import { MoviesComponent } from "./pages/admin/movies/movies.component";
 // Import your library
 import { SlickCarouselModule } from "ngx-slick-carousel";
-import { SnackBarComponent } from "./shared/layouts/snack-bar/snack-bar.component";
+import { SnackBarComponent } from "./_layouts/snack-bar/snack-bar.component";
 import { CheckoutComponent } from "./pages/user/checkout/checkout.component";
 import { CountdownModule } from "ngx-countdown";
-import { ExpiredBookTicketComponent } from "./shared/layouts/dialog/expired-book-ticket/expired-book-ticket.component";
+import { ExpiredBookTicketComponent } from "./_layouts/dialog/expired-book-ticket/expired-book-ticket.component";
 
 @NgModule({
   declarations: [

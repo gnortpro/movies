@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { DataService } from "../../../_services/data.service";
-import { BuyTicketDialogComponent } from "src/app/shared/layouts/dialog/buy-ticket/buy-ticket.component";
+import { BuyTicketDialogComponent } from "src/app/_layouts/dialog/buy-ticket/buy-ticket.component";
 import { MatDialog } from "@angular/material";
 @Component({
   selector: "app-detailmovie",

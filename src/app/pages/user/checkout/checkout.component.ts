@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ExpiredBookTicketComponent } from "src/app/shared/layouts/dialog/expired-book-ticket/expired-book-ticket.component";
+import { ExpiredBookTicketComponent } from "src/app/_layouts/dialog/expired-book-ticket/expired-book-ticket.component";
 import { MatDialog } from "@angular/material";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { trigger, transition, animate, style } from "@angular/animations";
