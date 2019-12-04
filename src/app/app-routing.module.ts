@@ -20,7 +20,7 @@ import { LoginComponent } from "./pages/admin/login/login.component";
 import { ListuserComponent } from "./pages/admin/user/listuser.component";
 import { DashboardComponent } from "./pages/admin/dashboard/dashboard.component";
 import { MoviesComponent } from "./pages/admin/movies/movies.component";
-
+import { TheatersComponent } from "./pages/admin/theaters/theaters.component";
 // helper
 import { AuthGuard } from "./_helpers";
 
@@ -35,6 +35,11 @@ const routes: Routes = [
         canActivate: [AuthGuard]
       },
       { path: "movie", component: MoviesComponent, canActivate: [AuthGuard] },
+      {
+        path: "theaters",
+        component: TheatersComponent,
+        canActivate: [AuthGuard]
+      },
       { path: "", component: DashboardComponent, canActivate: [AuthGuard] }
     ]
   },

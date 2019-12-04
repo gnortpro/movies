@@ -12,6 +12,19 @@ export class MoviesComponent implements OnInit {
     private formBuilder: FormBuilder,
     private dataService: DataService
   ) {}
+  ngOnInit() {
+    this.createMovieForm = this.formBuilder.group({
+      title: ["", Validators.required],
+      duration: ["", Validators.required],
+      cast: ["", Validators.required],
+      description: ["", Validators.required],
+      image: ["", Validators.required],
+      director: ["", Validators.required],
+      premiereAt: ["", Validators.required],
+      trailer: ["", Validators.required],
+      imdbScore: ["", Validators.required]
+    });
+  }
   get f() {
     return this.createMovieForm.controls;
   }
@@ -20,7 +33,7 @@ export class MoviesComponent implements OnInit {
     if (this.createMovieForm.invalid) {
       return;
     }
-    console.log(this.f);
+    // console.log(this.f);
 
     // this.loading = true;
     // console.log("form value", this.adminLoginForm.value);
@@ -42,18 +55,5 @@ export class MoviesComponent implements OnInit {
         },
         error => {}
       );
-  }
-  ngOnInit() {
-    this.createMovieForm = this.formBuilder.group({
-      title: ["", Validators.required],
-      duration: ["", Validators.required],
-      cast: ["", Validators.required],
-      description: ["", Validators.required],
-      image: ["", Validators.required],
-      director: ["", Validators.required],
-      premiereAt: ["", Validators.required],
-      trailer: ["", Validators.required],
-      imdbScore: ["", Validators.required]
-    });
   }
 }

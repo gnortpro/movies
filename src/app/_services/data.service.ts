@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { Movie } from "../models";
+import { Movie, Theater } from "../models";
 import { environment } from "../../environments/environment";
 export class Hero {
   id: number;
@@ -43,6 +43,15 @@ export class DataService {
   }
   public getTheaterList() {
     return this.httpClient.get(`${environment.apiUrl}/theaters`); // lấy danh sách các rạp chiếu phim
+  }
+  public createTheater(theater) {
+    return this.httpClient.post<Theater>(
+      `${environment.apiUrl}/theaters`,
+      {
+        ...theater
+      },
+      this.httpOptions
+    );
   }
   public getEvents() {
     return this.httpClient.get(this.events);

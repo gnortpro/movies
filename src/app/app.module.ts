@@ -74,6 +74,7 @@ import { SnackBarComponent } from "./_layouts/snack-bar/snack-bar.component";
 import { CheckoutComponent } from "./pages/user/checkout/checkout.component";
 import { CountdownModule } from "ngx-countdown";
 import { ExpiredBookTicketComponent } from "./_layouts/dialog/expired-book-ticket/expired-book-ticket.component";
+import { TheatersComponent } from './pages/admin/theaters/theaters.component';
 
 @NgModule({
   declarations: [
@@ -100,7 +101,8 @@ import { ExpiredBookTicketComponent } from "./_layouts/dialog/expired-book-ticke
     SnackBarComponent,
     BuyTicketDialogComponent,
     CheckoutComponent,
-    ExpiredBookTicketComponent
+    ExpiredBookTicketComponent,
+    TheatersComponent
   ],
   imports: [
     HttpClientModule,

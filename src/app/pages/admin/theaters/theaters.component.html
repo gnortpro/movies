@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <form [formGroup]="createTheaterForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="title">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          placeholder="Input title ..."
+          formControlName="title"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="title">Latitude</label>
+        <input
+          type="text"
+          class="form-control"
+          id="latitude"
+          placeholder="Input latitude ... "
+          formControlName="latitude"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="longtitude">Longtitude</label>
+        <input
+          type="text"
+          class="form-control"
+          id="longtitude"
+          placeholder="Input longtitude ..."
+          formControlName="longtitude"
+          required
+        />
+      </div>
+
+      <button
+        class="btn btn-info"
+        type="submit"
+        [disabled]="!createTheaterForm.valid"
+      >
+        Create Movie
+      </button>
+    </form>
+  </div>
+</div>
