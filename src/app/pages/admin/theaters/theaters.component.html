@@ -1,47 +1,98 @@
 <div class="container">
   <div class="row">
-    <form [formGroup]="createTheaterForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="title">Name</label>
-        <input
-          type="text"
-          class="form-control"
-          id="title"
-          placeholder="Input title ..."
-          formControlName="title"
-          required
-        />
-      </div>
-      <div class="form-group">
-        <label for="title">Latitude</label>
-        <input
-          type="text"
-          class="form-control"
-          id="latitude"
-          placeholder="Input latitude ... "
-          formControlName="latitude"
-          required
-        />
-      </div>
-      <div class="form-group">
-        <label for="longtitude">Longtitude</label>
-        <input
-          type="text"
-          class="form-control"
-          id="longtitude"
-          placeholder="Input longtitude ..."
-          formControlName="longtitude"
-          required
-        />
-      </div>
+    <div class="col-md-12">
+      <form [formGroup]="createTheaterForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="title">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+            placeholder="Input title ..."
+            formControlName="title"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="title">Latitude</label>
+          <input
+            type="text"
+            class="form-control"
+            id="latitude"
+            placeholder="Input latitude ... "
+            formControlName="latitude"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="longtitude">Longtitude</label>
+          <input
+            type="text"
+            class="form-control"
+            id="longtitude"
+            placeholder="Input longtitude ..."
+            formControlName="longtitude"
+            required
+          />
+        </div>
 
-      <button
-        class="btn btn-info"
-        type="submit"
-        [disabled]="!createTheaterForm.valid"
-      >
-        Create Movie
-      </button>
-    </form>
+        <button
+          class="btn btn-info"
+          type="submit"
+          [disabled]="!createTheaterForm.valid"
+        >
+          Create Movie
+        </button>
+      </form>
+    </div>
+    <div class="col-md-12">
+      <h3 class="">List Theaters</h3>
+      <table mat-table [dataSource]="listTheaters" class="mat-elevation-z8">
+        <ng-container matColumnDef="Title">
+          <th mat-header-cell *matHeaderCellDef>Title</th>
+          <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+        </ng-container>
+        <ng-container matColumnDef="Latitude">
+          <th mat-header-cell *matHeaderCellDef>Latitude</th>
+          <td mat-cell *matCellDef="let element">{{ element.latitude }}</td>
+        </ng-container>
+        <ng-container matColumnDef="Longtitude">
+          <th mat-header-cell *matHeaderCellDef>Longtitude</th>
+          <td mat-cell *matCellDef="let element">{{ element.longitude }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef>Action</th>
+          <td *matCellDef="let element" style="width: 190px;">
+            <button
+              mat-raised-button
+              color="primary"
+              (click)="addAuditorium(element.id)"
+            >
+              <mat-icon>add</mat-icon>
+            </button>
+
+            <button
+              mat-raised-button
+              color="primary"
+              (click)="editTheater(element.id)"
+            >
+              <mat-icon>edit</mat-icon>
+            </button>
+
+            <button
+              mat-raised-button
+              color="primary"
+              (click)="deleteTheater(element.id)"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
   </div>
 </div>

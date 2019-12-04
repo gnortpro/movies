@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 import { DataService } from "../../../_services";
 import { MatSnackBar } from "@angular/material";
 import { SnackBarComponent } from "../../../_layouts/snack-bar/snack-bar.component";
@@ -10,10 +11,14 @@ import { SnackBarComponent } from "../../../_layouts/snack-bar/snack-bar.compone
 })
 export class TheatersComponent implements OnInit {
   createTheaterForm: FormGroup;
+  // listTheaters;
+  displayedColumns: string[] = ["Title", "Latitude", "Longtitude", "action"];
+  listTheaters;
   constructor(
     private formBuilder: FormBuilder,
     private dataService: DataService,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    public router: Router
   ) {}
 
   ngOnInit() {
@@ -22,6 +27,15 @@ export class TheatersComponent implements OnInit {
       latitude: ["", Validators.required],
       longtitude: ["", Validators.required]
     });
+    this.dataService.getTheaterList().subscribe(
+      data => {
+        this.listTheaters = data;
+      },
+      error => {}
+    );
+  }
+  addAuditorium(theaterID: number) {
+    this.router.navigate(["/admin/auditoriums/" + theaterID]);
   }
   get f() {
     return this.createTheaterForm.controls;
@@ -44,7 +58,7 @@ export class TheatersComponent implements OnInit {
       .subscribe(
         data => {
           this.openSnackBar("Success", "createTheater");
-          console.log(data);
+          this.createTheaterForm.reset();
         },
         error => {}
       );

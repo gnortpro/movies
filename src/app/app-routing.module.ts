@@ -21,6 +21,7 @@ import { ListuserComponent } from "./pages/admin/user/listuser.component";
 import { DashboardComponent } from "./pages/admin/dashboard/dashboard.component";
 import { MoviesComponent } from "./pages/admin/movies/movies.component";
 import { TheatersComponent } from "./pages/admin/theaters/theaters.component";
+import { AuditoriumsComponent } from "./pages/admin/auditoriums/auditoriums.component";
 // helper
 import { AuthGuard } from "./_helpers";
 
@@ -40,6 +41,13 @@ const routes: Routes = [
         component: TheatersComponent,
         canActivate: [AuthGuard]
       },
+
+      {
+        path: "auditoriums/:theaterID",
+        component: AuditoriumsComponent,
+        canActivate: [AuthGuard]
+      },
+
       { path: "", component: DashboardComponent, canActivate: [AuthGuard] }
     ]
   },

@@ -53,6 +53,21 @@ export class DataService {
       this.httpOptions
     );
   }
+  public getAuditoriumList(theaterID: number) {
+    return this.httpClient.get(
+      `${environment.apiUrl}/theaters/` + theaterID + `/auditoriums`
+    ); // lấy danh sách các rạp chiếu phim
+  }
+  public createAuditoriumByTheaterID(theaterID, auditorium) {
+    return this.httpClient.post(
+      `${environment.apiUrl}/theaters/` + theaterID.theaterID + `/auditoriums`,
+      {
+        ...auditorium
+      },
+      this.httpOptions
+    );
+  }
+
   public getEvents() {
     return this.httpClient.get(this.events);
   }

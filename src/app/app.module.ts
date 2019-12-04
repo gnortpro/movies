@@ -68,13 +68,14 @@ import { LoginComponent } from "./pages/admin/login/login.component";
 import { ListuserComponent } from "./pages/admin/user/listuser.component";
 import { DashboardComponent } from "./pages/admin/dashboard/dashboard.component";
 import { MoviesComponent } from "./pages/admin/movies/movies.component";
+import { TheatersComponent } from "./pages/admin/theaters/theaters.component";
+import { AuditoriumsComponent } from "./pages/admin/auditoriums/auditoriums.component";
 // Import your library
 import { SlickCarouselModule } from "ngx-slick-carousel";
 import { SnackBarComponent } from "./_layouts/snack-bar/snack-bar.component";
 import { CheckoutComponent } from "./pages/user/checkout/checkout.component";
 import { CountdownModule } from "ngx-countdown";
 import { ExpiredBookTicketComponent } from "./_layouts/dialog/expired-book-ticket/expired-book-ticket.component";
-import { TheatersComponent } from './pages/admin/theaters/theaters.component';
 
 @NgModule({
   declarations: [
@@ -102,7 +103,8 @@ import { TheatersComponent } from './pages/admin/theaters/theaters.component';
     BuyTicketDialogComponent,
     CheckoutComponent,
     ExpiredBookTicketComponent,
-    TheatersComponent
+    TheatersComponent,
+    AuditoriumsComponent
   ],
   imports: [
     HttpClientModule,
