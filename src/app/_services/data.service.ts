@@ -41,6 +41,9 @@ export class DataService {
   public getMovieDetail(id) {
     return this.httpClient.get(`${environment.apiUrl}/movies/` + id);
   }
+  public getTheaterList() {
+    return this.httpClient.get(`${environment.apiUrl}/theaters`); // lấy danh sách các rạp chiếu phim
+  }
   public getEvents() {
     return this.httpClient.get(this.events);
   }

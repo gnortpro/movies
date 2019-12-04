@@ -180,23 +180,15 @@
               </div>
               <div class="row">
                 <div class="col-md-4">
-                  <div class="select-cinema">
+                  <div class="select-cinema" ng>
                     <h4>Chọn lịch chiếu</h4>
-                    <ul>
-                      <li>
+                    <ul *ngIf="theaterLists">
+                      <li *ngFor="let theaterList of theaterLists">
                         <button
                           class="btn select-theater"
                           (click)="handleBookTheater(1, 2347)"
                         >
-                          CGV Timescity
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          class="btn select-theater"
-                          (click)="handleBookTheater(2, 2347)"
-                        >
-                          CGV Timescity
+                          {{ theaterList.title }}
                         </button>
                       </li>
                     </ul>

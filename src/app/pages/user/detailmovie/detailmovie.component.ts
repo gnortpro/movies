@@ -10,6 +10,7 @@ import { MatDialog } from "@angular/material";
 })
 export class DetailmovieComponent implements OnInit {
   detail;
+  theaterLists;
   movieID: number;
   movieInfo;
   selectSeat = false;
@@ -46,6 +47,12 @@ export class DetailmovieComponent implements OnInit {
     this.dataService.getMovieDetail(id).subscribe(
       data => {
         this.detail = data;
+      },
+      error => {}
+    );
+    this.dataService.getTheaterList().subscribe(
+      data => {
+        this.theaterLists = data;
       },
       error => {}
     );
