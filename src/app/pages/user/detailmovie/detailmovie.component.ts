@@ -42,10 +42,10 @@ export class DetailmovieComponent implements OnInit {
     this.movieID = movieID; // xử lý ẩn hiện bảng chọn time
   }
   handleBookTime(
-    movieID: number,
-    theaterID: number,
-    time: string,
-    date: string
+    movieID: number
+    // theaterID: number,
+    // time: string,
+    // date: string
   ) {}
   getMovieDetails() {
     const id = +this.route.snapshot.paramMap.get("id");
