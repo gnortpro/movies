@@ -61,6 +61,21 @@ export class HomeComponent implements OnInit {
   // MatPaginator Output
   pageEvent: PageEvent;
 
+  constructor(private dataService: DataService, private diaglog: MatDialog) {}
+
+  ngOnInit() {
+    this.dataService.getListMovies().subscribe(
+      (data: { movies: {} }) => {
+        this.movies = data.movies;
+      },
+      error => {}
+    );
+
+    this.dataService.getEvents().subscribe((data: { data: {} }) => {
+      this.events = data.data;
+      // console.log("events", data.data);
+    });
+  }
   setPageSizeOptions(setPageSizeOptionsInput: string) {
     this.pageSizeOptions = setPageSizeOptionsInput.split(",").map(str => +str);
   }
@@ -76,24 +91,6 @@ export class HomeComponent implements OnInit {
     });
     diaglogRef.afterClosed().subscribe(result => {
       console.log("abc");
-    });
-  }
-
-  constructor(private dataService: DataService, private diaglog: MatDialog) {}
-
-  ngOnInit() {
-    this.dataService.getListMovies().subscribe(
-      (data: { movies: {} }) => {
-        console.log("data", data);
-
-        this.movies = data.movies;
-      },
-      error => {}
-    );
-
-    this.dataService.getEvents().subscribe((data: { data: {} }) => {
-      this.events = data.data;
-      // console.log("events", data.data);
     });
   }
 }

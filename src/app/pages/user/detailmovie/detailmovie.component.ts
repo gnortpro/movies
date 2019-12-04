@@ -41,18 +41,22 @@ export class DetailmovieComponent implements OnInit {
   handleBookTheater(movieID: number, theaterID: number) {
     this.movieID = movieID; // xử lý ẩn hiện bảng chọn time
   }
+  ngOnInit() {
+    const id = +this.route.snapshot.paramMap.get("id");
+    this.dataService.getMovieDetail(id).subscribe(
+      data => {
+        this.detail = data;
+      },
+      error => {}
+    );
+  }
   handleBookTime(
     movieID: number
     // theaterID: number,
     // time: string,
     // date: string
   ) {}
-  getMovieDetails() {
-    const id = +this.route.snapshot.paramMap.get("id");
-    this.dataService.getMovieDetail(id).subscribe((data: { data: {} }) => {
-      this.detail = data.data;
-    });
-  }
+
   selectSeatStep() {
     this.selectSeat = !this.selectSeat;
   }
@@ -64,10 +68,7 @@ export class DetailmovieComponent implements OnInit {
       }
     });
     diaglogRef.afterClosed().subscribe(result => {
-      console.log(result);
+      console.log("dialog result", result);
     });
-  }
-  ngOnInit() {
-    this.getMovieDetails();
   }
 }

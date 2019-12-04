@@ -636,8 +636,8 @@ a:focus {
   margin-bottom: 10px;
 }
 
-label.movie-field-label {
-  color: #999999;
+.single-movie .entry-info .movie-field-wrapper .movie-field label {
+  color: #000;
   display: inline-block;
   margin-right: 3px;
   margin-bottom: 0;
@@ -1028,16 +1028,17 @@ ul.nav-menu li a:after {
   margin-top: 0;
 }
 .single-movie .entry-info .movie-field-wrapper {
-  margin-top: 30px;
+  margin-top: 15px;
   padding: 0;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
-.single-movie .entry-info .movie-field-wrapper label {
+/* .single-movie .entry-info .movie-field-wrapper .movie-field label {
   color: #000;
   font-weight: bold;
   font-size: 15px;
   width: 90px;
-}
+
+} */
 .single-movie .entry-info .movie-field-wrapper span {
   color: #666;
   font-size: 15px;

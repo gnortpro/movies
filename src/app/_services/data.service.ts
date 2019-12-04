@@ -21,9 +21,10 @@ export class DataService {
   // private tickets = " http://www.mocky.io/v2/5dddee8e2f000039617eabcb";
   // POST
   private adminLogin = "/auth";
+  private creatMovie = "/movies";
   // GET
   private getListMovieApi = "/movies";
-  private creatMovie = "/movies";
+  private getSingleMovie = "/movies";
   private movieDetails = "http://www.mocky.io/v2/5ddbb5483400005200eadd84";
   private events = "http://www.mocky.io/v2/5ddde6382f000039617eaba5";
   private tickets = " http://www.mocky.io/v2/5dddee8e2f000039617eabcb";
@@ -35,10 +36,10 @@ export class DataService {
   }
 
   public getListMovies() {
-    return this.httpClient.get(this.baseURL + this.getListMovieApi);
+    return this.httpClient.get(`${environment.apiUrl}/movies`);
   }
   public getMovieDetail(id) {
-    return this.httpClient.get(this.movieDetails);
+    return this.httpClient.get(`${environment.apiUrl}/movies/` + id);
   }
   public getEvents() {
     return this.httpClient.get(this.events);
@@ -55,19 +56,4 @@ export class DataService {
       this.httpOptions
     );
   }
-  // login(email: string, password: string) {
-  //   return this.httpClient
-  //     .post<any>(`${environment.apiUrl}/auth`, {
-  //       email,
-  //       password
-  //     })
-  //     .pipe(
-  //       map(user => {
-  //         // store user details and jwt token in local storage to keep user logged in between page refreshes
-  //         localStorage.setItem("currentUser", JSON.stringify(user));
-  //         this.currentUserSubject.next(user);
-  //         return user;
-  //       })
-  //     );
-  // }
 }
