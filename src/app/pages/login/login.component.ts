@@ -39,15 +39,17 @@ export class LoginComponent implements OnInit {
     // console.log("form value", this.adminLoginForm.value);
     this.authenticationService
       .login(this.f.email.value, this.f.password.value)
-      .pipe(first())
+      // .pipe(first())
       .subscribe(
         data => {
-          this.router.navigate([this.returnUrl]);
+          console.log("data", data);
+
+          // this.router.navigate([this.returnUrl]);
         },
         error => {
-          console.log(error.status);
+          console.log("er", error);
 
-          this.error = error;
+          // this.error = error.error.errors;
           this.loading = false;
         }
       );
