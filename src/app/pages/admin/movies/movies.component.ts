@@ -43,11 +43,11 @@ export class MoviesComponent implements OnInit {
       trailer: ["", Validators.required],
       imdbScore: ["", Validators.required]
     });
-    this.getListMovies();
+    this.getListMovies(5, 1);
   }
-  getListMovies() {
+  getListMovies(limit: number, page: number) {
     this.loading = true;
-    this.dataService.getListMovies().subscribe(
+    this.dataService.getListMovies(limit, page).subscribe(
       (data: { movies: {} }) => {
         this.loading = false;
         this.listMovies = data.movies;
@@ -60,7 +60,7 @@ export class MoviesComponent implements OnInit {
       this.dataService.deleteMovie(id).subscribe(
         data => {
           this.openSnackBar("Delete Movie Successfully", "createMovie");
-          this.getListMovies();
+          this.getListMovies(5, 1);
         },
         error => {}
       );
@@ -94,7 +94,7 @@ export class MoviesComponent implements OnInit {
         data => {
           this.openSnackBar("Success", "createMovie");
           this.createMovieForm.reset();
-          this.getListMovies();
+          this.getListMovies(5, 1);
           this.loading = false;
           // console.log(data);
         },

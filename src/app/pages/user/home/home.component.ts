@@ -66,7 +66,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.loading = true;
-    this.dataService.getListMovies().subscribe(
+    // limit 5, page 1
+    this.dataService.getListMovies(5, 1).subscribe(
       (data: { movies: {} }) => {
         this.movies = data.movies;
         this.loading = false;

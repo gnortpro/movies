@@ -36,17 +36,17 @@
 
                 <li class="menu-item">
                   <a
-                    *ngIf="loggedUser"
+                    *ngIf="checkUser"
                     class="mat-button mat-button-header"
                     routerLink="/user/profile"
                     routerLinkActive="active"
                     [routerLinkActiveOptions]="{ exact: true }"
-                    ><i class="fa fa-user"></i> {{ loggedUser.fullName }}</a
-                  >
+                    ><i class="fa fa-user"></i>
+                  </a>
                 </li>
                 <li class="menu-item">
                   <a
-                    *ngIf="!loggedUser"
+                    *ngIf="!checkUser"
                     class="mat-button mat-button-header"
                     routerLink="/login"
                     routerLinkActive="active"

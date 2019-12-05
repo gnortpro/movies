@@ -35,8 +35,10 @@ export class DataService {
     // this.handleError = httpErrorHandler.createHandleError("HeroesService");
   }
 
-  public getListMovies() {
-    return this.httpClient.get(`${environment.apiUrl}/movies`);
+  public getListMovies(limit: number, page: number) {
+    return this.httpClient.get(
+      `${environment.apiUrl}/movies/?limit=` + limit + `&page=` + page
+    );
   }
   public postCreateMovie(movie: Movie) {
     return this.httpClient.post<Movie>(

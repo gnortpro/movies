@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-
+import { AuthenticationService } from "../../_services";
+import { UserAuth } from "src/app/models";
 @Component({
   selector: "app-user",
   templateUrl: "./user.component.html",
@@ -7,15 +8,23 @@ import { Component, OnInit } from "@angular/core";
 })
 export class UserComponent implements OnInit {
   title = "User";
-  loggedUser;
+  // loggedUser;
+  currentUser: UserAuth;
+  checkUser = false;
   menuClick = false;
   openDialogLogin(): void {}
   toggleMobileClass(): void {
     this.menuClick = !this.menuClick;
   }
-  constructor() {}
+  constructor(private authenticationService: AuthenticationService) {
+    this.authenticationService.currentUser.subscribe(
+      x => (this.currentUser = x)
+    );
+  }
 
   ngOnInit() {
-    this.loggedUser = JSON.parse(localStorage.getItem("currentUser")).user;
+    const checkUser = this.authenticationService.currentUserValue;
+    this.checkUser = checkUser ? true : false;
+    // this.loggedUser = JSON.parse(localStorage.getItem("currentUser")).user;
   }
 }
