@@ -76,12 +76,19 @@ export class DetailmovieComponent implements OnInit {
       this.days.push(new Date(2019, this.today_month, i));
     }
   }
+  submitBuyTicket(ticketID: number) {
+    // this.dataService.postSubmitBuyTicket(this.movieID, ticketID).subscribe(
+    //   data => {},
+    //   error => {}
+    // );
+    this.openBuyTicketDialog(ticketID);
+  }
   getSeatsByScheduleID(scheduleID: number) {
     this.getSeatsByScheduleIDLoading = true;
     this.dataService.getSeatsByScheduleID(this.movieID, scheduleID).subscribe(
       data => {
         this.getSeatsBySchedule = data;
-        console.log(data);
+        this.selectSeat = true;
 
         this.getSeatsByScheduleIDLoading = false;
       },

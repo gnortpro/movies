@@ -56,7 +56,7 @@ const routes: Routes = [
       // { path: "profile", redirectTo: "/user", pathMatch: "full" },
       { path: "event/:id", component: DetaileventComponent },
       { path: "movie/:id", component: DetailmovieComponent },
-      { path: "checkout", component: CheckoutComponent },
+      { path: "checkout/:id", component: CheckoutComponent },
       {
         path: "profile",
         component: ProfileComponent,

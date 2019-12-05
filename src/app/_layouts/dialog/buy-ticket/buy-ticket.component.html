@@ -1,10 +1,10 @@
-<h1 mat-dialog-title>Hi {{ id }}</h1>
+<!-- <h1 mat-dialog-title>Hi {{ id }}</h1> -->
 <div mat-dialog-content>
-  <p>Thông tin vé:</p>
+  <p>Bạn muốn đặt ghế này chứ?</p>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="close()">Đặt lại</button>
-  <button mat-button cdkFocusInitial>
+  <button mat-button (click)="close()">Hủy</button>
+  <button mat-button cdkFocusInitial (click)="redirect()">
     Thanh toán
   </button>
 </div>

@@ -104,6 +104,17 @@ export class DataService {
         `/seats`
     ); // lấy danh sách các rạp chiếu phim
   }
+
+  public postSubmitBuyTicket(movieID: number, ticketID: number) {
+    return this.httpClient.get(
+      `${environment.apiUrl}/movies/` +
+        movieID +
+        `/schedules/` +
+        ticketID +
+        `/seats`
+    ); // lấy danh sách các rạp chiếu phim
+  }
+
   public getEvents() {
     return this.httpClient.get(this.events);
   }

@@ -1236,7 +1236,7 @@ button.slick-prev:hover {
 .screen {
   width: 50%;
   height: 45px;
-  margin: 20px auto 20px;
+  margin: 0px auto 20px;
   text-align: center;
   background: url(assets/bg-screen.png) no-repeat top center transparent;
   background-size: 100% auto;
@@ -1286,4 +1286,15 @@ p.emptySeats {
   font-size: 11px;
   margin-bottom: 0;
   margin-top: -20px;
+}
+button.seat.active {
+  background: white;
+}
+
+button.seat.inactive {
+  background: gray;
+  color: white;
+}
+.seatPickerWrapper {
+  background: #f8f8f8;
 }

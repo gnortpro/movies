@@ -217,7 +217,12 @@
                           class="btn pick-time"
                           *ngFor="let schedule of scheduleList.schedules"
                           (click)="getSeatsByScheduleID(schedule.scheduleId)"
+                          [disabled]="getSeatsByScheduleIDLoading"
                         >
+                          <span
+                            *ngIf="getSeatsByScheduleIDLoading"
+                            class="spinner-border spinner-border-sm mr-1"
+                          ></span>
                           {{ schedule.screeningTime | date: "HH:mm":"+0700" }}
                           <p class="emptySeats">
                             ({{ schedule.emptySeats }} ghế trống)
@@ -225,6 +230,9 @@
                         </button>
                       </li>
                     </ul>
+                    <div class="alert alert-danger" *ngIf="scheduleLists">
+                      Không có suất chiếu cho ngày này.
+                    </div>
                     <!-- <div
                       *ngIf="!theaterLists && loading"
                       class="spinner-border spinner-border-sm mr-1"
@@ -262,45 +270,41 @@
                 [style.opacity]="selectSeat ? '1' : '0'"
                 [style.visibility]="selectSeat ? 'visible' : 'hidden'"
               >
-                <div class="col-md-12">
-                  <div class="screen"></div>
-                  <div class="seat-picker text-center">
-                    <div class="line">
-                      <div class="seat active">A1</div>
-                      <div class="seat active">A1</div>
-                      <div class="seat active">A1</div>
-                      <div class="seat active">A1</div>
-                      <div class="seat active">A1</div>
-                    </div>
-                    <div class="line">
-                      <div class="seat active">A1</div>
-                      <div class="seat active">A1</div>
-                      <div class="seat active">A1</div>
-                      <div class="seat active">A1</div>
-                      <div class="seat active">A1</div>
-                    </div>
-
-                    <div class="line">
-                      <div class="seat active">A1</div>
-                      <div class="seat active">A1</div>
-                      <div class="seat active">A1</div>
-                      <div class="seat active">A1</div>
-                      <div class="seat active">A1</div>
-                    </div>
-                    <div class="line">
-                      <div class="seat active">A1</div>
-                      <div class="seat active">A1</div>
-                      <div class="seat active">A1</div>
-                      <div class="seat active">A1</div>
-                      <div class="seat inactive">A1</div>
+                <div class="col-md-12" *ngIf="getSeatsBySchedule">
+                  <div class="seatPickerWrapper">
+                    <div class="screen"></div>
+                    <div class="seat-picker text-center">
+                      <div
+                        class="line"
+                        *ngFor="
+                          let line of getSeatsBySchedule;
+                          let index = index
+                        "
+                      >
+                        <button
+                          [class]="isReserved ? 'seat inactive' : 'seat active'"
+                          (click)="submitBuyTicket(line.id)"
+                        >
+                          {{ line.line }}.{{ line.number }}
+                        </button>
+                      </div>
                     </div>
                   </div>
+                </div>
+                <!-- <div
+                  class="col-md-12"
+                  *ngIf="!getSeatsBySchedule && getSeatsByScheduleIDLoading"
+                >
+                  <div
+                    *ngIf="!theaterLists && loading"
+                    class="spinner-border spinner-border-sm mr-1"
+                  ></div>
                 </div>
                 <div class="col-md-12 mt-5 text-center">
                   <button routerLink="/user/checkout" class="btn btn-info">
                     Continue Checkout
                   </button>
-                </div>
+                </div> -->
               </div>
             </div>
           </article>
