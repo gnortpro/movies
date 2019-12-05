@@ -8,11 +8,13 @@ export class User {
   lastName: string;
 }
 export class UserAuth {
-  id: number;
-  email: string;
-  password: string;
-  firstName: string;
-  lastName: string;
-  role: Role;
+  user: {
+    id: number;
+    email: string;
+    password: string;
+    firstName: string;
+    lastName: string;
+    role: Role;
+  };
   token?: string;
 }
