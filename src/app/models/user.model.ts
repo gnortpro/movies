@@ -1,3 +1,4 @@
+import { Role } from "./index";
 export class User {
   id?: number;
   email: string;
@@ -12,5 +13,6 @@ export class UserAuth {
   password: string;
   firstName: string;
   lastName: string;
+  role: Role;
   token?: string;
 }

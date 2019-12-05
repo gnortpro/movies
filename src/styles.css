@@ -1260,3 +1260,6 @@ h3.step {
 .paid-complete:hover {
   background: #de0606;
 }
+.app-content {
+  background: #fdfcf0;
+}

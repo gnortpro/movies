@@ -39,8 +39,12 @@
       <button
         type="submit"
         class="btn btn-primary"
-        [disabled]="!adminLoginForm.valid"
+        [disabled]="!adminLoginForm.valid || loading"
       >
+        <span
+          *ngIf="loading"
+          class="spinner-border spinner-border-sm mr-1"
+        ></span>
         Submit
       </button>
     </form>

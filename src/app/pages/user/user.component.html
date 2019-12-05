@@ -36,9 +36,19 @@
 
                 <li class="menu-item">
                   <a
+                    *ngIf="loggedUser"
+                    class="mat-button mat-button-header"
+                    routerLink="/user/profile"
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                    ><i class="fa fa-user"></i> {{ loggedUser.fullName }}</a
+                  >
+                </li>
+                <li class="menu-item">
+                  <a
                     *ngIf="!loggedUser"
                     class="mat-button mat-button-header"
-                    routerLink="/user/login"
+                    routerLink="/login"
                     routerLinkActive="active"
                     [routerLinkActiveOptions]="{ exact: true }"
                     >Đăng nhập</a

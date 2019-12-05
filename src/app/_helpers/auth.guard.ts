@@ -7,6 +7,7 @@ import {
 } from "@angular/router";
 
 import { AuthenticationService } from "../_services";
+import { Role } from "../models";
 
 @Injectable({ providedIn: "root" })
 export class AuthGuard implements CanActivate {
@@ -18,6 +19,20 @@ export class AuthGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const currentUser = this.authenticationService.currentUserValue;
     if (currentUser) {
+      if (
+        route.data.roles &&
+        route.data.roles.indexOf(currentUser.user.role) === -1
+      ) {
+        if (currentUser.user.role === Role.Admin) {
+          this.router.navigate(["/admin"]);
+        } else {
+          this.router.navigate(["/"]);
+        }
+
+        return false;
+      }
+      // console.log("currentUser", currentUser);
+
       // logged in so return true
       return true;
     }

@@ -52,13 +52,15 @@ export class MoviesComponent implements OnInit {
     );
   }
   deleteMovie(id) {
-    this.dataService.deleteMovie(id).subscribe(
-      data => {
-        this.openSnackBar("Delete Movie Successfully", "createMovie");
-        this.getListMovies();
-      },
-      error => {}
-    );
+    if (confirm("Bạn muốn xóa phim này?")) {
+      this.dataService.deleteMovie(id).subscribe(
+        data => {
+          this.openSnackBar("Delete Movie Successfully", "createMovie");
+          this.getListMovies();
+        },
+        error => {}
+      );
+    }
   }
   get f() {
     return this.createMovieForm.controls;

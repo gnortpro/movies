@@ -7,7 +7,7 @@ import { Component, OnInit } from "@angular/core";
 })
 export class UserComponent implements OnInit {
   title = "User";
-  loggedUser = false;
+  loggedUser;
   menuClick = false;
   openDialogLogin(): void {}
   toggleMobileClass(): void {
@@ -15,5 +15,7 @@ export class UserComponent implements OnInit {
   }
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.loggedUser = JSON.parse(localStorage.getItem("currentUser")).user;
+  }
 }

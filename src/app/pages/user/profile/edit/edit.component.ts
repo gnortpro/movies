@@ -6,14 +6,10 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./edit.component.css"]
 })
 export class EditComponent implements OnInit {
-  users = {
-    name: "Nguyen Viet Trong",
-    bod: "26/08/96",
-    email: "abc@email.com",
-    phone: "0983144444",
-    registerAt: "22/12/2018"
-  };
+  user;
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem("currentUser")).user;
+  }
 }

@@ -2,48 +2,29 @@
   <div class="row profile-title text-center">
     <h3>Thông tin của bạn</h3>
   </div>
-  <div class="row">
+  <div class="row mt-5" *ngIf="user">
+    <div class="col-md-6">
+      <div class="userAvatar">
+        <img [src]="user.avatar" alt="" class="img-responsive" />
+        <div class="text-center mt-2">
+          <button class="btn btn-success">Change avatar</button>
+        </div>
+      </div>
+    </div>
     <div class="col-md-6">
       <ul class="form-list edit-info">
         <li class="fields">
           <div class="customer-name">
             <label for="firstname">Tên</label>
             <div class="input-box">
-              Nguyen Trong
+              {{ user.fullName }}
             </div>
-          </div>
-        </li>
-        <li>
-          <label for="month">Ngày sinh</label>
-          <div class="input-box customer-dob">
-            26/08/1996
           </div>
         </li>
         <li>
           <label for="email">Địa chỉ email</label>
           <div class="input-box">
-            gnortpro4@gmail.com
-          </div>
-        </li>
-      </ul>
-    </div>
-    <div class="col-md-6">
-      <ul class="form-list edit-info-cgv-right">
-        <li>
-          <label for="gender">Giới tính</label>
-          <div class="input-box">
-            Nam
-          </div>
-        </li>
-        <li class="fields">
-          <label for="telephone">Điện thoại</label>
-          <div class="input-box">0983014454</div>
-        </li>
-
-        <li>
-          <label for="onlineID">Tên đăng nhập</label>
-          <div class="input-box">
-            gnortpro123
+            {{ user.email }}
           </div>
         </li>
       </ul>

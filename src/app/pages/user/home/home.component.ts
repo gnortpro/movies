@@ -9,6 +9,7 @@ import { PageEvent } from "@angular/material/paginator";
   styleUrls: ["./home.component.css"]
 })
 export class HomeComponent implements OnInit {
+  loading = false;
   movies;
   events;
   showTimeBtn = false;
@@ -64,9 +65,11 @@ export class HomeComponent implements OnInit {
   constructor(private dataService: DataService, private diaglog: MatDialog) {}
 
   ngOnInit() {
+    this.loading = true;
     this.dataService.getListMovies().subscribe(
       (data: { movies: {} }) => {
         this.movies = data.movies;
+        this.loading = false;
       },
       error => {}
     );

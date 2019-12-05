@@ -10,10 +10,7 @@ import { AuthenticationService } from "../../_services";
 export class AdminComponent implements OnInit {
   currentUser: UserAuth;
   checkUser = false;
-  logout() {
-    this.authenticationService.logout();
-    this.router.navigate(["/login"]);
-  }
+
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService
@@ -26,5 +23,9 @@ export class AdminComponent implements OnInit {
   ngOnInit() {
     const checkUser = this.authenticationService.currentUserValue;
     this.checkUser = checkUser ? true : false;
+  }
+  logout() {
+    this.authenticationService.logout();
+    this.router.navigate(["/login"]);
   }
 }

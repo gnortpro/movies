@@ -9,14 +9,13 @@ import { UserComponent } from "./pages/user/user.component";
 import { ProfileComponent } from "./pages/user/profile/profile.component";
 import { UpcomingMovieComponent } from "./pages/user/upcoming-movie/upcoming-movie.component";
 import { DetaileventComponent } from "./pages/user/detailevent/detailevent.component";
-import { UserLoginComponent } from "./pages/user/user-login/user-login.component";
 import { EditComponent } from "./pages/user/profile/edit/edit.component";
 import { VoucherComponent } from "./pages/user/profile/voucher/voucher.component";
 import { TicketBoughtComponent } from "./pages/user/profile/ticket-bought/ticket-bought.component";
 import { CheckoutComponent } from "./pages/user/checkout/checkout.component";
 // Admin
 import { AdminComponent } from "./pages/admin/admin.component";
-import { LoginComponent } from "./pages/admin/login/login.component";
+import { LoginComponent } from "./pages/login/login.component";
 import { ListuserComponent } from "./pages/admin/user/listuser.component";
 import { DashboardComponent } from "./pages/admin/dashboard/dashboard.component";
 import { MoviesComponent } from "./pages/admin/movies/movies.component";
@@ -24,31 +23,28 @@ import { TheatersComponent } from "./pages/admin/theaters/theaters.component";
 import { AuditoriumsComponent } from "./pages/admin/auditoriums/auditoriums.component";
 // helper
 import { AuthGuard } from "./_helpers";
-
+import { Role } from "./models";
 const routes: Routes = [
   {
     path: "admin",
     component: AdminComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [Role.Admin] },
     children: [
       {
         path: "user",
-        component: ListuserComponent,
-        canActivate: [AuthGuard]
+        component: ListuserComponent
       },
-      { path: "movie", component: MoviesComponent, canActivate: [AuthGuard] },
+      { path: "movie", component: MoviesComponent },
       {
         path: "theaters",
-        component: TheatersComponent,
-        canActivate: [AuthGuard]
+        component: TheatersComponent
       },
-
       {
         path: "auditoriums/:theaterID",
-        component: AuditoriumsComponent,
-        canActivate: [AuthGuard]
+        component: AuditoriumsComponent
       },
-
-      { path: "", component: DashboardComponent, canActivate: [AuthGuard] }
+      { path: "", component: DashboardComponent }
     ]
   },
   {
@@ -64,6 +60,7 @@ const routes: Routes = [
       {
         path: "profile",
         component: ProfileComponent,
+        canActivate: [AuthGuard],
         children: [
           { path: "", component: EditComponent },
           { path: "voucher", component: VoucherComponent },
@@ -71,7 +68,6 @@ const routes: Routes = [
         ]
       },
       { path: "upcoming", component: UpcomingMovieComponent },
-      { path: "login", component: UserLoginComponent },
       { path: "", component: HomeComponent }
     ]
   },

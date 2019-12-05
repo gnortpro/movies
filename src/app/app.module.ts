@@ -60,11 +60,10 @@ import { DetaileventComponent } from "./pages/user/detailevent/detailevent.compo
 import { EditComponent } from "./pages/user/profile/edit/edit.component";
 import { VoucherComponent } from "./pages/user/profile/voucher/voucher.component";
 import { TicketBoughtComponent } from "./pages/user/profile/ticket-bought/ticket-bought.component";
-import { UserLoginComponent } from "./pages/user/user-login/user-login.component";
 
 // Admin
 import { AdminComponent } from "./pages/admin/admin.component";
-import { LoginComponent } from "./pages/admin/login/login.component";
+import { LoginComponent } from "./pages/login/login.component";
 import { ListuserComponent } from "./pages/admin/user/listuser.component";
 import { DashboardComponent } from "./pages/admin/dashboard/dashboard.component";
 import { MoviesComponent } from "./pages/admin/movies/movies.component";
@@ -96,7 +95,6 @@ import { ExpiredBookTicketComponent } from "./_layouts/dialog/expired-book-ticke
     EditComponent,
     VoucherComponent,
     TicketBoughtComponent,
-    UserLoginComponent,
     TrailerDialogComponent,
     MoviesComponent,
     SnackBarComponent,
