@@ -73,7 +73,7 @@
                           {{ detail.cast }}
                         </div>
                       </div>
-                      <!-- 
+                      <!--
                       <div class="movie-field">
                         <label class="movie-field-label">Thể loại:</label>
                         <div class="movie-field-content">
@@ -180,7 +180,7 @@
               </div>
               <div class="row">
                 <div class="col-md-4">
-                  <div class="select-cinema" ng>
+                  <div class="select-cinema">
                     <h4>Chọn rạp chiếu</h4>
                     <ul *ngIf="theaterLists">
                       <li *ngFor="let theaterList of theaterLists">
@@ -192,6 +192,10 @@
                         </button>
                       </li>
                     </ul>
+                    <div
+                      *ngIf="!theaterLists && loading"
+                      class="spinner-border spinner-border-sm mr-1"
+                    ></div>
                   </div>
                 </div>
                 <div class="col-md-8">

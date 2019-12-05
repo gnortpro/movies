@@ -14,6 +14,7 @@ export class DetailmovieComponent implements OnInit {
   movieID: number;
   movieInfo;
   selectSeat = false;
+  loading = false;
   slides = [
     { img: "assets/slider/s1.jpg" },
     { img: "assets/slider/s2.jpg" },
@@ -50,8 +51,10 @@ export class DetailmovieComponent implements OnInit {
       },
       error => {}
     );
+    this.loading = true;
     this.dataService.getTheaterList().subscribe(
       data => {
+        this.loading = false;
         this.theaterLists = data;
       },
       error => {}
