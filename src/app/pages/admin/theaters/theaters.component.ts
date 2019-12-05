@@ -10,6 +10,7 @@ import { SnackBarComponent } from "../../../_layouts/snack-bar/snack-bar.compone
   styleUrls: ["./theaters.component.css"]
 })
 export class TheatersComponent implements OnInit {
+  loading = false;
   createTheaterForm: FormGroup;
   // listTheaters;
   displayedColumns: string[] = ["Title", "Latitude", "Longtitude", "action"];
@@ -27,9 +28,14 @@ export class TheatersComponent implements OnInit {
       latitude: ["", Validators.required],
       longtitude: ["", Validators.required]
     });
+    this.getTheaterList();
+  }
+  getTheaterList() {
+    this.loading = true;
     this.dataService.getTheaterList().subscribe(
       data => {
         this.listTheaters = data;
+        this.loading = false;
       },
       error => {}
     );
@@ -47,7 +53,7 @@ export class TheatersComponent implements OnInit {
     }
     // console.log(this.f);
 
-    // this.loading = true;
+    this.loading = true;
     // console.log("form value", this.adminLoginForm.value);
     this.dataService
       .createTheater({
@@ -57,7 +63,9 @@ export class TheatersComponent implements OnInit {
       })
       .subscribe(
         data => {
+          this.loading = false;
           this.openSnackBar("Success", "createTheater");
+          this.getTheaterList();
           this.createTheaterForm.reset();
         },
         error => {}

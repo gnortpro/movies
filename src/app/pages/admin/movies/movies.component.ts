@@ -9,6 +9,7 @@ import { SnackBarComponent } from "../../../_layouts/snack-bar/snack-bar.compone
   styleUrls: ["./movies.component.css"]
 })
 export class MoviesComponent implements OnInit {
+  loading = false;
   createMovieForm: FormGroup;
   displayedColumns: string[] = [
     "ID",
@@ -30,6 +31,7 @@ export class MoviesComponent implements OnInit {
     public snackBar: MatSnackBar
   ) {}
   ngOnInit() {
+    this.loading = false;
     this.createMovieForm = this.formBuilder.group({
       title: ["", Validators.required],
       duration: ["", Validators.required],
@@ -44,8 +46,10 @@ export class MoviesComponent implements OnInit {
     this.getListMovies();
   }
   getListMovies() {
+    this.loading = true;
     this.dataService.getListMovies().subscribe(
       (data: { movies: {} }) => {
+        this.loading = false;
         this.listMovies = data.movies;
       },
       error => {}
@@ -72,7 +76,7 @@ export class MoviesComponent implements OnInit {
     }
     // console.log(this.f);
 
-    // this.loading = true;
+    this.loading = true;
     // console.log("form value", this.adminLoginForm.value);
     this.dataService
       .postCreateMovie({
@@ -88,9 +92,10 @@ export class MoviesComponent implements OnInit {
       })
       .subscribe(
         data => {
-          this.getListMovies();
           this.openSnackBar("Success", "createMovie");
           this.createMovieForm.reset();
+          this.getListMovies();
+          this.loading = false;
           // console.log(data);
         },
         error => {}

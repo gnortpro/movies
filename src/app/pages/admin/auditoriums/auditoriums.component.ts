@@ -10,6 +10,7 @@ import { SnackBarComponent } from "../../../_layouts/snack-bar/snack-bar.compone
   styleUrls: ["./auditoriums.component.css"]
 })
 export class AuditoriumsComponent implements OnInit {
+  loading = false;
   createAuditoriumForm: FormGroup;
   listAuditoriums;
   constructor(
@@ -26,11 +27,12 @@ export class AuditoriumsComponent implements OnInit {
   }
 
   getListAudit() {
+    this.loading = true;
     const id = +this.activeRoute.snapshot.paramMap.get("theaterID");
     this.dataService.getAuditoriumList(id).subscribe(
       data => {
         this.listAuditoriums = data;
-        console.log(this.listAuditoriums.total);
+        this.loading = false;
       },
       error => {}
     );
@@ -45,6 +47,7 @@ export class AuditoriumsComponent implements OnInit {
     if (this.createAuditoriumForm.invalid) {
       return;
     }
+    this.loading = true;
     this.dataService
       .createAuditoriumByTheaterID(
         { theaterID: id },
@@ -55,6 +58,7 @@ export class AuditoriumsComponent implements OnInit {
           this.openSnackBar("Success", "createAuditorium");
           this.createAuditoriumForm.reset();
           this.getListAudit();
+          this.loading = false;
         },
         error => {}
       );

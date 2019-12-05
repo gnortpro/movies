@@ -17,8 +17,12 @@
         <button
           class="btn btn-info"
           type="submit"
-          [disabled]="!createAuditoriumForm.valid"
+          [disabled]="!createAuditoriumForm.valid && loading"
         >
+          <span
+            *ngIf="loading"
+            class="spinner-border spinner-border-sm mr-1"
+          ></span>
           Create Auditorium
         </button>
       </form>
@@ -35,7 +39,8 @@
     </div>
 
     <div class="col-md-12 mt-5" *ngIf="!listAuditoriums">
-      <div class="alert alert-danger">
+      <div *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></div>
+      <div *ngIf="!loading" class="alert alert-danger">
         This theater do not have any auditoriums
       </div>
     </div>
