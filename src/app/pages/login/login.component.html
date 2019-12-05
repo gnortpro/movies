@@ -1,52 +1,58 @@
-<div class="container loginform-wrapper">
+<div class="container loginform-wrapper mt-5">
   <div class="row">
-    <form [formGroup]="adminLoginForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input
-          type="email"
-          class="form-control"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
-          placeholder="Enter email"
-          formControlName="email"
-          required
-        />
-        <mat-error
-          *ngIf="
-            adminLoginForm.hasError('email') &&
-            !adminLoginForm.hasError('required')
-          "
-        >
-          Please enter a valid email address
-        </mat-error>
+    <div class="col-md-12">
+      <div class="alert alert-info">
+        <p>User: user@user.com Pass useruser</p>
+        <p>Admin: admin@admin.com Pass adminadmin</p>
       </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input
-          type="password"
-          class="form-control"
-          id="exampleInputPassword1"
-          placeholder="Password"
-          formControlName="password"
-          required
-        />
-      </div>
-      <!-- <div class="form-group form-check">
+      <form [formGroup]="adminLoginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group text-left">
+          <label for="exampleInputEmail1">Email address</label>
+          <input
+            type="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="Enter email"
+            formControlName="email"
+            required
+          />
+          <mat-error
+            *ngIf="
+              adminLoginForm.hasError('email') &&
+              !adminLoginForm.hasError('required')
+            "
+          >
+            Please enter a valid email address
+          </mat-error>
+        </div>
+        <div class="form-group text-left">
+          <label for="exampleInputPassword1">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+            placeholder="Password"
+            formControlName="password"
+            required
+          />
+        </div>
+        <!-- <div class="form-group form-check">
         <input type="checkbox" class="form-check-input" id="exampleCheck1" />
         <label class="form-check-label" for="exampleCheck1">Check me out</label>
       </div> -->
-      <button
-        type="submit"
-        class="btn btn-primary"
-        [disabled]="!adminLoginForm.valid || loading"
-      >
-        <span
-          *ngIf="loading"
-          class="spinner-border spinner-border-sm mr-1"
-        ></span>
-        Submit
-      </button>
-    </form>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="!adminLoginForm.valid || loading"
+        >
+          <span
+            *ngIf="loading"
+            class="spinner-border spinner-border-sm mr-1"
+          ></span>
+          Submit
+        </button>
+      </form>
+    </div>
   </div>
 </div>
