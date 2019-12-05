@@ -81,7 +81,29 @@ export class DataService {
       this.httpOptions
     );
   }
-
+  public getSchedule(movieID: number) {
+    return this.httpClient.get(
+      `${environment.apiUrl}/movies/` + movieID + `/schedules`
+    ); // lấy danh sách các rạp chiếu phim
+  }
+  public postScheduleByDay(movieID: number, day: string) {
+    return this.httpClient.post(
+      `${environment.apiUrl}/movies/` + movieID + `/schedules/available`,
+      {
+        day
+      },
+      this.httpOptions
+    );
+  }
+  public getSeatsByScheduleID(movieID: number, scheduleID: number) {
+    return this.httpClient.get(
+      `${environment.apiUrl}/movies/` +
+        movieID +
+        `/schedules/` +
+        scheduleID +
+        `/seats`
+    ); // lấy danh sách các rạp chiếu phim
+  }
   public getEvents() {
     return this.httpClient.get(this.events);
   }

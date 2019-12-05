@@ -743,14 +743,16 @@ a:focus {
   padding: 5px 20px;
 }
 
-.st-time ul li {
+.st-time ul li,
+.pick-time {
   background: #fe7900;
   display: inline-block;
   list-style: none;
   margin: 0 5px;
   padding: 5px 10px;
   border-radius: 4px;
-  color: #fff;
+  color: #fff !important;
+  border: none !important;
   font-size: 13px;
 }
 
@@ -1108,6 +1110,7 @@ button.slick-prev:hover {
   background: #f8f8f8;
   float: left;
   width: 100%;
+  min-height: 250px;
 }
 .single-movie .entry-showtime .select-cinema h4 {
   background: transparent url(assets/icon-cinema.png) no-repeat scroll 0 0;
@@ -1153,6 +1156,7 @@ button.slick-prev:hover {
 }
 .single-movie .entry-showtime .showtime {
   background: #f8f8f8;
+  min-height: 250px;
 }
 .entry-showtime .showtime .st-time {
   border-left: 1px solid #ececec;
@@ -1262,4 +1266,24 @@ h3.step {
 }
 .app-content {
   background: #fdfcf0;
+}
+.day-slider .slick-prev:before,
+.slick-next:before {
+  color: #000000 !important;
+}
+.day-slider button.slick-prev,
+button.slick-prev:hover {
+  left: -20px !important;
+}
+.day-slider button.slick-next,
+button.slick-next:hover {
+  right: -10px !important;
+}
+.day-slider .slide.media-item {
+  border: solid 1px #b5b5b5;
+}
+p.emptySeats {
+  font-size: 11px;
+  margin-bottom: 0;
+  margin-top: -20px;
 }

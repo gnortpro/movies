@@ -94,7 +94,7 @@ export class HomeComponent implements OnInit {
       }
     });
     diaglogRef.afterClosed().subscribe(result => {
-      console.log("abc");
+      // console.log("abc");
     });
   }
 }

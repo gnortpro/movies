@@ -17,14 +17,6 @@
             formControlName="email"
             required
           />
-          <mat-error
-            *ngIf="
-              adminLoginForm.hasError('email') &&
-              !adminLoginForm.hasError('required')
-            "
-          >
-            Please enter a valid email address
-          </mat-error>
         </div>
         <div class="form-group text-left">
           <label for="exampleInputPassword1">Password</label>
@@ -36,6 +28,9 @@
             formControlName="password"
             required
           />
+        </div>
+        <div class="alert alert-danger text-left" *ngIf="error">
+          {{ error }}
         </div>
         <!-- <div class="form-group form-check">
         <input type="checkbox" class="form-check-input" id="exampleCheck1" />

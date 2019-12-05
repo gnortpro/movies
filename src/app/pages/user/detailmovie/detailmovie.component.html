@@ -179,73 +179,83 @@
                 <h3>Lịch chiếu</h3>
               </div>
               <div class="row">
-                <div class="col-md-4">
-                  <div class="select-cinema">
-                    <h4>Chọn rạp chiếu</h4>
-                    <ul *ngIf="theaterLists">
-                      <li *ngFor="let theaterList of theaterLists">
+                <div class="col-md-12 mb-5">
+                  <ngx-slick-carousel
+                    class="carousel day-slider"
+                    #slickModal="slick-carousel"
+                    [config]="slideDayConfig"
+                  >
+                    <div
+                      ngxSlickItem
+                      *ngFor="let day of days"
+                      class="slide media-item"
+                    >
+                      <div class="day" (click)="getSelectDaySchedules(day)">
+                        <span>{{ day | date: "MM" }}</span
+                        ><em>{{ day | date: "EE" }}</em
+                        ><strong>{{ day | date: "dd" }}</strong>
+                      </div>
+                    </div>
+                  </ngx-slick-carousel>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div
+                    *ngIf="scheduleLoading"
+                    class="spinner-border spinner-border-sm mr-1"
+                  ></div>
+                  <div class="select-cinema" *ngIf="scheduleLists">
+                    <h4>Chọn suất chiếu</h4>
+                    <ul *ngIf="scheduleLists">
+                      <li *ngFor="let scheduleList of scheduleLists">
+                        <button class="btn select-theater">
+                          {{ scheduleList.theaterTitle }}
+                        </button>
+
                         <button
-                          class="btn select-theater"
-                          (click)="handleBookTheater(1, 2347)"
+                          class="btn pick-time"
+                          *ngFor="let schedule of scheduleList.schedules"
+                          (click)="getSeatsByScheduleID(schedule.scheduleId)"
                         >
-                          {{ theaterList.title }}
+                          {{ schedule.screeningTime | date: "HH:mm":"+0700" }}
+                          <p class="emptySeats">
+                            ({{ schedule.emptySeats }} ghế trống)
+                          </p>
                         </button>
                       </li>
                     </ul>
-                    <div
+                    <!-- <div
                       *ngIf="!theaterLists && loading"
                       class="spinner-border spinner-border-sm mr-1"
-                    ></div>
+                    ></div> -->
                   </div>
                 </div>
-                <div class="col-md-8">
+                <!-- <div class="col-md-8">
                   <div class="showtime">
-                    <div class="st-time" [hidden]="movieID !== 1">
+                    <div class="st-time">
                       <div class="st-title">
-                        <label>December 7, 2018</label>
                         <button (click)="selectSeatStep()" class="buy-ticket">
                           Seat Picker
                         </button>
                       </div>
-                      <ul class="list-unstyled">
-                        <li>
+                      <ul class="list-unstyled" *ngIf="scheduleList.schedules">
+                        <li *ngFor="let schedule of scheduleList.schedules">
                           <button
-                            (click)="handleBookTime(12)"
+                            (click)="handleBookTime(schedule.scheduleId)"
                             class="btn buy-ticket text-white"
                           >
-                            12h
-                          </button>
-                        </li>
-                        <li>
-                          <button
-                            (click)="handleBookTime(15)"
-                            class="btn buy-ticket text-white"
-                          >
-                            15h
+                            {{ schedule.screeningTime | date: "HH:mm":"+0700" }}
                           </button>
                         </li>
                       </ul>
-                    </div>
-                    <div class="st-time" [hidden]="movieID !== 2">
-                      <div class="st-title">
-                        <label>December 12, 2019</label>
-                        <button (click)="selectSeatStep()" class="buy-ticket">
-                          Seat Picker
-                        </button>
-                      </div>
-                      <ul class="list-unstyled">
-                        <li>
-                          <button
-                            (click)="handleBookTime(1)"
-                            class="btn buy-ticket text-white"
-                          >
-                            12h
-                          </button>
-                        </li>
-                      </ul>
+                      <div
+                        *ngIf="!scheduleLists && scheduleLoading"
+                        class="spinner-border spinner-border-sm mr-1"
+                      ></div>
                     </div>
                   </div>
-                </div>
+                </div> -->
               </div>
               <div
                 class="row"
