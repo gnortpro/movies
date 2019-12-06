@@ -27,9 +27,20 @@ export class DataService {
       page = 1;
     }
     return this.httpClient.get(
-      `${environment.apiUrl}/movies/?limit=` + limit + `&page=` + page
+      `${environment.apiUrl}/movies/?limit=` +
+        limit +
+        `&page=` +
+        page +
+        `&sort=premiereAt`
     );
   }
+
+  public getListMoviesByIMDB() {
+    return this.httpClient.get(
+      `${environment.apiUrl}/movies/?limit=5&page=1&sort=imdbScore`
+    );
+  }
+
   public postCreateMovie(movie: Movie) {
     return this.httpClient.post<Movie>(
       `${environment.apiUrl}/movies`,

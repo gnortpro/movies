@@ -1317,3 +1317,17 @@ span.text-sencond {
   padding: 1px 0px;
   margin-bottom: 10px;
 }
+.entry-thumb img {
+  max-width: 124px;
+}
+@media (max-width: 767.98px) {
+  header#masthead {
+    padding: 0px 15px;
+  }
+  .mobile-breadcrumb .breadcrumb {
+    display: block;
+  }
+  .movie-thumb a img {
+    margin-bottom: 15px;
+  }
+}

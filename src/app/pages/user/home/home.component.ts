@@ -11,7 +11,7 @@ import { PageEvent } from "@angular/material/paginator";
 export class HomeComponent implements OnInit {
   loading = false;
   movies;
-  events;
+  hotmovies;
   showTimeBtn = false;
   pageEvent: PageEvent;
   posters = [
@@ -68,11 +68,13 @@ export class HomeComponent implements OnInit {
       },
       error => {}
     );
-
-    this.dataService.getEvents().subscribe((data: { data: {} }) => {
-      this.events = data.data;
-      // console.log("events", data.data);
-    });
+    this.dataService.getListMoviesByIMDB().subscribe(
+      (data: { movies: {} }) => {
+        this.hotmovies = data.movies;
+        this.loading = false;
+      },
+      error => {}
+    );
   }
   handlePage(event) {
     this.loading = true;
