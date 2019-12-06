@@ -76,7 +76,14 @@ import { SnackBarComponent } from "./_layouts/snack-bar/snack-bar.component";
 import { CheckoutComponent } from "./pages/user/checkout/checkout.component";
 import { CountdownModule } from "ngx-countdown";
 import { ExpiredBookTicketComponent } from "./_layouts/dialog/expired-book-ticket/expired-book-ticket.component";
+// for HttpClient import:
+import { LoadingBarHttpClientModule } from "@ngx-loading-bar/http-client";
 
+// for Router import:
+import { LoadingBarRouterModule } from "@ngx-loading-bar/router";
+
+// for Core import:
+import { LoadingBarModule } from "@ngx-loading-bar/core";
 @NgModule({
   declarations: [
     AppComponent,
@@ -143,7 +150,10 @@ import { ExpiredBookTicketComponent } from "./_layouts/dialog/expired-book-ticke
     MatPaginatorModule,
     FormsModule,
     SlickCarouselModule,
-    CountdownModule
+    CountdownModule,
+    LoadingBarHttpClientModule,
+    LoadingBarRouterModule,
+    LoadingBarModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

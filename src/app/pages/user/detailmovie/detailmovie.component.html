@@ -47,11 +47,12 @@
                 <div class="col-md-8">
                   <div class="entry-info" *ngIf="detail">
                     <h1 class="entry-title">
-                      <a href="" class="">{{ detail.title }}</a>
+                      <p class="">{{ detail.title }}</p>
                     </h1>
                     <div class="entry-pg">
                       <span class="movie-duration"
-                        ><i class="fa fa-clock-o"></i> 01 hours 20 minutes
+                        ><i class="fa fa-clock-o"></i>
+                        {{ detail.durationMin }} phút
                       </span>
                     </div>
                     <div class="movie-field-wrapper">
