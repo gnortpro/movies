@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   hotmovies;
   showTimeBtn = false;
   pageEvent: PageEvent;
+  totalMovie;
   posters = [
     "assets/poster/m1.jpg",
     "assets/poster/m2.jpg",
@@ -63,9 +64,10 @@ export class HomeComponent implements OnInit {
     this.loading = true;
     // limit 5, page 1
     this.dataService.getListMovies(5, 1).subscribe(
-      (data: { movies: {} }) => {
+      (data: any) => {
         this.movies = data.movies;
         this.loading = false;
+        this.totalMovie = data.total;
       },
       error => {}
     );
@@ -78,14 +80,18 @@ export class HomeComponent implements OnInit {
     );
   }
   handlePage(event) {
+    console.log("event", event);
+
     this.loading = true;
-    this.dataService.getListMovies(event.pageSize, event.pageIndex).subscribe(
-      (data: { movies: {} }) => {
-        this.movies = data.movies;
-        this.loading = false;
-      },
-      error => {}
-    );
+    this.dataService
+      .getListMovies(event.pageSize, event.pageIndex + 1)
+      .subscribe(
+        (data: { movies: {} }) => {
+          this.movies = data.movies;
+          this.loading = false;
+        },
+        error => {}
+      );
     return this.movies;
   }
   showtime(): void {
