@@ -20,6 +20,8 @@ export class DetailmovieComponent implements OnInit {
   loading = false;
   scheduleLoading = false;
   getSeatsByScheduleIDLoading = false;
+  screenID: number;
+  chonsuatchieu = false;
   slides = [
     { img: "assets/slider/s1.jpg" },
     { img: "assets/slider/s2.jpg" },
@@ -84,6 +86,7 @@ export class DetailmovieComponent implements OnInit {
     this.openBuyTicketDialog(ticketID);
   }
   getSeatsByScheduleID(scheduleID: number) {
+    this.selectSeat = false;
     this.getSeatsByScheduleIDLoading = true;
     this.dataService.getSeatsByScheduleID(this.movieID, scheduleID).subscribe(
       data => {
@@ -98,15 +101,20 @@ export class DetailmovieComponent implements OnInit {
     );
   }
   getSelectDaySchedules(day: string) {
+    this.selectSeat = false;
     this.scheduleLoading = true;
+    this.chonsuatchieu = false;
+
     let convertDay = new DatePipe("en-US").transform(day, "yyyy/MM/dd");
     this.dataService.postScheduleByDay(this.movieID, convertDay).subscribe(
       data => {
         this.scheduleLists = data;
         this.scheduleLoading = false;
+        this.chonsuatchieu = true;
       },
       error => {
         this.scheduleLoading = false;
+        this.chonsuatchieu = true;
       }
     );
   }
@@ -128,10 +136,6 @@ export class DetailmovieComponent implements OnInit {
     // time: string,
     // date: string
   ) {}
-
-  selectSeatStep() {
-    this.selectSeat = !this.selectSeat;
-  }
   openBuyTicketDialog(id: number): void {
     const diaglogRef = this.buyTicketDialog.open(BuyTicketDialogComponent, {
       width: "500px",

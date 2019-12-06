@@ -187,10 +187,13 @@
                   >
                     <div
                       ngxSlickItem
-                      *ngFor="let day of days"
+                      *ngFor="let day of days; let index = index"
                       class="slide media-item"
                     >
-                      <div class="day" (click)="getSelectDaySchedules(day)">
+                      <div
+                        class="day"
+                        (click)="getSelectDaySchedules(day, index)"
+                      >
                         <span>{{ day | date: "MM" }}</span
                         ><em>{{ day | date: "EE" }}</em
                         ><strong>{{ day | date: "dd" }}</strong>
@@ -205,7 +208,10 @@
                     *ngIf="scheduleLoading"
                     class="spinner-border spinner-border-sm mr-1"
                   ></div>
-                  <div class="select-cinema" *ngIf="scheduleLists">
+                  <div
+                    class="select-cinema"
+                    *ngIf="scheduleLists && chonsuatchieu"
+                  >
                     <h4>Chọn suất chiếu</h4>
                     <ul *ngIf="scheduleLists">
                       <li *ngFor="let scheduleList of scheduleLists">
@@ -215,7 +221,10 @@
 
                         <button
                           class="btn pick-time"
-                          *ngFor="let schedule of scheduleList.schedules"
+                          *ngFor="
+                            let schedule of scheduleList.schedules;
+                            let index = index
+                          "
                           (click)="getSeatsByScheduleID(schedule.scheduleId)"
                           [disabled]="getSeatsByScheduleIDLoading"
                         >
@@ -230,9 +239,9 @@
                         </button>
                       </li>
                     </ul>
-                    <div class="alert alert-danger" *ngIf="scheduleLists">
+                    <!-- <div class="alert alert-danger" *ngIf="!scheduleLists">
                       Không có suất chiếu cho ngày này.
-                    </div>
+                    </div> -->
                     <!-- <div
                       *ngIf="!theaterLists && loading"
                       class="spinner-border spinner-border-sm mr-1"
@@ -266,6 +275,7 @@
                 </div> -->
               </div>
               <div
+                [id]="screenID ? screenID : ''"
                 class="row"
                 [style.opacity]="selectSeat ? '1' : '0'"
                 [style.visibility]="selectSeat ? 'visible' : 'hidden'"
@@ -282,7 +292,9 @@
                         "
                       >
                         <button
-                          [class]="isReserved ? 'seat inactive' : 'seat active'"
+                          [class]="
+                            line.isReserved ? 'seat inactive' : 'seat active'
+                          "
                           (click)="submitBuyTicket(line.id)"
                         >
                           {{ line.line }}.{{ line.number }}
