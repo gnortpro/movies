@@ -5,7 +5,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Development server
 
 ```html
-Run git clone https://github.com/gnortpro/movies 
+Run git clone https://github.com/gnortpro/movies.git
 ```
 ```html
 Run cd /movies 
