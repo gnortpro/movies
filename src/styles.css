@@ -1308,3 +1308,6 @@ span.text-sencond {
   margin-left: 5px;
   font-size: 20px;
 }
+.movie-thumb a img {
+  min-height: 400px;
+}
