@@ -35,7 +35,7 @@ export class MoviesComponent implements OnInit {
   ngOnInit() {
     this.loading = false;
 
-    this.getListMovies(5, 1);
+    this.getListMovies(10, 1);
   }
   getListMovies(limit: number, page: number) {
     this.loading = true;
