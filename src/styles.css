@@ -634,6 +634,10 @@ a:focus {
 
 .movie-description p {
   margin-bottom: 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .single-movie .entry-info .movie-field-wrapper .movie-field label {
