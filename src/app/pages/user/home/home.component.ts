@@ -83,6 +83,7 @@ export class HomeComponent implements OnInit {
       },
       error => {}
     );
+    return this.movies;
   }
   showtime(): void {
     this.showTimeBtn = !this.showTimeBtn;
