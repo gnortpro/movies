@@ -187,13 +187,10 @@
                   >
                     <div
                       ngxSlickItem
-                      *ngFor="let day of days; let index = index"
+                      *ngFor="let day of days"
                       class="slide media-item"
                     >
-                      <div
-                        class="day"
-                        (click)="getSelectDaySchedules(day, index)"
-                      >
+                      <div class="day" (click)="getSelectDaySchedules(day)">
                         <span>{{ day | date: "MM" }}</span
                         ><em>{{ day | date: "EE" }}</em
                         ><strong>{{ day | date: "dd" }}</strong>
@@ -221,10 +218,7 @@
 
                         <button
                           class="btn pick-time"
-                          *ngFor="
-                            let schedule of scheduleList.schedules;
-                            let index = index
-                          "
+                          *ngFor="let schedule of scheduleList.schedules"
                           (click)="getSeatsByScheduleID(schedule.scheduleId)"
                           [disabled]="getSeatsByScheduleIDLoading"
                         >
@@ -284,13 +278,7 @@
                   <div class="seatPickerWrapper">
                     <div class="screen"></div>
                     <div class="seat-picker text-center">
-                      <div
-                        class="line"
-                        *ngFor="
-                          let line of getSeatsBySchedule;
-                          let index = index
-                        "
-                      >
+                      <div class="line" *ngFor="let line of getSeatsBySchedule">
                         <button
                           [class]="
                             line.isReserved ? 'seat inactive' : 'seat active'

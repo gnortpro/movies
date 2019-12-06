@@ -1298,3 +1298,13 @@ button.seat.inactive {
 .seatPickerWrapper {
   background: #f8f8f8;
 }
+.site-logo a span.text-logo {
+  font-size: 30px;
+  color: #fe7900;
+  font-weight: 600;
+}
+span.text-sencond {
+  font-weight: 600;
+  margin-left: 5px;
+  font-size: 20px;
+}
