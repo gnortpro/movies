@@ -14,28 +14,18 @@ export class DataService {
   httpOptions = {
     headers: new HttpHeaders({ "Content-Type": "application/json" })
   };
-  baseURL = "https://movie-tickets-vinid.herokuapp.com/api";
-  // private getListMovieApi = "http://www.mocky.io/v2/5ddba5c83400005300eadcf7";
-  // private movieDetails = "http://www.mocky.io/v2/5ddbb5483400005200eadd84";
-  // private events = "http://www.mocky.io/v2/5ddde6382f000039617eaba5";
-  // private tickets = " http://www.mocky.io/v2/5dddee8e2f000039617eabcb";
-  // POST
-  private adminLogin = "/auth";
-  private creatMovie = "/movies";
-  // GET
-  private getListMovieApi = "/movies";
-  private getSingleMovie = "/movies";
   private movieDetails = "http://www.mocky.io/v2/5ddbb5483400005200eadd84";
   private events = "http://www.mocky.io/v2/5ddde6382f000039617eaba5";
   private tickets = " http://www.mocky.io/v2/5dddee8e2f000039617eabcb";
 
   constructor(
     private httpClient: HttpClient // httpErrorHandler: HttpErrorHandler
-  ) {
-    // this.handleError = httpErrorHandler.createHandleError("HeroesService");
-  }
+  ) {}
 
   public getListMovies(limit: number, page: number) {
+    if (page < 1) {
+      page = 1;
+    }
     return this.httpClient.get(
       `${environment.apiUrl}/movies/?limit=` + limit + `&page=` + page
     );

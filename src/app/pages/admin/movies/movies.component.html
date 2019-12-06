@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4">
-      <form [formGroup]="createMovieForm" (ngSubmit)="onSubmit()">
+    <div class="col-md-12">
+      <!-- <form [formGroup]="createMovieForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
           <label for="title">Title</label>
           <input
@@ -111,9 +111,12 @@
         >
           Create Movie
         </button>
-      </form>
+      </form> -->
+      <button (click)="addNewMovie()" class="btn btn-info mb-2">
+        Add Movies
+      </button>
     </div>
-    <div class="col-md-8" *ngIf="listMovies">
+    <div class="col-md-12" *ngIf="listMovies">
       <table mat-table [dataSource]="listMovies" class="mat-elevation-z8">
         <ng-container matColumnDef="ID">
           <th mat-header-cell *matHeaderCellDef>ID</th>
@@ -189,7 +192,7 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
       </table>
     </div>
-    <div class="col-md-8" *ngIf="!listMovies">
+    <div class="col-md-12" *ngIf="!listMovies">
       <div *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></div>
     </div>
   </div>

@@ -80,6 +80,16 @@ export class HomeComponent implements OnInit {
       // console.log("events", data.data);
     });
   }
+  handlePage(event) {
+    this.loading = true;
+    this.dataService.getListMovies(event.pageSize, event.pageIndex).subscribe(
+      (data: { movies: {} }) => {
+        this.movies = data.movies;
+        this.loading = false;
+      },
+      error => {}
+    );
+  }
   setPageSizeOptions(setPageSizeOptionsInput: string) {
     this.pageSizeOptions = setPageSizeOptionsInput.split(",").map(str => +str);
   }

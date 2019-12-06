@@ -1112,7 +1112,8 @@ button.slick-prev:hover {
   width: 100%;
   min-height: 250px;
 }
-.single-movie .entry-showtime .select-cinema h4 {
+.single-movie .entry-showtime .select-cinema h4,
+.select-day h4 {
   background: transparent url(assets/icon-cinema.png) no-repeat scroll 0 0;
   color: #000;
   font-size: 14px;
@@ -1310,4 +1311,9 @@ span.text-sencond {
 }
 .movie-thumb a img {
   min-height: 400px;
+}
+.select-day {
+  background: #f8f8f8;
+  padding: 1px 0px;
+  margin-bottom: 10px;
 }

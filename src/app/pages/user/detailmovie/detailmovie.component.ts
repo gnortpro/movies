@@ -57,8 +57,8 @@ export class DetailmovieComponent implements OnInit {
   };
 
   days = [];
-  today_day = new Date().getDate();
-  today_month = new Date().getMonth();
+  todayDay = new Date().getDate();
+  todayMonth = new Date().getMonth();
   constructor(
     private route: ActivatedRoute,
     private dataService: DataService,
@@ -74,8 +74,8 @@ export class DetailmovieComponent implements OnInit {
       error => {}
     );
     // get list 20 day from now
-    for (let i = this.today_day; i <= 20; i++) {
-      this.days.push(new Date(2019, this.today_month, i));
+    for (let i = this.todayDay; i <= 20; i++) {
+      this.days.push(new Date(2019, this.todayMonth, i));
     }
   }
   submitBuyTicket(ticketID: number) {
@@ -91,6 +91,10 @@ export class DetailmovieComponent implements OnInit {
     this.dataService.getSeatsByScheduleID(this.movieID, scheduleID).subscribe(
       data => {
         this.getSeatsBySchedule = data;
+        console.log("type", typeof data);
+
+        console.log("seat", data);
+
         this.selectSeat = true;
 
         this.getSeatsByScheduleIDLoading = false;

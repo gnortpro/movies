@@ -12,7 +12,6 @@ export class UserComponent implements OnInit {
   currentUser: UserAuth;
   checkUser = false;
   menuClick = false;
-  openDialogLogin(): void {}
   toggleMobileClass(): void {
     this.menuClick = !this.menuClick;
   }

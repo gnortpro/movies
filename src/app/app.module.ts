@@ -69,6 +69,7 @@ import { DashboardComponent } from "./pages/admin/dashboard/dashboard.component"
 import { MoviesComponent } from "./pages/admin/movies/movies.component";
 import { TheatersComponent } from "./pages/admin/theaters/theaters.component";
 import { AuditoriumsComponent } from "./pages/admin/auditoriums/auditoriums.component";
+import { AddMovieComponent } from "./pages/admin/add-movie/add-movie.component";
 // Import your library
 import { SlickCarouselModule } from "ngx-slick-carousel";
 import { SnackBarComponent } from "./_layouts/snack-bar/snack-bar.component";
@@ -102,7 +103,8 @@ import { ExpiredBookTicketComponent } from "./_layouts/dialog/expired-book-ticke
     CheckoutComponent,
     ExpiredBookTicketComponent,
     TheatersComponent,
-    AuditoriumsComponent
+    AuditoriumsComponent,
+    AddMovieComponent
   ],
   imports: [
     HttpClientModule,

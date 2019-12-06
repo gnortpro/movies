@@ -145,10 +145,18 @@
           </div>
 
           <div class="home-pagination">
-            <div class="clear"></div>
+            <!-- <div class="clear"></div>
             <span class="page-numbers current">1</span>
             <a href="" class="page-number current">2</a>
-            <a href="" class="next page-number">Next</a>
+            <a href="" class="next page-number">Next</a> -->
+            <mat-paginator
+              [length]="100"
+              [pageSize]="5"
+              [pageSizeOptions]="false"
+              [showFirstLastButtons]="false"
+              (page)="pageEvent = handlePage($event)"
+            >
+            </mat-paginator>
           </div>
         </div>
         <div class="col-md-7 col-lg-8" *ngIf="!movies">
