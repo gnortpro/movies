@@ -49,13 +49,19 @@
                   </h3>
                   <div class="movie-rating">
                     <span class="rating-star">
-                      <span class="current-rating" style="width: 71%;"></span>
+                      <span
+                        class="current-rating"
+                        [style.width]="movie.imdbScore * 10 + '%'"
+                      ></span>
                     </span>
-                    <span class="user-rating">(124 Votes)</span>
+                    <span class="user-rating"
+                      >({{ movie.imdbScore + 100 }} Bầu chọn)</span
+                    >
                   </div>
                   <div class="movie-meta-duration">
                     <span class="movie-duration"
-                      ><i class="fa fa-clock-o"></i> 02 hours 50 minutes</span
+                      ><i class="fa fa-clock-o"></i>
+                      {{ movie.durationMin }} phút</span
                     >
                   </div>
                   <div class="movie-description">
