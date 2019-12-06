@@ -62,7 +62,7 @@ export class AddMovieComponent implements OnInit {
           this.openSnackBar("Success", "createMovie");
           this.createMovieForm.reset();
           this.loading = false;
-          this.router.navigate(["/admin/movies"]);
+          this.router.navigate(["/admin/movie"]);
           // console.log(data);
         },
         error => {
