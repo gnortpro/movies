@@ -5,10 +5,21 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Development server
 
 ```html
-Run git clone https://github.com/gnortpro/movies Run cd /movies Run npm install
+Run git clone https://github.com/gnortpro/movies.git
 ```
 
-Run ng serve -o for a dev server. Navigate to `http://localhost:5001/`. The app will automatically reload if you change any of the source files.
+```html
+Run cd /movies
+```
+
+```html
+Run npm install
+```
+
+```html
+Run ng serve -o for a dev server. Navigate to `http://localhost:5001/`. The app
+will automatically reload if you change any of the source files.
+```
 
 ## Production server
 
