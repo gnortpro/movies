@@ -54,13 +54,6 @@ export class HomeComponent implements OnInit {
       }
     }
   };
-  // MatPaginator Inputs
-  length = 100;
-  pageSize = 10;
-  pageSizeOptions: number[] = [5, 10, 25, 100];
-
-  // MatPaginator Output
-  pageEvent: PageEvent;
 
   constructor(private dataService: DataService, private diaglog: MatDialog) {}
 
@@ -89,9 +82,6 @@ export class HomeComponent implements OnInit {
       },
       error => {}
     );
-  }
-  setPageSizeOptions(setPageSizeOptionsInput: string) {
-    this.pageSizeOptions = setPageSizeOptionsInput.split(",").map(str => +str);
   }
   showtime(): void {
     this.showTimeBtn = !this.showTimeBtn;
