@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   movies;
   events;
   showTimeBtn = false;
+  pageEvent: PageEvent;
   posters = [
     "assets/poster/m1.jpg",
     "assets/poster/m2.jpg",
