@@ -1381,6 +1381,27 @@ button.mat-paginator-navigation-next[disabled][disabled] {
 .slotpicker-schedules button {
   margin-bottom: 10px;
 }
+
+/************* buy-ticket-dialog ***********/
+.buy-ticket-dialog .mat-dialog-container {
+  border-radius: 20px !important;
+  background: #fafafa !important;
+  padding: 0px;
+}
+.buy-ticket-dialog .mat-dialog-content {
+  padding: 20px;
+  margin: 0px;
+}
+.buy-ticket-dialog .mat-dialog-title {
+  background: #1a73e8;
+  color: white;
+  padding: 20px;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 500;
+  flex: 1 1 auto;
+  font-family: "Google Sans", sans-serif;
+}
 @media (max-width: 767.98px) {
   header#masthead {
     padding: 0px 15px;
