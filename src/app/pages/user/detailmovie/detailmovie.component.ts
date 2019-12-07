@@ -22,6 +22,7 @@ export class DetailmovieComponent implements OnInit {
   getSeatsByScheduleIDLoading = false;
   screenID: number;
   chonsuatchieu = false;
+  ticketIDArray = [];
   slides = [
     { img: "assets/slider/s1.jpg" },
     { img: "assets/slider/s2.jpg" },
@@ -84,7 +85,10 @@ export class DetailmovieComponent implements OnInit {
     //   data => {},
     //   error => {}
     // );
-    this.openBuyTicketDialog({ ticketID: ticketID, seatName: seatName });
+    this.ticketIDArray.push(ticketID);
+    console.log(this.ticketIDArray);
+
+    // this.openBuyTicketDialog({ ticketID: ticketID, seatName: seatName });
   }
   getSeatsByScheduleID(scheduleID: number) {
     this.selectSeat = false;
@@ -122,24 +126,6 @@ export class DetailmovieComponent implements OnInit {
       }
     );
   }
-  // handleBookTheater(theaterID: number) {
-  //   this.scheduleLoading = true;
-  //   this.dataService.getSchedule(this.movieID).subscribe(
-  //     data => {
-  //       this.scheduleLists = data;
-  //       this.scheduleLoading = false;
-  //       console.log(this.scheduleLists);
-  //     },
-  //     error => {}
-  //   );
-  //   // this.movieID = movieID; // xử lý ẩn hiện bảng chọn time
-  // }
-  handleBookTime(
-    movieID: number
-    // theaterID: number,
-    // time: string,
-    // date: string
-  ) {}
   openBuyTicketDialog(data: object): void {
     const diaglogRef = this.buyTicketDialog.open(BuyTicketDialogComponent, {
       width: "500px",
