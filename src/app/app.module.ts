@@ -75,6 +75,7 @@ import { SlickCarouselModule } from "ngx-slick-carousel";
 import { SnackBarComponent } from "./_layouts/snack-bar/snack-bar.component";
 import { CheckoutComponent } from "./pages/user/checkout/checkout.component";
 import { CountdownModule } from "ngx-countdown";
+
 import { ExpiredBookTicketComponent } from "./_layouts/dialog/expired-book-ticket/expired-book-ticket.component";
 // for HttpClient import:
 import { LoadingBarHttpClientModule } from "@ngx-loading-bar/http-client";

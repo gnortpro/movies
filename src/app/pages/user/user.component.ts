@@ -8,13 +8,10 @@ import { UserAuth } from "src/app/models";
 })
 export class UserComponent implements OnInit {
   title = "User";
-  // loggedUser;
   currentUser: UserAuth;
   checkUser = false;
   menuClick = false;
-  toggleMobileClass(): void {
-    this.menuClick = !this.menuClick;
-  }
+
   constructor(private authenticationService: AuthenticationService) {
     this.authenticationService.currentUser.subscribe(
       x => (this.currentUser = x)
@@ -25,5 +22,9 @@ export class UserComponent implements OnInit {
     const checkUser = this.authenticationService.currentUserValue;
     this.checkUser = checkUser ? true : false;
     // this.loggedUser = JSON.parse(localStorage.getItem("currentUser")).user;
+  }
+
+  toggleMobileClass(): void {
+    this.menuClick = !this.menuClick;
   }
 }

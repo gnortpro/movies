@@ -196,29 +196,31 @@
                     *ngIf="scheduleLists && chonsuatchieu"
                   >
                     <h4>Chọn suất chiếu</h4>
-                    <ul *ngIf="scheduleLists">
-                      <li *ngFor="let scheduleList of scheduleLists">
-                        <button class="btn select-theater">
-                          {{ scheduleList.theaterTitle }}
-                        </button>
-
-                        <button
-                          class="btn pick-time"
-                          *ngFor="let schedule of scheduleList.schedules"
-                          (click)="getSeatsByScheduleID(schedule.scheduleId)"
-                          [disabled]="getSeatsByScheduleIDLoading"
-                        >
-                          <span
-                            *ngIf="getSeatsByScheduleIDLoading"
-                            class="spinner-border spinner-border-sm mr-1"
-                          ></span>
-                          {{ schedule.screeningTime | date: "HH:mm":"+0700" }}
-                          <p class="emptySeats">
-                            ({{ schedule.emptySeats }} ghế trống)
-                          </p>
-                        </button>
-                      </li>
-                    </ul>
+                    <div class="slotpicker" *ngIf="scheduleLists">
+                      <div
+                        class="slotpicker-item row"
+                        *ngFor="let scheduleList of scheduleLists"
+                      >
+                        <div class="slotpicker-button col-md-3">
+                          <button class="btn select-theater">
+                            {{ scheduleList.theaterTitle }}
+                          </button>
+                        </div>
+                        <div class="slotpicker-schedules col-md-9">
+                          <button
+                            class="btn pick-time"
+                            *ngFor="let schedule of scheduleList.schedules"
+                            (click)="getSeatsByScheduleID(schedule.scheduleId)"
+                            [disabled]="getSeatsByScheduleIDLoading"
+                          >
+                            {{ schedule.screeningTime | date: "HH:mm":"+0700" }}
+                            <p class="emptySeats">
+                              ({{ schedule.emptySeats }} ghế trống)
+                            </p>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                     <!-- <div class="alert alert-danger" *ngIf="!scheduleLists">
                       Không có suất chiếu cho ngày này.
                     </div> -->
@@ -228,31 +230,6 @@
                     ></div> -->
                   </div>
                 </div>
-                <!-- <div class="col-md-8">
-                  <div class="showtime">
-                    <div class="st-time">
-                      <div class="st-title">
-                        <button (click)="selectSeatStep()" class="buy-ticket">
-                          Seat Picker
-                        </button>
-                      </div>
-                      <ul class="list-unstyled" *ngIf="scheduleList.schedules">
-                        <li *ngFor="let schedule of scheduleList.schedules">
-                          <button
-                            (click)="handleBookTime(schedule.scheduleId)"
-                            class="btn buy-ticket text-white"
-                          >
-                            {{ schedule.screeningTime | date: "HH:mm":"+0700" }}
-                          </button>
-                        </li>
-                      </ul>
-                      <div
-                        *ngIf="!scheduleLists && scheduleLoading"
-                        class="spinner-border spinner-border-sm mr-1"
-                      ></div>
-                    </div>
-                  </div>
-                </div> -->
               </div>
               <div
                 [id]="screenID ? screenID : ''"
@@ -260,37 +237,36 @@
                 [style.opacity]="selectSeat ? '1' : '0'"
                 [style.visibility]="selectSeat ? 'visible' : 'hidden'"
               >
+                <div class="col-md-12">
+                  <div class="select-day">
+                    <h4>Chọn ghế</h4>
+                  </div>
+                </div>
                 <div class="col-md-12" *ngIf="getSeatsBySchedule">
                   <div class="seatPickerWrapper">
                     <div class="screen"></div>
                     <div class="seat-picker text-center">
-                      <div class="line" *ngFor="let line of getSeatsBySchedule">
+                      <div
+                        class="line"
+                        *ngFor="let linerow of getSeatsBySchedule"
+                      >
                         <button
+                          *ngFor="let line of linerow.seats"
                           [class]="
-                            line.isReserved ? 'seat inactive' : 'seat active'
+                            line.isReserved === 0
+                              ? 'seat active'
+                              : 'seat inactive'
                           "
-                          (click)="submitBuyTicket(line.id)"
+                          (click)="
+                            submitBuyTicket(line.seatId, 'A' + line.seatNumber)
+                          "
                         >
-                          {{ line.line }}.{{ line.number }}
+                          {{ line.seatNumber }}
                         </button>
                       </div>
                     </div>
                   </div>
                 </div>
-                <!-- <div
-                  class="col-md-12"
-                  *ngIf="!getSeatsBySchedule && getSeatsByScheduleIDLoading"
-                >
-                  <div
-                    *ngIf="!theaterLists && loading"
-                    class="spinner-border spinner-border-sm mr-1"
-                  ></div>
-                </div>
-                <div class="col-md-12 mt-5 text-center">
-                  <button routerLink="/user/checkout" class="btn btn-info">
-                    Continue Checkout
-                  </button>
-                </div> -->
               </div>
             </div>
           </article>

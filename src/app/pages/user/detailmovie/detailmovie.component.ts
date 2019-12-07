@@ -77,13 +77,14 @@ export class DetailmovieComponent implements OnInit {
     for (let i = this.todayDay; i <= 20; i++) {
       this.days.push(new Date(2019, this.todayMonth, i));
     }
+    this.getSelectDaySchedules(new Date());
   }
-  submitBuyTicket(ticketID: number) {
+  submitBuyTicket(ticketID: number, seatName: string) {
     // this.dataService.postSubmitBuyTicket(this.movieID, ticketID).subscribe(
     //   data => {},
     //   error => {}
     // );
-    this.openBuyTicketDialog(ticketID);
+    this.openBuyTicketDialog({ ticketID: ticketID, seatName: seatName });
   }
   getSeatsByScheduleID(scheduleID: number) {
     this.selectSeat = false;
@@ -91,9 +92,6 @@ export class DetailmovieComponent implements OnInit {
     this.dataService.getSeatsByScheduleID(this.movieID, scheduleID).subscribe(
       data => {
         this.getSeatsBySchedule = data;
-        console.log("type", typeof data);
-
-        console.log("seat", data);
 
         this.selectSeat = true;
 
@@ -104,12 +102,14 @@ export class DetailmovieComponent implements OnInit {
       }
     );
   }
-  getSelectDaySchedules(day: string) {
+  getSelectDaySchedules(day: any) {
+    // console.log(day);
+
     this.selectSeat = false;
     this.scheduleLoading = true;
     this.chonsuatchieu = false;
 
-    let convertDay = new DatePipe("en-US").transform(day, "yyyy/MM/dd");
+    const convertDay = new DatePipe("en-US").transform(day, "yyyy/MM/dd");
     this.dataService.postScheduleByDay(this.movieID, convertDay).subscribe(
       data => {
         this.scheduleLists = data;
@@ -140,12 +140,11 @@ export class DetailmovieComponent implements OnInit {
     // time: string,
     // date: string
   ) {}
-  openBuyTicketDialog(id: number): void {
+  openBuyTicketDialog(data: object): void {
     const diaglogRef = this.buyTicketDialog.open(BuyTicketDialogComponent, {
       width: "500px",
-      data: {
-        id: id
-      }
+      data: data,
+      panelClass: "buy-ticket-dialog"
     });
     diaglogRef.afterClosed().subscribe(result => {
       console.log("dialog result", result);

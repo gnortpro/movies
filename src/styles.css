@@ -1112,9 +1112,10 @@ button.slick-prev:hover {
 }
 .single-movie .entry-showtime .select-cinema {
   background: #f8f8f8;
-  float: left;
+  /* float: left; */
   width: 100%;
   min-height: 250px;
+  padding: 1px 0px 0px;
 }
 .single-movie .entry-showtime .select-cinema h4,
 .select-day h4 {
@@ -1128,13 +1129,18 @@ button.slick-prev:hover {
   padding-left: 35px;
   text-transform: uppercase;
 }
-.single-movie .entry-showtime .select-cinema ul {
+.single-movie .entry-showtime .select-cinema .slotpicker {
   margin: 0;
-  padding: 20px 0;
+  padding-top: 20px;
   border-top: 2px solid #fff;
   list-style: none;
 }
-.single-movie .entry-showtime .select-cinema ul li button {
+.single-movie
+  .entry-showtime
+  .select-cinema
+  .slotpicker
+  .slotpicker-item
+  button {
   list-style: none;
   padding: 0 25px;
   color: #666;
@@ -1145,15 +1151,31 @@ button.slick-prev:hover {
   position: relative;
   cursor: pointer;
 }
-.single-movie .entry-showtime .select-cinema ul li:hover:before,
-.single-movie .entry-showtime .select-cinema ul li.active:before {
+.single-movie
+  .entry-showtime
+  .select-cinema
+  .slotpicker
+  .slotpicker-item:hover:before,
+.single-movie
+  .entry-showtime
+  .select-cinema
+  .slotpicker
+  .slotpicker-item.active:before {
   border-color: rgba(248, 248, 248, 0);
   border-left-color: #dbdbdb;
   border-width: 9px;
   margin-top: -9px;
 }
-.single-movie .entry-showtime .select-cinema ul li:hover:after,
-.single-movie .entry-showtime .select-cinema ul li.active:after {
+.single-movie
+  .entry-showtime
+  .select-cinema
+  .slotpicker
+  .slotpicker-item:hover:after,
+.single-movie
+  .entry-showtime
+  .select-cinema
+  .slotpicker
+  .slotpicker-item.active:after {
   border-color: rgba(248, 248, 248, 0);
   border-left-color: #dbdbdb;
   border-width: 9px;
@@ -1302,6 +1324,8 @@ button.seat.inactive {
 }
 .seatPickerWrapper {
   background: #f8f8f8;
+  padding-bottom: 20px;
+  padding-top: 10px;
 }
 .site-logo a span.text-logo {
   font-size: 30px;
@@ -1319,10 +1343,43 @@ span.text-sencond {
 .select-day {
   background: #f8f8f8;
   padding: 1px 0px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 .entry-thumb img {
   max-width: 124px;
+}
+.mat-paginator-page-size {
+  display: none;
+}
+
+button.mat-paginator-navigation-previous,
+button.mat-paginator-navigation-next {
+  background: #fe7900;
+  color: white;
+  border-radius: 0;
+  height: 35px;
+  line-height: 30px;
+  margin-right: 5px;
+}
+button.mat-paginator-navigation-previous[disabled][disabled],
+button.mat-paginator-navigation-next[disabled][disabled] {
+  color: #e4e4e4;
+}
+.mat-paginator-page-size {
+  display: none !important;
+}
+
+.mat-paginator-range-label {
+  margin: 0 10px 0 24px !important;
+  color: #6d6d6d;
+}
+.slotpicker-item {
+  margin-bottom: 5px;
+  border-bottom: solid 2px white;
+}
+
+.slotpicker-schedules button {
+  margin-bottom: 10px;
 }
 @media (max-width: 767.98px) {
   header#masthead {

@@ -9,6 +9,7 @@ import { Router } from "@angular/router";
 })
 export class BuyTicketDialogComponent implements OnInit {
   id: number;
+  seatName: string;
   constructor(
     private dialogRef: MatDialogRef<BuyTicketDialogComponent>,
     private sanitizer: DomSanitizer,
@@ -16,6 +17,7 @@ export class BuyTicketDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) data
   ) {
     this.id = data.id;
+    this.seatName = data.seatName;
   }
   ngOnInit() {}
   redirect() {
