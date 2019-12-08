@@ -27,7 +27,7 @@
     </div>
   </div>
 </div>
-<div class="container" *ngIf="detail">
+<div class="container booked-history mt-5 mb-5" *ngIf="detail">
   <div class="row">
     <div class="col-md-3">
       <div class="entry-poster">
@@ -37,6 +37,8 @@
           class="img-responsive"
         />
       </div>
+    </div>
+    <div class="col-md-9">
       <div class="entry-info">
         <h1 class="entry-title">
           <p class="">{{ detail.schedule.movie.title }}</p>
@@ -67,12 +69,12 @@
             </div>
           </div>
           <!--
-                          <div class="movie-field">
-                            <label class="movie-field-label">Thể loại:</label>
-                            <div class="movie-field-content">
-                              Comedy, Comedy, Comedy, Comedy
-                            </div>
-                          </div> -->
+                              <div class="movie-field">
+                                <label class="movie-field-label">Thể loại:</label>
+                                <div class="movie-field-content">
+                                  Comedy, Comedy, Comedy, Comedy
+                                </div>
+                              </div> -->
 
           <div class="movie-description">
             <p>
@@ -81,6 +83,27 @@
           </div>
         </div>
       </div>
+      <ul class="list-unstyled">
+        <li>
+          <strong>Thời gian mua:</strong>
+          {{ detail.createdAt | date: "dd/MM/yyy HH:mm:ss" }}
+        </li>
+        <li>
+          <strong> Rạp:</strong>
+          {{ detail.schedule.auditorium.theater.title }} |
+          {{ detail.schedule.auditorium.title }}
+          <!-- <button
+            (click)="
+              theaterMap(
+                detail.schedule.auditorium.theater.latitude,
+                detail.schedule.auditorium.theater.longitude
+              )
+            "
+          >
+            Xem bản đồ
+          </button> -->
+        </li>
+      </ul>
     </div>
   </div>
 </div>

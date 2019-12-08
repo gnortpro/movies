@@ -78,22 +78,13 @@ export class DetailmovieComponent implements OnInit {
       },
       error => {}
     );
+
     // get list 20 day from now
     for (let i = this.todayDay; i <= 20; i++) {
       this.days.push(new Date(2019, this.todayMonth, i));
     }
     this.getSelectDaySchedules(new Date());
   }
-  // containsObject(obj, list) {
-  //   var i;
-  //   for (i = 0; i < list.length; i++) {
-  //     if (list[i] === obj) {
-  //       return true;
-  //     }
-  //   }
-
-  //   return false;
-  // }
   checkedSeat(ticketID: number) {
     let index = this.ticketIDArray.findIndex(x => (x.ticketID = ticketID));
     if (index !== -1) {
@@ -103,8 +94,10 @@ export class DetailmovieComponent implements OnInit {
     }
   }
   submitBuyTicket(ticketID: number, seatName: string) {
-    this.ticketIDArray.push(ticketID);
-    // console.log(obj.id);
+    // let index = this.ticketIDArray.findIndex(x => (x = ticketID));
+    if (!this.ticketIDArray.includes(ticketID)) {
+      this.ticketIDArray.push(ticketID);
+    }
     // this.dataService.postSubmitBuyTicket(this.movieID, ticketID).subscribe(
     //   data => {},
     //   error => {}
@@ -168,6 +161,8 @@ export class DetailmovieComponent implements OnInit {
     const convertDay = new DatePipe("en-US").transform(day, "yyyy/MM/dd");
     this.dataService.postScheduleByDay(this.movieID, convertDay).subscribe(
       data => {
+        console.log("dt", data);
+
         this.scheduleLists = data;
         this.scheduleLoading = false;
         this.chonsuatchieu = true;

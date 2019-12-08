@@ -24,4 +24,8 @@ export class BookHistoryComponent implements OnInit {
       error => {}
     );
   }
+  // theaterMap(lat, long) {
+  //   console.log(lat + long);
+
+  // }
 }

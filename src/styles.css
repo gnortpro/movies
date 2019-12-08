@@ -1406,6 +1406,18 @@ button#active {
   background: #ea4c4c;
   color: white;
 }
+.booked-seats {
+  margin-right: 5px;
+  background: #fe7900;
+  color: white;
+  padding: 5px 6px;
+  border-radius: 20px;
+}
+.booked-history .entry-title {
+  font-size: 20px;
+  margin-top: 15px;
+  margin-bottom: -10px;
+}
 @media (max-width: 767.98px) {
   header#masthead {
     padding: 0px 15px;

@@ -217,9 +217,12 @@
                         </div>
                       </div>
                     </div>
-                    <!-- <div class="alert alert-danger" *ngIf="!scheduleLists">
+                    <div
+                      class="alert alert-danger ml-5 mr-5"
+                      *ngIf="scheduleLists.length === 0"
+                    >
                       Không có suất chiếu cho ngày này.
-                    </div> -->
+                    </div>
                     <!-- <div
                       *ngIf="!theaterLists && loading"
                       class="spinner-border spinner-border-sm mr-1"
@@ -261,6 +264,14 @@
                           {{ line.seatNumber }}
                         </button>
                       </div>
+                    </div>
+                    <div class="col-md-12 text-center mt-5">
+                      Ghế đã chọn:
+                      <span
+                        class="booked-seats"
+                        *ngFor="let ticket of ticketIDArray"
+                        >{{ ticket }}</span
+                      >
                     </div>
                     <div class="text-center mt-5">
                       <button class="btn btn-info" (click)="continueCheckout()">
