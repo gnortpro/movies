@@ -116,6 +116,31 @@ export class DataService {
     ); // lấy danh sách các rạp chiếu phim
   }
 
+  public postNewReservation(data) {
+    return this.httpClient.post(
+      `${environment.apiUrl}/reservations`,
+      {
+        ...data
+      },
+      this.httpOptions
+    );
+  }
+
+  public getBookedLastReservation(reservationId: number) {
+    return this.httpClient.get(
+      `${environment.apiUrl}/reservations/` + reservationId
+    ); // lấy danh sách các rạp chiếu phim
+  }
+  public postPurchase(id: number) {
+    return this.httpClient.post(
+      `${environment.apiUrl}/reservations/` + id + `/checkout`,
+      {
+        id
+      },
+      this.httpOptions
+    );
+  }
+
   public getEvents() {
     return this.httpClient.get(this.events);
   }

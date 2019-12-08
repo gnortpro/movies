@@ -1402,6 +1402,10 @@ button.mat-paginator-navigation-next[disabled][disabled] {
   flex: 1 1 auto;
   font-family: "Google Sans", sans-serif;
 }
+button#active {
+  background: #ea4c4c;
+  color: white;
+}
 @media (max-width: 767.98px) {
   header#masthead {
     padding: 0px 15px;

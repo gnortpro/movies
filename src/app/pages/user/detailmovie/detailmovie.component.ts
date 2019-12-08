@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { DataService } from "../../../_services/data.service";
 import { BuyTicketDialogComponent } from "src/app/_layouts/dialog/buy-ticket/buy-ticket.component";
 import { MatDialog } from "@angular/material";
@@ -23,6 +23,8 @@ export class DetailmovieComponent implements OnInit {
   screenID: number;
   chonsuatchieu = false;
   ticketIDArray = [];
+  reservationID;
+  dataCheckout = [];
   slides = [
     { img: "assets/slider/s1.jpg" },
     { img: "assets/slider/s2.jpg" },
@@ -60,10 +62,12 @@ export class DetailmovieComponent implements OnInit {
   days = [];
   todayDay = new Date().getDate();
   todayMonth = new Date().getMonth();
+  public isClicked = [];
   constructor(
     private route: ActivatedRoute,
     private dataService: DataService,
-    private buyTicketDialog: MatDialog
+    private buyTicketDialog: MatDialog,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -80,21 +84,69 @@ export class DetailmovieComponent implements OnInit {
     }
     this.getSelectDaySchedules(new Date());
   }
+  // containsObject(obj, list) {
+  //   var i;
+  //   for (i = 0; i < list.length; i++) {
+  //     if (list[i] === obj) {
+  //       return true;
+  //     }
+  //   }
+
+  //   return false;
+  // }
+  checkedSeat(ticketID: number) {
+    let index = this.ticketIDArray.findIndex(x => (x.ticketID = ticketID));
+    if (index !== -1) {
+      return "active";
+    } else {
+      return "";
+    }
+  }
   submitBuyTicket(ticketID: number, seatName: string) {
+    this.ticketIDArray.push(ticketID);
+    // console.log(obj.id);
     // this.dataService.postSubmitBuyTicket(this.movieID, ticketID).subscribe(
     //   data => {},
     //   error => {}
     // );
-    this.ticketIDArray.push(ticketID);
-    console.log(this.ticketIDArray);
+    // let obj = { ticketID: ticketID, seatName: seatName, isClicked: true };
+    // let index = this.ticketIDArray.findIndex(x => (x.ticketID = ticketID));
+
+    // if (index === -1) {
+    //   this.ticketIDArray.push(obj);
+    // } else {
+    //   obj.isClicked = !this.ticketIDArray[index].isClicked;
+    //   this.ticketIDArray.splice(index, 1);
+    //   this.ticketIDArray.push(obj);
+    // }
+
+    // console.log(this.ticketIDArray);
 
     // this.openBuyTicketDialog({ ticketID: ticketID, seatName: seatName });
+  }
+  continueCheckout() {
+    // let scheduleLocal = JSON.parse(localStorage.getItem("schedule"));
+
+    this.ticketIDArray.forEach(element => {
+      this.dataCheckout[0].seatIds.push(element);
+    });
+
+    // localStorage.setItem("schedule", JSON.stringify(scheduleLocal));
+    this.dataService.postNewReservation(this.dataCheckout[0]).subscribe(
+      (data: { id: number }) => {
+        this.reservationID = data.id;
+        this.router.navigate(["/user/checkout/" + this.reservationID]);
+      },
+      error => {}
+    );
+    // console.log(this.ticketIDArray);
   }
   getSeatsByScheduleID(scheduleID: number) {
     this.selectSeat = false;
     this.getSeatsByScheduleIDLoading = true;
     this.dataService.getSeatsByScheduleID(this.movieID, scheduleID).subscribe(
       data => {
+        this.dataCheckout.push({ scheduleId: scheduleID, seatIds: [] });
         this.getSeatsBySchedule = data;
 
         this.selectSeat = true;

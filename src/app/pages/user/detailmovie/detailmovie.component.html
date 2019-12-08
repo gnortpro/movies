@@ -27,7 +27,7 @@
     </div>
   </div>
 </div>
-<div class="container-fluid bg-white nopadding single-movie">
+<div class="container-fluid bg-white nopadding single-movie" *ngIf="detail">
   <div class="main-content">
     <div class="container">
       <div class="row">
@@ -35,17 +35,13 @@
           <article class="post-id status-publish">
             <div class="entry-top">
               <div class="row">
-                <div class="col-md-4 text-center">
+                <div class="col-md-3 text-center">
                   <div class="entry-poster">
-                    <img
-                      src="assets/poster/m6.jpg"
-                      alt=""
-                      class="img-responsive"
-                    />
+                    <img [src]="detail.image" alt="" class="img-responsive" />
                   </div>
                 </div>
-                <div class="col-md-8">
-                  <div class="entry-info" *ngIf="detail">
+                <div class="col-md-9">
+                  <div class="entry-info">
                     <h1 class="entry-title">
                       <p class="">{{ detail.title }}</p>
                     </h1>
@@ -260,10 +256,16 @@
                           (click)="
                             submitBuyTicket(line.seatId, 'A' + line.seatNumber)
                           "
+                          [disabled]="line.isReserved === 1"
                         >
                           {{ line.seatNumber }}
                         </button>
                       </div>
+                    </div>
+                    <div class="text-center mt-5">
+                      <button class="btn btn-info" (click)="continueCheckout()">
+                        Thanh toán
+                      </button>
                     </div>
                   </div>
                 </div>

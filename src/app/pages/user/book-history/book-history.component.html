@@ -1,0 +1,86 @@
+<div class="container-fluid " id="amy-page-header">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="container d-none d-md-none d-lg-block">
+        <h1 class="page-title">Chi tiết vé</h1>
+        <div class="breadcrumbs">
+          <a
+            class="mat-button mat-button-header"
+            routerLink="/user"
+            routerLinkActive="active"
+            >Trang chủ</a
+          >
+          &gt; <span class="post post-page current-item">Chi tiết vé</span>
+        </div>
+      </div>
+      <div class="mobile-breadcrumb d-lg-none d-xl-none">
+        <div class="breadcrumb">
+          <a
+            class="mat-button mat-button-header"
+            routerLink="/user"
+            routerLinkActive="active"
+            >Trang chủ</a
+          >
+          &gt; <span class="post post-page current-item">Chi tiết vé</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container" *ngIf="detail">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="entry-poster">
+        <img
+          [src]="detail.schedule.movie.image"
+          alt=""
+          class="img-responsive"
+        />
+      </div>
+      <div class="entry-info">
+        <h1 class="entry-title">
+          <p class="">{{ detail.schedule.movie.title }}</p>
+        </h1>
+        <div class="entry-pg">
+          <span class="movie-duration"
+            ><i class="fa fa-clock-o"></i>
+            {{ detail.schedule.movie.durationMin }} phút
+          </span>
+        </div>
+        <div class="movie-field-wrapper">
+          <div class="movie-field">
+            <label class="movie-field-label">Ngày chiếu:</label>
+            <div class="movie-field-content">
+              {{ detail.schedule.movie.premiereAt | date: "dd/MM/yyyy" }}
+            </div>
+          </div>
+          <div class="movie-field">
+            <label class="movie-field-label">Đạo diễn:</label>
+            <div class="movie-field-content">
+              {{ detail.schedule.movie.director }}
+            </div>
+          </div>
+          <div class="movie-field">
+            <label class="movie-field-label">Diễn viên:</label>
+            <div class="movie-field-content">
+              {{ detail.schedule.movie.cast }}
+            </div>
+          </div>
+          <!--
+                          <div class="movie-field">
+                            <label class="movie-field-label">Thể loại:</label>
+                            <div class="movie-field-content">
+                              Comedy, Comedy, Comedy, Comedy
+                            </div>
+                          </div> -->
+
+          <div class="movie-description">
+            <p>
+              {{ detail.schedule.movie.description }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

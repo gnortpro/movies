@@ -14,6 +14,7 @@ import { VoucherComponent } from "./pages/user/profile/voucher/voucher.component
 import { TicketBoughtComponent } from "./pages/user/profile/ticket-bought/ticket-bought.component";
 import { CheckoutComponent } from "./pages/user/checkout/checkout.component";
 import { AddMovieComponent } from "./pages/admin/add-movie/add-movie.component";
+import { BookHistoryComponent } from "./pages/user/book-history/book-history.component";
 // Admin
 import { AdminComponent } from "./pages/admin/admin.component";
 import { LoginComponent } from "./pages/login/login.component";
@@ -64,6 +65,7 @@ const routes: Routes = [
       { path: "event/:id", component: DetaileventComponent },
       { path: "movie/:id", component: DetailmovieComponent },
       { path: "checkout/:id", component: CheckoutComponent },
+      { path: "booked/:id", component: BookHistoryComponent },
       {
         path: "profile",
         component: ProfileComponent,

@@ -85,6 +85,7 @@ import { LoadingBarRouterModule } from "@ngx-loading-bar/router";
 
 // for Core import:
 import { LoadingBarModule } from "@ngx-loading-bar/core";
+import { BookHistoryComponent } from './pages/user/book-history/book-history.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -112,7 +113,8 @@ import { LoadingBarModule } from "@ngx-loading-bar/core";
     ExpiredBookTicketComponent,
     TheatersComponent,
     AuditoriumsComponent,
-    AddMovieComponent
+    AddMovieComponent,
+    BookHistoryComponent
   ],
   imports: [
     HttpClientModule,

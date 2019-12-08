@@ -2,7 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { ExpiredBookTicketComponent } from "src/app/_layouts/dialog/expired-book-ticket/expired-book-ticket.component";
 import { MatDialog } from "@angular/material";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { trigger, transition, animate, style } from "@angular/animations";
+import { DataService } from "../../../_services/data.service";
+import { ActivatedRoute, Router } from "@angular/router";
 @Component({
   selector: "app-checkout",
   templateUrl: "./checkout.component.html",
@@ -15,10 +16,14 @@ export class CheckoutComponent implements OnInit {
   codeGiamGia = 0;
   checkCodeError: string;
   purchaseStatus = false;
+  reservationID: number;
 
   constructor(
     private expiredBookTicket: MatDialog,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private dataService: DataService,
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
   ngOnInit() {
     this.maGiamGiaForm = this.formBuilder.group({
@@ -63,8 +68,18 @@ export class CheckoutComponent implements OnInit {
     //     }
     //   );
   }
-  purchased(): void {
-    this.purchaseStatus = true;
+  // reviewTicket() {
+  //   this.router.navigate(["/user/booked/" + this.reservationID]);
+  // }
+  purchased() {
+    let id = +this.route.snapshot.paramMap.get("id");
+    this.dataService.postPurchase(id).subscribe(
+      (data: { id: number }) => {
+        this.purchaseStatus = true;
+        this.reservationID = data.id;
+      },
+      error => {}
+    );
   }
   openBuyTicketDialog(movieID: number): void {
     const diaglogRef = this.expiredBookTicket.open(ExpiredBookTicketComponent, {
