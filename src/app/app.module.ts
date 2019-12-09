@@ -70,6 +70,8 @@ import { MoviesComponent } from "./pages/admin/movies/movies.component";
 import { TheatersComponent } from "./pages/admin/theaters/theaters.component";
 import { AuditoriumsComponent } from "./pages/admin/auditoriums/auditoriums.component";
 import { AddMovieComponent } from "./pages/admin/add-movie/add-movie.component";
+import { AddUserComponent } from "./pages/admin/user/add-user/add-user.component";
+import { EditMovieComponent } from "./pages/admin/edit-movie/edit-movie.component";
 // Import your library
 import { SlickCarouselModule } from "ngx-slick-carousel";
 import { SnackBarComponent } from "./_layouts/snack-bar/snack-bar.component";
@@ -86,6 +88,7 @@ import { LoadingBarRouterModule } from "@ngx-loading-bar/router";
 // for Core import:
 import { LoadingBarModule } from "@ngx-loading-bar/core";
 import { BookHistoryComponent } from "./pages/user/book-history/book-history.component";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -114,7 +117,9 @@ import { BookHistoryComponent } from "./pages/user/book-history/book-history.com
     TheatersComponent,
     AuditoriumsComponent,
     AddMovieComponent,
-    BookHistoryComponent
+    BookHistoryComponent,
+    AddUserComponent,
+    EditMovieComponent
   ],
   imports: [
     HttpClientModule,

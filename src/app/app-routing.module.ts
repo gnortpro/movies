@@ -23,6 +23,8 @@ import { DashboardComponent } from "./pages/admin/dashboard/dashboard.component"
 import { MoviesComponent } from "./pages/admin/movies/movies.component";
 import { TheatersComponent } from "./pages/admin/theaters/theaters.component";
 import { AuditoriumsComponent } from "./pages/admin/auditoriums/auditoriums.component";
+import { AddUserComponent } from "./pages/admin/user/add-user/add-user.component";
+import { EditMovieComponent } from "./pages/admin/edit-movie/edit-movie.component";
 // helper
 import { AuthGuard } from "./_helpers";
 import { Role } from "./models";
@@ -35,7 +37,13 @@ const routes: Routes = [
     children: [
       {
         path: "user",
-        component: ListuserComponent
+        component: ListuserComponent,
+        children: [
+          {
+            path: "add",
+            component: AddUserComponent
+          }
+        ]
       },
       { path: "movie", component: MoviesComponent },
       {
@@ -50,6 +58,11 @@ const routes: Routes = [
       {
         path: "new-movie",
         component: AddMovieComponent
+      },
+
+      {
+        path: "edit-movie/:id",
+        component: EditMovieComponent
       },
 
       { path: "", component: DashboardComponent }

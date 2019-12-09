@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <form [formGroup]="createMovieForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="editMovieForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
           <label for="title">Title</label>
           <input
@@ -122,9 +122,9 @@
         <button
           class="btn btn-info"
           type="submit"
-          [disabled]="!createMovieForm.valid"
+          [disabled]="!editMovieForm.valid"
         >
-          Create Movie
+          Update Movie
         </button>
 
         <button

@@ -1,27 +1,39 @@
 import { Component, OnInit } from "@angular/core";
 import { DataService } from "../../../_services";
+import { Validators, FormBuilder, FormGroup } from "@angular/forms";
+import { Router, ActivatedRoute } from "@angular/router";
 import { MatSnackBar } from "@angular/material";
-import { SnackBarComponent } from "../../../_layouts/snack-bar/snack-bar.component";
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
+import { SnackBarComponent } from "src/app/_layouts/snack-bar/snack-bar.component";
 @Component({
-  selector: "app-add-movie",
-  templateUrl: "./add-movie.component.html",
-  styleUrls: ["./add-movie.component.css"]
+  selector: "app-edit-movie",
+  templateUrl: "./edit-movie.component.html",
+  styleUrls: ["./edit-movie.component.css"]
 })
-export class AddMovieComponent implements OnInit {
-  createMovieForm: FormGroup;
+export class EditMovieComponent implements OnInit {
+  editMovieForm: FormGroup;
   loading = false;
   errors;
+  detail;
   constructor(
     private formBuilder: FormBuilder,
     private dataService: DataService,
+    public router: Router,
     public snackBar: MatSnackBar,
-    public router: Router
+    private activeRoute: ActivatedRoute
   ) {}
 
   ngOnInit() {
-    this.createMovieForm = this.formBuilder.group({
+    const id = +this.activeRoute.snapshot.paramMap.get("id");
+    this.dataService.getMovieDetail(id).subscribe(
+      data => {
+        this.detail = data;
+        // console.log(data);
+      },
+      error => {
+        console.log("error", error);
+      }
+    );
+    this.editMovieForm = this.formBuilder.group({
       title: ["", Validators.required],
       duration: ["", Validators.required],
       cast: ["", Validators.required],
@@ -35,11 +47,12 @@ export class AddMovieComponent implements OnInit {
     });
   }
   get f() {
-    return this.createMovieForm.controls;
+    return this.editMovieForm.controls;
   }
   onSubmit() {
+    const id = +this.activeRoute.snapshot.paramMap.get("id");
     // stop here if form is invalid
-    if (this.createMovieForm.invalid) {
+    if (this.editMovieForm.invalid) {
       return;
     }
     // console.log(this.f);
@@ -47,7 +60,7 @@ export class AddMovieComponent implements OnInit {
     this.loading = true;
     // console.log("form value", this.adminLoginForm.value);
     this.dataService
-      .postCreateMovie({
+      .putUpdateMovie(id, {
         title: this.f.title.value,
         durationMin: this.f.duration.value,
         cast: this.f.cast.value,
@@ -62,7 +75,7 @@ export class AddMovieComponent implements OnInit {
       .subscribe(
         data => {
           this.openSnackBar("Success", "createMovie");
-          this.createMovieForm.reset();
+          this.editMovieForm.reset();
           this.loading = false;
           this.router.navigate(["/admin/movie"]);
           // console.log(data);
@@ -74,9 +87,6 @@ export class AddMovieComponent implements OnInit {
           this.loading = false;
         }
       );
-  }
-  backToMovie() {
-    this.router.navigate(["/admin/movie"]);
   }
   openSnackBar(message: string, panelClass: string) {
     this.snackBar.openFromComponent(SnackBarComponent, {

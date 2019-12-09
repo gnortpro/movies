@@ -50,12 +50,15 @@ export class MoviesComponent implements OnInit {
   addNewMovie() {
     this.router.navigate(["/admin/new-movie"]);
   }
+  editMovie(id) {
+    this.router.navigate(["/admin/edit-movie/" + id]);
+  }
   deleteMovie(id) {
     if (confirm("Bạn muốn xóa phim này?")) {
       this.dataService.deleteMovie(id).subscribe(
         data => {
           this.openSnackBar("Delete Movie Successfully", "createMovie");
-          this.getListMovies(5, 1);
+          this.getListMovies(10, 1);
         },
         error => {}
       );

@@ -140,7 +140,15 @@ export class DataService {
       this.httpOptions
     );
   }
-
+  public putUpdateMovie(id: number, obj: any) {
+    return this.httpClient.put(
+      `${environment.apiUrl}/movies/` + id,
+      {
+        ...obj
+      },
+      this.httpOptions
+    );
+  }
   public getEvents() {
     return this.httpClient.get(this.events);
   }

@@ -5,3 +5,10 @@ img.img-thumb {
 td.ng-star-inserted {
   text-align: center;
 }
+td.mat-cell.cdk-column-Description.mat-column-Description {
+  /* margin-bottom: 10px; */
+  display: -webkit-box;
+  -webkit-line-clamp: 9;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

@@ -8,4 +8,5 @@ export class Movie {
   title: string;
   trailer: string;
   imdbScore: string;
+  type: string;
 }
