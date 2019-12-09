@@ -103,19 +103,23 @@ export class DetailmovieComponent implements OnInit {
       this.dataCheckout[0].seatIds.push(element);
     });
     if (this.ticketIDArray.length > 0) {
-      this.dataService.postNewReservation(this.dataCheckout[0]).subscribe(
-        (data: { id: number }) => {
-          if (data.id) {
-            this.reservationID = data.id;
-            this.router.navigate(["/user/checkout/" + this.reservationID]);
-          } else {
-            throw new Error(JSON.stringify(data));
+      if (localStorage.getItem("currentUser")) {
+        this.dataService.postNewReservation(this.dataCheckout[0]).subscribe(
+          (data: { id: number }) => {
+            if (data.id) {
+              this.reservationID = data.id;
+              this.router.navigate(["/user/checkout/" + this.reservationID]);
+            } else {
+              throw new Error(JSON.stringify(data));
+            }
+          },
+          error => {
+            console.log(error);
           }
-        },
-        error => {
-          console.log(error);
-        }
-      );
+        );
+      } else {
+        alert("Bạn phải đăng nhập để thực hiện thao tác này");
+      }
     } else {
       alert("Mời bạn chọn ghế");
     }
