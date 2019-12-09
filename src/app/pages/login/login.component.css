@@ -1,5 +1,7 @@
 .container.loginform-wrapper {
   max-width: 800px;
+  background: #f1f1f1;
+  padding: 20px;
 }
 
 .container.loginform-wrapper form {

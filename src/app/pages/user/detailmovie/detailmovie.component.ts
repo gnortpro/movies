@@ -47,10 +47,11 @@ export class DetailmovieComponent implements OnInit {
 
   slideDayConfig = {
     slidesToShow: 10,
-    slidesToScroll: 4,
+    slidesToScroll: 10,
     autoplay: false,
     arrows: true,
-    infinite: true,
+    loop: false,
+    infinite: false,
     responsive: [
       { breakpoint: 480, settings: { slidesToShow: 3, slidesToScroll: 3 } },
       { breakpoint: 979, settings: { slidesToShow: 3, slidesToScroll: 3 } }
