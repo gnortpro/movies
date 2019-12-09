@@ -36,7 +36,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { MatDialogModule } from "@angular/material/dialog";
-// import { MatTooltipModule } from "@angular/material/tooltip";
+import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatTableModule } from "@angular/material/table";
 import { MatSortModule } from "@angular/material/sort";
@@ -85,7 +85,7 @@ import { LoadingBarRouterModule } from "@ngx-loading-bar/router";
 
 // for Core import:
 import { LoadingBarModule } from "@ngx-loading-bar/core";
-import { BookHistoryComponent } from './pages/user/book-history/book-history.component';
+import { BookHistoryComponent } from "./pages/user/book-history/book-history.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -146,7 +146,7 @@ import { BookHistoryComponent } from './pages/user/book-history/book-history.com
     MatProgressSpinnerModule,
     MatProgressBarModule,
     MatDialogModule,
-    // MatTooltipModule,
+    MatTooltipModule,
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,

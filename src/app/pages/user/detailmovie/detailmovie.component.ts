@@ -4,6 +4,7 @@ import { DataService } from "../../../_services/data.service";
 import { BuyTicketDialogComponent } from "src/app/_layouts/dialog/buy-ticket/buy-ticket.component";
 import { MatDialog } from "@angular/material";
 import { DatePipe } from "@angular/common";
+import { TooltipPosition } from "@angular/material/tooltip";
 @Component({
   selector: "app-detailmovie",
   templateUrl: "./detailmovie.component.html",
@@ -17,10 +18,8 @@ export class DetailmovieComponent implements OnInit {
   movieInfo;
   getSeatsBySchedule;
   selectSeat = false;
-  loading = false;
   scheduleLoading = false;
   getSeatsByScheduleIDLoading = false;
-  screenID: number;
   chonsuatchieu = false;
   ticketIDArray = [];
   reservationID;
@@ -62,7 +61,6 @@ export class DetailmovieComponent implements OnInit {
   days = [];
   todayDay = new Date().getDate();
   todayMonth = new Date().getMonth();
-  public isClicked = [];
   constructor(
     private route: ActivatedRoute,
     private dataService: DataService,
@@ -85,46 +83,24 @@ export class DetailmovieComponent implements OnInit {
     }
     this.getSelectDaySchedules(new Date());
   }
-  checkedSeat(ticketID: number) {
-    let index = this.ticketIDArray.findIndex(x => (x.ticketID = ticketID));
-    if (index !== -1) {
-      return "active";
-    } else {
-      return "";
-    }
+  cancelSeat(seat: number) {
+    let index = this.ticketIDArray.findIndex(x => x === seat);
+    this.ticketIDArray.splice(index, 1);
   }
   submitBuyTicket(ticketID: number, seatName: string) {
     // let index = this.ticketIDArray.findIndex(x => (x = ticketID));
     if (!this.ticketIDArray.includes(ticketID)) {
-      this.ticketIDArray.push(ticketID);
+      if (this.ticketIDArray.length >= 3) {
+        alert("Bạn chỉ được chọn tối đa 3 ghế");
+      } else {
+        this.ticketIDArray.push(ticketID);
+      }
     }
-    // this.dataService.postSubmitBuyTicket(this.movieID, ticketID).subscribe(
-    //   data => {},
-    //   error => {}
-    // );
-    // let obj = { ticketID: ticketID, seatName: seatName, isClicked: true };
-    // let index = this.ticketIDArray.findIndex(x => (x.ticketID = ticketID));
-
-    // if (index === -1) {
-    //   this.ticketIDArray.push(obj);
-    // } else {
-    //   obj.isClicked = !this.ticketIDArray[index].isClicked;
-    //   this.ticketIDArray.splice(index, 1);
-    //   this.ticketIDArray.push(obj);
-    // }
-
-    // console.log(this.ticketIDArray);
-
-    // this.openBuyTicketDialog({ ticketID: ticketID, seatName: seatName });
   }
   continueCheckout() {
-    // let scheduleLocal = JSON.parse(localStorage.getItem("schedule"));
-
     this.ticketIDArray.forEach(element => {
       this.dataCheckout[0].seatIds.push(element);
     });
-
-    // localStorage.setItem("schedule", JSON.stringify(scheduleLocal));
     this.dataService.postNewReservation(this.dataCheckout[0]).subscribe(
       (data: { id: number }) => {
         this.reservationID = data.id;
@@ -132,7 +108,6 @@ export class DetailmovieComponent implements OnInit {
       },
       error => {}
     );
-    // console.log(this.ticketIDArray);
   }
   getSeatsByScheduleID(scheduleID: number) {
     this.selectSeat = false;
@@ -152,8 +127,6 @@ export class DetailmovieComponent implements OnInit {
     );
   }
   getSelectDaySchedules(day: any) {
-    // console.log(day);
-
     this.selectSeat = false;
     this.scheduleLoading = true;
     this.chonsuatchieu = false;
@@ -161,8 +134,6 @@ export class DetailmovieComponent implements OnInit {
     const convertDay = new DatePipe("en-US").transform(day, "yyyy/MM/dd");
     this.dataService.postScheduleByDay(this.movieID, convertDay).subscribe(
       data => {
-        console.log("dt", data);
-
         this.scheduleLists = data;
         this.scheduleLoading = false;
         this.chonsuatchieu = true;
@@ -180,7 +151,7 @@ export class DetailmovieComponent implements OnInit {
       panelClass: "buy-ticket-dialog"
     });
     diaglogRef.afterClosed().subscribe(result => {
-      console.log("dialog result", result);
+      // console.log("dialog result", result);
     });
   }
 }

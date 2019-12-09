@@ -64,7 +64,11 @@ const routes: Routes = [
       // { path: "profile", redirectTo: "/user", pathMatch: "full" },
       { path: "event/:id", component: DetaileventComponent },
       { path: "movie/:id", component: DetailmovieComponent },
-      { path: "checkout/:id", component: CheckoutComponent },
+      {
+        path: "checkout/:id",
+        component: CheckoutComponent
+        // canActivate: [AuthGuard]
+      },
       { path: "booked/:id", component: BookHistoryComponent },
       {
         path: "profile",

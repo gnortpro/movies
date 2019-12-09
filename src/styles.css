@@ -1410,8 +1410,9 @@ button#active {
   margin-right: 5px;
   background: #fe7900;
   color: white;
-  padding: 5px 6px;
+  padding: 5px 10px;
   border-radius: 20px;
+  cursor: pointer;
 }
 .booked-history .entry-title {
   font-size: 20px;

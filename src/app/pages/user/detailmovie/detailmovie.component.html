@@ -231,7 +231,6 @@
                 </div>
               </div>
               <div
-                [id]="screenID ? screenID : ''"
                 class="row"
                 [style.opacity]="selectSeat ? '1' : '0'"
                 [style.visibility]="selectSeat ? 'visible' : 'hidden'"
@@ -261,17 +260,21 @@
                           "
                           [disabled]="line.isReserved === 1"
                         >
-                          {{ line.seatNumber }}
+                          {{ line.seatId }}
                         </button>
                       </div>
                     </div>
+
                     <div class="col-md-12 text-center mt-5">
                       Ghế đã chọn:
-                      <span
+                      <button
+                        matTooltip="Click để hủy vé"
                         class="booked-seats"
                         *ngFor="let ticket of ticketIDArray"
-                        >{{ ticket }}</span
+                        (click)="cancelSeat(ticket)"
                       >
+                        {{ ticket }}
+                      </button>
                     </div>
                     <div class="text-center mt-5">
                       <button class="btn btn-info" (click)="continueCheckout()">
