@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { AuthenticationService } from "../../_services";
+import { AuthenticationService, SearchService } from "../../_services";
 import { UserAuth } from "src/app/models";
+import { FormControl } from "@angular/forms";
+import { debounceTime, distinctUntilChanged } from "rxjs/operators";
 @Component({
   selector: "app-user",
   templateUrl: "./user.component.html",
@@ -11,8 +13,12 @@ export class UserComponent implements OnInit {
   currentUser: UserAuth;
   checkUser = false;
   menuClick = false;
-
-  constructor(private authenticationService: AuthenticationService) {
+  results;
+  queryField: FormControl = new FormControl();
+  constructor(
+    private authenticationService: AuthenticationService,
+    private searchService: SearchService
+  ) {
     this.authenticationService.currentUser.subscribe(
       x => (this.currentUser = x)
     );
@@ -21,9 +27,17 @@ export class UserComponent implements OnInit {
   ngOnInit() {
     const checkUser = this.authenticationService.currentUserValue;
     this.checkUser = checkUser ? true : false;
-    // this.loggedUser = JSON.parse(localStorage.getItem("currentUser")).user;
+    this.queryField.valueChanges
+      .pipe(debounceTime(400), distinctUntilChanged())
+      .subscribe(queryField =>
+        this.searchService.search(queryField).subscribe(
+          (data: any) => {
+            this.results = data.movies;
+          },
+          error => {}
+        )
+      );
   }
-
   toggleMobileClass(): void {
     this.menuClick = !this.menuClick;
   }

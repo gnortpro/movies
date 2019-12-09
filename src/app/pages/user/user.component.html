@@ -23,16 +23,40 @@
                   >Phim đang chiếu</a
                 >
               </li>
-              <li class="menu-item">
-                <a
-                  class="mat-button mat-button-header"
-                  routerLink="/user/upcoming"
-                  routerLinkActive="active"
-                  >Phim sắp chiếu</a
-                >
-              </li>
-              <li class="menu-item">
-                <a href="" class="">Tin khuyến mãi</a>
+              <li class="menu-item searchbar-wrapper">
+                <div class="searchbar">
+                  <div class="searchbar-input">
+                    <input
+                      [formControl]="queryField"
+                      class="search_input form-control"
+                      type="text"
+                      placeholder="Search..."
+                    />
+                  </div>
+
+                  <div class="filter-select" *ngIf="results">
+                    <div
+                      class="autocomplete-suggestion"
+                      *ngFor="let result of results"
+                    >
+                      <a
+                        routerLink="/user/movie/{{ result.id }}"
+                        class="search-link"
+                      >
+                        <img
+                          [src]="result.image"
+                          alt=""
+                          width="50"
+                          height="50"
+                          class="img-responsive"
+                        />
+                        <span class="search-name">
+                          {{ result.title }}
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </li>
 
               <li class="menu-item">
@@ -58,6 +82,7 @@
             </ul>
           </div>
         </nav>
+
         <div id="menu-toggle-mobile" class="d-lg-none d-xl-none">
           <a href="javascript:void(0)" class="" (click)="toggleMobileClass()"
             ><span class="times" [class.d-none]="!menuClick"></span
@@ -87,15 +112,11 @@
         >
       </li>
       <li class="menu-item">
-        <a
-          class="mat-button mat-button-header"
-          routerLink="/user/upcoming"
-          routerLinkActive="active"
-          >Phim sắp chiếu</a
-        >
-      </li>
-      <li class="menu-item">
-        <a href="" class="mat-button mat-button-header">Tin khuyến mãi</a>
+        <button mat-button>
+          <i class="material-icons">
+            search
+          </i>
+        </button>
       </li>
 
       <li class="menu-item">

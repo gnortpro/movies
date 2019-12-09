@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { map } from "rxjs/operators";
-
+import { Router } from "@angular/router";
 import { environment } from "../../environments/environment";
 import { UserAuth } from "../models";
 
@@ -11,7 +11,7 @@ export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<UserAuth>;
   public currentUser: Observable<UserAuth>;
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private router: Router) {
     this.currentUserSubject = new BehaviorSubject<UserAuth>(
       JSON.parse(localStorage.getItem("currentUser"))
     );

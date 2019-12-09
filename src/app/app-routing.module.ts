@@ -66,10 +66,14 @@ const routes: Routes = [
       { path: "movie/:id", component: DetailmovieComponent },
       {
         path: "checkout/:id",
-        component: CheckoutComponent
-        // canActivate: [AuthGuard]
+        component: CheckoutComponent,
+        canActivate: [AuthGuard]
       },
-      { path: "booked/:id", component: BookHistoryComponent },
+      {
+        path: "booked/:id",
+        component: BookHistoryComponent,
+        canActivate: [AuthGuard]
+      },
       {
         path: "profile",
         component: ProfileComponent,

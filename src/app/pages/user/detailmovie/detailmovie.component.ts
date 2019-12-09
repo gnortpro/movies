@@ -4,7 +4,6 @@ import { DataService } from "../../../_services/data.service";
 import { BuyTicketDialogComponent } from "src/app/_layouts/dialog/buy-ticket/buy-ticket.component";
 import { MatDialog } from "@angular/material";
 import { DatePipe } from "@angular/common";
-import { TooltipPosition } from "@angular/material/tooltip";
 @Component({
   selector: "app-detailmovie",
   templateUrl: "./detailmovie.component.html",
@@ -62,6 +61,7 @@ export class DetailmovieComponent implements OnInit {
   days = [];
   todayDay = new Date().getDate();
   todayMonth = new Date().getMonth();
+  checkoutMovieStatus = true;
   constructor(
     private route: ActivatedRoute,
     private dataService: DataService,
@@ -102,13 +102,23 @@ export class DetailmovieComponent implements OnInit {
     this.ticketIDArray.forEach(element => {
       this.dataCheckout[0].seatIds.push(element);
     });
-    this.dataService.postNewReservation(this.dataCheckout[0]).subscribe(
-      (data: { id: number }) => {
-        this.reservationID = data.id;
-        this.router.navigate(["/user/checkout/" + this.reservationID]);
-      },
-      error => {}
-    );
+    if (this.ticketIDArray.length > 0) {
+      this.dataService.postNewReservation(this.dataCheckout[0]).subscribe(
+        (data: { id: number }) => {
+          if (data.id) {
+            this.reservationID = data.id;
+            this.router.navigate(["/user/checkout/" + this.reservationID]);
+          } else {
+            throw new Error(JSON.stringify(data));
+          }
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    } else {
+      alert("Mời bạn chọn ghế");
+    }
   }
   getSeatsByScheduleID(scheduleID: number) {
     this.selectSeat = false;

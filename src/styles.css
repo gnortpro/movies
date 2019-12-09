@@ -133,6 +133,7 @@ img.user {
 .menu-item .active {
   background: #fe7900;
   color: white;
+  border-radius: 0;
 }
 #menu-toggle-mobile {
   /* margin-top: 30px; */
@@ -960,6 +961,7 @@ ul.nav-menu li {
   display: inline-block;
   float: left;
   position: relative;
+  margin-right: 10px;
 }
 .menu-item a {
   font-family: "Roboto Condensed", Arial, sans-serif;
@@ -1418,6 +1420,42 @@ button#active {
   font-size: 20px;
   margin-top: 15px;
   margin-bottom: -10px;
+}
+.searchbar {
+  margin-top: 10px;
+  position: relative;
+}
+.autocomplete-suggestion span {
+  font-size: 10px;
+}
+
+.autocomplete-suggestion {
+  margin-bottom: 10px;
+}
+a.search-link {
+  padding: 0 !important;
+  white-space: unset !important;
+}
+a.search-link:hover {
+  color: black !important;
+}
+.filter-select {
+  position: absolute;
+  background: white;
+  text-align: left;
+  padding: 10px 6px 10px 6px;
+  z-index: 999;
+}
+li.menu-item.searchbar-wrapper:hover {
+  background: white;
+}
+
+a.search-link {
+  width: 100%;
+}
+
+ul.nav-menu li:hover a.search-link {
+  color: black !important;
 }
 @media (max-width: 767.98px) {
   header#masthead {
