@@ -1422,7 +1422,7 @@ button#active {
   margin-bottom: -10px;
 }
 .searchbar {
-  margin-top: 10px;
+  /* margin-top: 10px; */
   position: relative;
 }
 .autocomplete-suggestion span {
