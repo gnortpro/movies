@@ -72,6 +72,8 @@ import { AuditoriumsComponent } from "./pages/admin/auditoriums/auditoriums.comp
 import { AddMovieComponent } from "./pages/admin/add-movie/add-movie.component";
 import { AddUserComponent } from "./pages/admin/user/add-user/add-user.component";
 import { EditMovieComponent } from "./pages/admin/edit-movie/edit-movie.component";
+import { AddTheaterComponent } from "./pages/admin/add-theater/add-theater.component";
+import { EditTheaterComponent } from "./pages/admin/edit-theater/edit-theater.component";
 // Import your library
 import { SlickCarouselModule } from "ngx-slick-carousel";
 import { SnackBarComponent } from "./_layouts/snack-bar/snack-bar.component";
@@ -119,7 +121,9 @@ import { BookHistoryComponent } from "./pages/user/book-history/book-history.com
     AddMovieComponent,
     BookHistoryComponent,
     AddUserComponent,
-    EditMovieComponent
+    EditMovieComponent,
+    AddTheaterComponent,
+    EditTheaterComponent
   ],
   imports: [
     HttpClientModule,

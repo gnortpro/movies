@@ -191,7 +191,9 @@
                     class="select-cinema"
                     *ngIf="scheduleLists && chonsuatchieu"
                   >
-                    <h4>Chọn suất chiếu</h4>
+                    <h4>
+                      Chọn suất chiếu:
+                    </h4>
                     <div class="slotpicker" *ngIf="scheduleLists">
                       <div
                         class="slotpicker-item row"
@@ -206,7 +208,13 @@
                           <button
                             class="btn pick-time"
                             *ngFor="let schedule of scheduleList.schedules"
-                            (click)="getSeatsByScheduleID(schedule.scheduleId)"
+                            (click)="
+                              getSeatsByScheduleID(
+                                schedule.scheduleId,
+                                schedule.screeningTime,
+                                scheduleList.theaterTitle
+                              )
+                            "
                             [disabled]="getSeatsByScheduleIDLoading"
                           >
                             {{ schedule.screeningTime | date: "HH:mm":"+0700" }}
@@ -237,7 +245,13 @@
               >
                 <div class="col-md-12">
                   <div class="select-day">
-                    <h4>Chọn ghế</h4>
+                    <h4>
+                      Chọn ghế - Rạp
+                      <span *ngIf="theaterTitle">{{ theaterTitle }}</span> |
+                      <span *ngIf="screeningTime">{{
+                        screeningTime | date: "dd/MM/yyyy HH:mm":"+0700"
+                      }}</span>
+                    </h4>
                   </div>
                 </div>
                 <div class="col-md-12" *ngIf="getSeatsBySchedule">
@@ -249,22 +263,22 @@
                         *ngFor="let linerow of getSeatsBySchedule"
                       >
                         <button
+                          class="seat"
                           *ngFor="let line of linerow.seats"
-                          [class]="
-                            line.isReserved === 0
-                              ? 'seat active'
-                              : 'seat inactive'
-                          "
-                          (click)="
-                            submitBuyTicket(line.seatId, 'A' + line.seatNumber)
-                          "
+                          [ngClass]="{
+                            active: line.isReserved === 0,
+                            checked: checkedSeat(line.seatId)
+                          }"
+                          (click)="submitBuyTicket(line.seatId)"
                           [disabled]="line.isReserved === 1"
                         >
-                          {{ line.seatId }}
+                          {{
+                            convertLineToText(linerow.line) + line.seatNumber
+                          }}
                         </button>
                       </div>
                     </div>
-
+                    <!--
                     <div class="col-md-12 text-center mt-5">
                       Ghế đã chọn:
                       <button
@@ -275,7 +289,7 @@
                       >
                         {{ ticket }}
                       </button>
-                    </div>
+                    </div> -->
                     <div class="text-center mt-5">
                       <button class="btn btn-info" (click)="continueCheckout()">
                         Thanh toán

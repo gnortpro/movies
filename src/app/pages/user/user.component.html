@@ -26,15 +26,57 @@
               <li class="menu-item searchbar-wrapper">
                 <div class="searchbar">
                   <div class="searchbar-input">
-                    <input
-                      [formControl]="queryField"
-                      class="search_input form-control"
-                      type="text"
-                      placeholder="Search..."
-                    />
+                    <mat-form-field>
+                      <input
+                        type="text"
+                        placeholder="Nhập tên phim, đạo diễn..."
+                        matInput
+                        [formControl]="queryField"
+                        [matAutocomplete]="auto"
+                      />
+                      <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option
+                          *ngFor="let result of results"
+                          [value]="queryField.value"
+                        >
+                          <a
+                            routerLink="/user/movie/{{ result.id }}"
+                            class="search-link"
+                          >
+                            <img
+                              [src]="result.image"
+                              alt=""
+                              width="50"
+                              height="50"
+                              class="img-responsive"
+                            />
+                            <span class="search-name">
+                              {{ result.title }}
+                            </span>
+                          </a>
+                        </mat-option>
+                      </mat-autocomplete>
+                    </mat-form-field>
+                    <!-- <mat-form-field>
+                      <input
+                        matInput
+                        [formControl]="queryField"
+                        class="search_input form-control"
+                        type="text"
+                        placeholder="Search..."
+                        [matAutocomplete]="auto"
+                      />
+                      <mat-autocomplete
+                        #auto="matAutocomplete"
+                        class="filter-select"
+                        *ngIf="results && queryField.value"
+                      >
+                        <span>egsegsegsdg</span>
+                      </mat-autocomplete>
+                    </mat-form-field> -->
                   </div>
 
-                  <div class="filter-select" *ngIf="results">
+                  <!-- <div class="filter-select" *ngIf="results">
                     <div
                       class="autocomplete-suggestion"
                       *ngFor="let result of results"
@@ -55,7 +97,7 @@
                         </span>
                       </a>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
               </li>
 

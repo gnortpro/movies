@@ -23,6 +23,8 @@ export class DetailmovieComponent implements OnInit {
   ticketIDArray = [];
   reservationID;
   dataCheckout = [];
+  screeningTime: string;
+  theaterTitle: string;
   slides = [
     { img: "assets/slider/s1.jpg" },
     { img: "assets/slider/s2.jpg" },
@@ -71,12 +73,14 @@ export class DetailmovieComponent implements OnInit {
 
   ngOnInit() {
     this.movieID = +this.route.snapshot.paramMap.get("id");
-    this.dataService.getMovieDetail(this.movieID).subscribe(
-      data => {
-        this.detail = data;
-      },
-      error => {}
-    );
+    this.route.paramMap.subscribe(data => {
+      this.dataService.getMovieDetail(data["params"]["id"]).subscribe(
+        resp => {
+          this.detail = resp;
+        },
+        error => {}
+      );
+    });
 
     // get list 20 day from now
     for (let i = this.todayDay; i <= 20; i++) {
@@ -88,7 +92,7 @@ export class DetailmovieComponent implements OnInit {
     let index = this.ticketIDArray.findIndex(x => x === seat);
     this.ticketIDArray.splice(index, 1);
   }
-  submitBuyTicket(ticketID: number, seatName: string) {
+  submitBuyTicket(ticketID: number) {
     // let index = this.ticketIDArray.findIndex(x => (x = ticketID));
     if (!this.ticketIDArray.includes(ticketID)) {
       if (this.ticketIDArray.length >= 3) {
@@ -96,7 +100,13 @@ export class DetailmovieComponent implements OnInit {
       } else {
         this.ticketIDArray.push(ticketID);
       }
+    } else {
+      let index = this.ticketIDArray.indexOf(ticketID);
+      this.ticketIDArray.splice(index, 1);
     }
+  }
+  checkedSeat(id: number) {
+    return this.ticketIDArray.includes(id);
   }
   continueCheckout() {
     this.ticketIDArray.forEach(element => {
@@ -124,7 +134,14 @@ export class DetailmovieComponent implements OnInit {
       alert("Mời bạn chọn ghế");
     }
   }
-  getSeatsByScheduleID(scheduleID: number) {
+  getSeatsByScheduleID(
+    scheduleID: number,
+    screeningTime: string,
+    theaterTitle: string
+  ) {
+    this.screeningTime = screeningTime;
+    this.theaterTitle = theaterTitle;
+
     this.selectSeat = false;
     this.getSeatsByScheduleIDLoading = true;
     this.dataService.getSeatsByScheduleID(this.movieID, scheduleID).subscribe(
@@ -140,6 +157,9 @@ export class DetailmovieComponent implements OnInit {
         this.getSeatsByScheduleIDLoading = false;
       }
     );
+  }
+  convertLineToText(lineid: number) {
+    return String.fromCharCode(65 + lineid);
   }
   getSelectDaySchedules(day: any) {
     this.selectSeat = false;

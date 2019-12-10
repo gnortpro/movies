@@ -63,13 +63,13 @@
               {{ detail.movie.cast }}
             </div>
           </div>
-          <!--
-                              <div class="movie-field">
-                                <label class="movie-field-label">Thể loại:</label>
-                                <div class="movie-field-content">
-                                  Comedy, Comedy, Comedy, Comedy
-                                </div>
-                              </div> -->
+
+          <div class="movie-field">
+            <label class="movie-field-label">Thể loại:</label>
+            <div class="movie-field-content">
+              {{ detail.movie.type }}
+            </div>
+          </div>
 
           <div class="movie-description">
             <p>
@@ -85,7 +85,7 @@
         </li>
         <li>
           <strong> Rạp:</strong>
-          {{ detail.auditorium.title }}
+          {{ detail.theater.title }} - {{ detail.auditorium.title }}
           <!-- <button
             (click)="
               theaterMap(

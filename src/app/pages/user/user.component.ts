@@ -32,7 +32,7 @@ export class UserComponent implements OnInit {
       .subscribe(queryField =>
         this.searchService.search(queryField).subscribe(
           (data: any) => {
-            this.results = data.movies;
+            this.results = (data && data.movies) || [];
           },
           error => {}
         )

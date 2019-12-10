@@ -5,34 +5,24 @@
         Bạn đã chi tiêu tổng cộng: <span class="chitieu">1.232.000 VNĐ</span>
       </p>
     </div>
-    <table class="table">
+    <table class="table" *ngIf="historys">
       <thead class="thead-dark">
         <tr>
           <th scope="col">#</th>
           <th scope="col">Phim</th>
-          <th scope="col">Giá tiền</th>
-          <th scope="col">Ngày thanh toán</th>
+          <th scope="col">Tình trạng</th>
+          <th scope="col">Ngày hết hạn</th>
+          <th scope="col">Giá vé</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>ABCDEF12</td>
-          <td>KM Thành viên mới</td>
-          <td>01/12/2019</td>
-        </tr>
-
-        <tr>
-          <th scope="row">2</th>
-          <td>ABCDEF12</td>
-          <td>KM Thành viên mới</td>
-          <td>01/12/2019</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>ABCDEF12</td>
-          <td>KM Thành viên mới</td>
-          <td>01/12/2019</td>
+        <tr *ngFor="let history of historys; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ history.movie.title }}</td>
+          <td>{{ history.status }}</td>
+          <td>{{ history.expiredAt | date: "dd/MM/yyy HH:mm:ss" }}</td>
+          <td *ngIf="history.price">{{ history.price }}</td>
+          <td *ngIf="!history.price">110.000</td>
         </tr>
       </tbody>
     </table>

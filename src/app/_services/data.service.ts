@@ -14,9 +14,7 @@ export class DataService {
   httpOptions = {
     headers: new HttpHeaders({ "Content-Type": "application/json" })
   };
-  private movieDetails = "http://www.mocky.io/v2/5ddbb5483400005200eadd84";
   private events = "http://www.mocky.io/v2/5ddde6382f000039617eaba5";
-  private tickets = " http://www.mocky.io/v2/5dddee8e2f000039617eabcb";
 
   constructor(
     private httpClient: HttpClient // httpErrorHandler: HttpErrorHandler
@@ -67,6 +65,9 @@ export class DataService {
       },
       this.httpOptions
     );
+  }
+  public getTheaterDetail(id) {
+    return this.httpClient.get(`${environment.apiUrl}/theaters/` + id);
   }
   public getAuditoriumList(theaterID: number) {
     return this.httpClient.get(
@@ -149,10 +150,20 @@ export class DataService {
       this.httpOptions
     );
   }
+
+  public putUpdateTheater(id: number, obj: any) {
+    return this.httpClient.put(
+      `${environment.apiUrl}/theaters/` + id,
+      {
+        ...obj
+      },
+      this.httpOptions
+    );
+  }
+  public getAllReservations() {
+    return this.httpClient.get(`${environment.apiUrl}/reservations/`);
+  }
   public getEvents() {
     return this.httpClient.get(this.events);
-  }
-  public getMovieShedule(movieID, day) {
-    return this.httpClient.get(this.tickets);
   }
 }

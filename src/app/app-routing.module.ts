@@ -25,6 +25,8 @@ import { TheatersComponent } from "./pages/admin/theaters/theaters.component";
 import { AuditoriumsComponent } from "./pages/admin/auditoriums/auditoriums.component";
 import { AddUserComponent } from "./pages/admin/user/add-user/add-user.component";
 import { EditMovieComponent } from "./pages/admin/edit-movie/edit-movie.component";
+import { AddTheaterComponent } from "./pages/admin/add-theater/add-theater.component";
+import { EditTheaterComponent } from "./pages/admin/edit-theater/edit-theater.component";
 // helper
 import { AuthGuard } from "./_helpers";
 import { Role } from "./models";
@@ -49,6 +51,14 @@ const routes: Routes = [
       {
         path: "theaters",
         component: TheatersComponent
+      },
+      {
+        path: "edit-theater/:id",
+        component: EditTheaterComponent
+      },
+      {
+        path: "add-theater",
+        component: AddTheaterComponent
       },
       {
         path: "auditoriums/:theaterID",
@@ -107,7 +117,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: "reload" })],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

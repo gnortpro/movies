@@ -95,4 +95,7 @@ export class EditMovieComponent implements OnInit {
       duration: 1500
     });
   }
+  backToMovie() {
+    this.router.navigate(["/admin/movie"]);
+  }
 }
