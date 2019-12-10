@@ -1,18 +1,18 @@
-<div class="container purchased-history">
+<div class="container purchased-history " *ngIf="historys">
   <div class="row">
-    <div class="sotienchitieu">
+    <!-- <div class="sotienchitieu">
       <p>
         Bạn đã chi tiêu tổng cộng: <span class="chitieu">1.232.000 VNĐ</span>
       </p>
-    </div>
-    <table class="table" *ngIf="historys">
+    </div> -->
+    <table class="table">
       <thead class="thead-dark">
         <tr>
           <th scope="col">#</th>
           <th scope="col">Phim</th>
           <th scope="col">Tình trạng</th>
-          <th scope="col">Ngày hết hạn</th>
-          <th scope="col">Giá vé</th>
+          <th scope="col">Ngày mua</th>
+          <!-- <th scope="col">Giá vé</th> -->
         </tr>
       </thead>
       <tbody>
@@ -21,8 +21,8 @@
           <td>{{ history.movie.title }}</td>
           <td>{{ history.status }}</td>
           <td>{{ history.expiredAt | date: "dd/MM/yyy HH:mm:ss" }}</td>
-          <td *ngIf="history.price">{{ history.price }}</td>
-          <td *ngIf="!history.price">110.000</td>
+          <!-- <td *ngIf="history.price">{{ history.price }}</td> -->
+          <!-- <td *ngIf="!history.price">110.000</td> -->
         </tr>
       </tbody>
     </table>
