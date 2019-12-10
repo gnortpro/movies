@@ -4,6 +4,7 @@ import { DataService } from "../../../_services/data.service";
 import { BuyTicketDialogComponent } from "src/app/_layouts/dialog/buy-ticket/buy-ticket.component";
 import { MatDialog } from "@angular/material";
 import { DatePipe } from "@angular/common";
+import { map } from "rxjs/operators";
 @Component({
   selector: "app-detailmovie",
   templateUrl: "./detailmovie.component.html",
@@ -144,19 +145,32 @@ export class DetailmovieComponent implements OnInit {
 
     this.selectSeat = false;
     this.getSeatsByScheduleIDLoading = true;
-    this.dataService.getSeatsByScheduleID(this.movieID, scheduleID).subscribe(
-      data => {
-        this.dataCheckout.push({ scheduleId: scheduleID, seatIds: [] });
-        this.getSeatsBySchedule = data;
+    this.dataService
+      .getSeatsByScheduleID(this.movieID, scheduleID)
+      .pipe(
+        map((result: any) => {
+          result = result.map(data => {
+            data.seats = data.seats.sort((a, b) => {
+              return a.seatNumber - b.seatNumber;
+            });
+            return data;
+          });
+          return result;
+        })
+      )
+      .subscribe(
+        data => {
+          this.dataCheckout.push({ scheduleId: scheduleID, seatIds: [] });
+          this.getSeatsBySchedule = data;
 
-        this.selectSeat = true;
+          this.selectSeat = true;
 
-        this.getSeatsByScheduleIDLoading = false;
-      },
-      error => {
-        this.getSeatsByScheduleIDLoading = false;
-      }
-    );
+          this.getSeatsByScheduleIDLoading = false;
+        },
+        error => {
+          this.getSeatsByScheduleIDLoading = false;
+        }
+      );
   }
   convertLineToText(lineid: number) {
     return String.fromCharCode(65 + lineid);

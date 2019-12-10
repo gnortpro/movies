@@ -98,13 +98,14 @@ export class DataService {
     );
   }
   public getSeatsByScheduleID(movieID: number, scheduleID: number) {
-    return this.httpClient.get(
+    const data = this.httpClient.get(
       `${environment.apiUrl}/movies/` +
         movieID +
         `/schedules/` +
         scheduleID +
         `/seats`
     ); // lấy danh sách các rạp chiếu phim
+    return data;
   }
 
   public postSubmitBuyTicket(movieID: number, ticketID: number) {
